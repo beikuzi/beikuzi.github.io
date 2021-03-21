@@ -289,7 +289,7 @@
 <details>
 <summary>火柴棒最大值规律</summary>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&quot;999911111&quot;,&quot;999971111&quot;,&quot;999977711&quot;,&quot;999991111&quot;……</span><br><span class="line">&#x2F;&#x2F;&quot;999999971&quot;,&quot;999999977&quot;,&quot;999999974&quot;,&quot;999999991&quot;,&quot;999999997&quot;,&quot;999999994&quot;,&quot;999999995&quot;,&quot;999999999&quot;</span><br><span class="line">		if(k&lt;n*2 or n*7&lt;k)</span><br><span class="line">    	&#123;</span><br><span class="line">    		printf(&quot;-1\n&quot;);</span><br><span class="line">    		continue;</span><br><span class="line">    	&#125;</span><br><span class="line">    	if(n*6&lt;&#x3D;k and k&lt;&#x3D;n*7)</span><br><span class="line">    	&#123;</span><br><span class="line">    		for(int i&#x3D;1;i&lt;&#x3D;n*7-k;i++)printf(&quot;9&quot;);</span><br><span class="line">    		for(int j&#x3D;1;j&lt;&#x3D;n-(n*7-k);j++)printf(&quot;8&quot;);</span><br><span class="line">    		printf(&quot;\n&quot;);</span><br><span class="line">    		continue;</span><br><span class="line">		&#125;</span><br><span class="line">	while(num_9--)printf(&quot;9&quot;);</span><br><span class="line">    while(num_7--)printf(&quot;7&quot;);</span><br><span class="line">    while(num_4--)printf(&quot;4&quot;);</span><br><span class="line">    while(num_1--)printf(&quot;1&quot;);</span><br><span class="line">    while(num_5--)printf(&quot;5&quot;);</span><br></pre></td></tr></table></figure>
-    </details>
+</details>
 </details>
 
 
@@ -299,14 +299,21 @@
 <hr>
 <details>
 <summary>模拟</summary>
+
 <details>
-<summary>旋转正方形某一层</summary>
+<summary>01.旋转正方形某一层</summary>
+<details>
+<summary>假如这个是第x层，那么就应该从(x,x)开始，右上角(x,n-x+1),右下角(n-x+1,n-x+1),左下角(n-x+1,x)
+<br>如果是右旋（顺时针），左上a[x][i], 右上a[i][n-x+1]，右下a[n-x+1][n-i+1]，左下a[n-i+1][x]，左上等于左下
+<br>如果是左旋, 左上等于右上，并且要注意初始时记录一层。ixxiixxi, n-x+1, x-i+1</summary>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void clockwise(int x)&#x2F;&#x2F;假如这个是一个n*n正方形</span><br><span class="line">&#123;&#x2F;&#x2F;exch：当字符移开原地时进行的操作</span><br><span class="line">	if(x&#x3D;&#x3D;n-x+1)&#x2F;&#x2F;最里面的那一层</span><br><span class="line">	&#123;</span><br><span class="line">		a[x][x]&#x3D;exch(a[x][x]);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	char t[maxn];</span><br><span class="line">	for(int i&#x3D;x;i&lt;&#x3D;n-x+1;i++)t[i]&#x3D;a[i][x];&#x2F;&#x2F;左层保留 </span><br><span class="line">	for(int i&#x3D;x;i&lt;n-x+1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[n-i+1][x]&#x3D;exch(a[n-x+1][n-i+1]);&#x2F;&#x2F;左下，右下 </span><br><span class="line">		a[n-x+1][n-i+1]&#x3D;exch(a[i][n-x+1]);&#x2F;&#x2F;右下，右上 </span><br><span class="line">		a[i][n-x+1]&#x3D;exch(a[x][i]);&#x2F;&#x2F;右上，左上 </span><br><span class="line">		a[x][i]&#x3D;exch(t[n-i+1]);&#x2F;&#x2F;左上，左下 </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
 </details>
 
 <details>
 <summary>将长方形旋转</summary>
 </details>
+
 </details>
 
 
@@ -318,6 +325,7 @@
 <summary>单调队列（deque法）</summary>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while(q_min.back().first&gt;t)&#x2F;&#x2F;保证单调性 </span><br><span class="line">   	&#123;&#x2F;&#x2F;建立单调队列 </span><br><span class="line">   		q_min.pop_back();&#x2F;&#x2F;去掉最后不合格的 </span><br><span class="line">   		if(q_min.empty() )break;</span><br><span class="line">   	&#125;q_min.push_back(M(t,i));&#x2F;&#x2F;推入 并记录原来的编号</span><br></pre></td></tr></table></figure>
 </details>
+
 </details>
 
 <hr>
@@ -329,7 +337,47 @@
 <hr>
 <p>二叉树：</p>
 <hr>
-<p>dp：<br>    背包：01，完全，多重背包<br>        二进制优化<br>        队列优化<br>        附属背包问题</p>
+<details>
+<summary>dp：</summary>
+
+<details>
+<summary>1.背包</summary>
+基础：01，完全，多重背包
+<details>
+<summary>01.二进制优化</summary>
+    二进制背包：由于一个数x，可以由若干位的二进制组成，这些二进制数1248只有唯一一个，5位二进制可以代表0-31
+    也可以将一个数分解成一个全是1的二进制+一个值，例如35=11111+4，压入6个就可以
+    对于选择<=x的任一一个数，这样的选取有效
+</details>
+
+<details>
+<summary>02.队列优化</summary>
+    二进制背包：由于一个数x，可以由若干位的二进制组成，这些二进制数1248只有唯一一个，5位二进制可以代表0-31
+    也可以将一个数分解成一个全是1的二进制+一个值，例如35=11111+4，压入6个就可以
+    对于选择<=x的任一一个数，这样的选取有效
+</details>
+        附属背包问题
+</details>        
+
+
+<details>
+<summary>2.规划</summary>
+
+<details>
+<summary>01.将一个字符串s从中间切开后取后半截，并且可以在前后随意加字母。操作数=删去字母数+增加字母数，切开仅1次，求min</summary>
+<details>
+<summary>提示：数量匹配，找到最长匹配长度。</summary>
+</details>
+cababab
+aababab
+
+<p>0010101<br>0212121<br>0232321<br>0434321<br>0454321<br>0654321<br>0654321</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(a[i]&#x3D;&#x3D;b[j] &amp;&amp; c[i+1]&#x3D;&#x3D;q-j)</span><br><span class="line">&#123;</span><br><span class="line">	c[i]&#x3D;q-j+1;</span><br><span class="line">	t&#x3D;true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
+
+</details>
+
+
 <hr>
 <p>排序：</p>
 <hr>
