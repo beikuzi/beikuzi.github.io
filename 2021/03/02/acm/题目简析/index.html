@@ -6,15 +6,15 @@
   
   <title>题目简析 | 北枯紫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="重定向：max 123456789101112void redirect_fout(string s)&amp;#123;	kout.close();	if(s.empty())return;	kout.open(&amp;s[0]);&amp;#125;void redirect_Fin(string s)&amp;#123;	FILE *fin;	fin&#x3D;fopen(&quot;123.txt&quot;,">
+  <meta name="description" content="重定向：max  123456789101112void redirect_fout(string s)&amp;#123;	kout.close();	if(s.empty())return;	kout.open(&amp;s[0]);&amp;#125;void redirect_Fin(string s)&amp;#123;	FILE *fin;	fin&#x3D;fopen(&quot;123.txt&amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题目简析">
 <meta property="og:url" content="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/index.html">
 <meta property="og:site_name" content="北枯紫的博客">
-<meta property="og:description" content="重定向：max 123456789101112void redirect_fout(string s)&amp;#123;	kout.close();	if(s.empty())return;	kout.open(&amp;s[0]);&amp;#125;void redirect_Fin(string s)&amp;#123;	FILE *fin;	fin&#x3D;fopen(&quot;123.txt&quot;,">
+<meta property="og:description" content="重定向：max  123456789101112void redirect_fout(string s)&amp;#123;	kout.close();	if(s.empty())return;	kout.open(&amp;s[0]);&amp;#125;void redirect_Fin(string s)&amp;#123;	FILE *fin;	fin&#x3D;fopen(&quot;123.txt&amp;quo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-02T11:31:33.000Z">
-<meta property="article:modified_time" content="2021-03-12T15:16:53.311Z">
+<meta property="article:modified_time" content="2021-03-21T14:52:16.635Z">
 <meta property="article:author" content="beikuzi">
 <meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
@@ -96,16 +96,64 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>重定向：max</p>
+        <hr>
+<details>
+<summary>重定向：max</summary>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void redirect_fout(string s)</span><br><span class="line">&#123;</span><br><span class="line">	kout.close();</span><br><span class="line">	if(s.empty())return;</span><br><span class="line">	kout.open(&amp;s[0]);</span><br><span class="line">&#125;</span><br><span class="line">void redirect_Fin(string s)</span><br><span class="line">&#123;</span><br><span class="line">	FILE *fin;</span><br><span class="line">	fin&#x3D;fopen(&quot;123.txt&quot;,&quot;r&quot;);</span><br><span class="line">&#125;</span><br><span class="line">freopen(&quot;test.abc&quot;,&quot;r&quot;,stdin);</span><br></pre></td></tr></table></figure>
-<p>数据结构<br>    单调队列（deque法）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while(q_min.back().first&gt;t)&#x2F;&#x2F;保证单调性 </span><br><span class="line">   	&#123;&#x2F;&#x2F;建立单调队列 </span><br><span class="line">   		q_min.pop_back();&#x2F;&#x2F;去掉最后不合格的 </span><br><span class="line">   		if(q_min.empty() )break;</span><br><span class="line">   	&#125;q_min.push_back(M(t,i));&#x2F;&#x2F;推入 </span><br></pre></td></tr></table></figure>
+</details>
+
+
+<hr>
+<details>
+<summary>规律</summary>
+    <details>
+    <summary>火柴棒最大值规律</summary>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&quot;999911111&quot;,&quot;999971111&quot;,&quot;999977711&quot;,&quot;999991111&quot;……</span><br><span class="line">&#x2F;&#x2F;&quot;999999971&quot;,&quot;999999977&quot;,&quot;999999974&quot;,&quot;999999991&quot;,&quot;999999997&quot;,&quot;999999994&quot;,&quot;999999995&quot;,&quot;999999999&quot;</span><br></pre></td></tr></table></figure>
+    </details>
+</details>
+
+
+
+
+
+<hr>
+<details>
+<summary>模拟</summary>
+    <details>
+    <summary>旋转正方形某一层</summary>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void clockwise(int x)&#x2F;&#x2F;假如这个是一个n*n正方形</span><br><span class="line">&#123;&#x2F;&#x2F;exch：当字符移开原地时进行的操作</span><br><span class="line">	if(x&#x3D;&#x3D;n-x+1)&#x2F;&#x2F;最里面的那一层</span><br><span class="line">	&#123;</span><br><span class="line">		a[x][x]&#x3D;exch(a[x][x]);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	char t[maxn];</span><br><span class="line">	for(int i&#x3D;x;i&lt;&#x3D;n-x+1;i++)t[i]&#x3D;a[i][x];&#x2F;&#x2F;左层保留 </span><br><span class="line">	for(int i&#x3D;x;i&lt;n-x+1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[n-i+1][x]&#x3D;exch(a[n-x+1][n-i+1]);&#x2F;&#x2F;左下，右下 </span><br><span class="line">		a[n-x+1][n-i+1]&#x3D;exch(a[i][n-x+1]);&#x2F;&#x2F;右下，右上 </span><br><span class="line">		a[i][n-x+1]&#x3D;exch(a[x][i]);&#x2F;&#x2F;右上，左上 </span><br><span class="line">		a[x][i]&#x3D;exch(t[n-i+1]);&#x2F;&#x2F;左上，左下 </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </details>
+
+<pre><code>&lt;details&gt;
+&lt;summary&gt;将长方形旋转&lt;/summary&gt;
+&lt;/details&gt;</code></pre>
+</details>
+
+
+<hr>
+<details>
+<summary>数据结构</summary>
+
+<pre><code>&lt;details&gt;
+&lt;summary&gt;单调队列（deque法）&lt;/summary&gt;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while(q_min.back().first&gt;t)&#x2F;&#x2F;保证单调性 </span><br><span class="line">   	&#123;&#x2F;&#x2F;建立单调队列 </span><br><span class="line">   		q_min.pop_back();&#x2F;&#x2F;去掉最后不合格的 </span><br><span class="line">   		if(q_min.empty() )break;</span><br><span class="line">   	&#125;q_min.push_back(M(t,i));&#x2F;&#x2F;推入 并记录原来的编号</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;/details&gt;</code></pre>
+</details>
+
+<hr>
 <p>sp：</p>
+<hr>
 <p>模拟：</p>
+<hr>
 <p>图论：</p>
+<hr>
 <p>二叉树：</p>
-<p>dp：<br>    背包：01，完全，多重背包<br>        二进制优化<br>        队列优化</p>
+<hr>
+<p>dp：<br>    背包：01，完全，多重背包<br>        二进制优化<br>        队列优化<br>        附属背包问题</p>
+<hr>
 <p>排序：</p>
+<hr>
 <p>贪心：</p>
 
       
