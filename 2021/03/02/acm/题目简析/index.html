@@ -14,7 +14,7 @@
 <meta property="og:description" content="重定向：max  123456789101112void redirect_fout(string s)&amp;#123;	kout.close();	if(s.empty())return;	kout.open(&amp;s[0]);&amp;#125;void redirect_Fin(string s)&amp;#123;	FILE *fin;	fin&#x3D;fopen(&quot;123.txt&amp;quo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-02T11:31:33.000Z">
-<meta property="article:modified_time" content="2021-03-21T16:04:09.495Z">
+<meta property="article:modified_time" content="2021-03-21T16:34:49.935Z">
 <meta property="article:author" content="beikuzi">
 <meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
@@ -125,8 +125,8 @@
 <summary>01.旋转正方形某一层</summary>
 <details>
 <summary>假如这个是第x层，那么就应该从(x,x)开始，右上角(x,n-x+1),右下角(n-x+1,n-x+1),左下角(n-x+1,x)
-<br>如果是右旋（顺时针），左上a[x][i], 右上a[i][n-x+1]，右下a[n-x+1][n-i+1]，左下a[n-i+1][x]，左上等于左下
-<br>如果是左旋, 左上等于右上，并且要注意初始时记录一层。ixxiixxi, n-x+1, x-i+1</summary>
+<br/>如果是右旋（顺时针），左上a[x][i], 右上a[i][n-x+1]，右下a[n-x+1][n-i+1]，左下a[n-i+1][x]，左上等于左下
+<br/>如果是左旋, 左上等于右上，并且要注意初始时记录一层。ixxiixxi, n-x+1, x-i+1</summary>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void clockwise(int x)&#x2F;&#x2F;假如这个是一个n*n正方形</span><br><span class="line">&#123;&#x2F;&#x2F;exch：当字符移开原地时进行的操作</span><br><span class="line">	if(x&#x3D;&#x3D;n-x+1)&#x2F;&#x2F;最里面的那一层</span><br><span class="line">	&#123;</span><br><span class="line">		a[x][x]&#x3D;exch(a[x][x]);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	char t[maxn];</span><br><span class="line">	for(int i&#x3D;x;i&lt;&#x3D;n-x+1;i++)t[i]&#x3D;a[i][x];&#x2F;&#x2F;左层保留 </span><br><span class="line">	for(int i&#x3D;x;i&lt;n-x+1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[n-i+1][x]&#x3D;exch(a[n-x+1][n-i+1]);&#x2F;&#x2F;左下，右下 </span><br><span class="line">		a[n-x+1][n-i+1]&#x3D;exch(a[i][n-x+1]);&#x2F;&#x2F;右下，右上 </span><br><span class="line">		a[i][n-x+1]&#x3D;exch(a[x][i]);&#x2F;&#x2F;右上，左上 </span><br><span class="line">		a[x][i]&#x3D;exch(t[n-i+1]);&#x2F;&#x2F;左上，左下 </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </details>
 </details>
@@ -192,8 +192,8 @@
 cababab
 aababab
 
-<p>0010101<br>0212121<br>0232321<br>0434321<br>0454321<br>0654321<br>0654321</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(a[i]&#x3D;&#x3D;b[j] &amp;&amp; c[i+1]&#x3D;&#x3D;q-j)</span><br><span class="line">&#123;</span><br><span class="line">	c[i]&#x3D;q-j+1;</span><br><span class="line">	t&#x3D;true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">0010101</span><br><span class="line">0212121</span><br><span class="line">0232321</span><br><span class="line">0434321</span><br><span class="line">0454321</span><br><span class="line">0654321</span><br><span class="line">0654321</span><br><span class="line">			if(a[i]&#x3D;&#x3D;b[j] &amp;&amp; c[i+1]&#x3D;&#x3D;q-j)</span><br><span class="line">			&#123;</span><br><span class="line">				c[i]&#x3D;q-j+1;</span><br><span class="line">				t&#x3D;true;</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
 </details>
 
 </details>
@@ -203,11 +203,24 @@ aababab
 <p>排序：</p>
 <hr>
 <p>贪心：</p>
+<hr>
+<details>
+<summary>stl：</summary>
 
+<details>
+<summary>1.交换</summary>
+void p_clear()
+{
+    priority_queue<qii,vector<qii>,greater<qii> >empty;
+    swap(p,empty);
+}
+</details>
+
+</details>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/" data-id="ckmjcwybz0001pw6s2o8y572c" data-title="题目简析" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/" data-id="ckmjdsnr60004js6s6fb2218u" data-title="题目简析" class="article-share-link">分享</a>
       
       
       

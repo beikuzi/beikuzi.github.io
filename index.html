@@ -107,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2233/10/31/%E6%97%A5%E5%B8%B8/%E8%83%BD%E5%8A%9B%E8%A1%A8/" data-id="ckmjcwych000ypw6scd8s214l" data-title="能力表" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2233/10/31/%E6%97%A5%E5%B8%B8/%E8%83%BD%E5%8A%9B%E8%A1%A8/" data-id="ckmjdsnrc000ijs6sare692ey" data-title="能力表" class="article-share-link">分享</a>
       
       
       
@@ -148,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E6%97%A5%E8%AE%B0/%E6%97%A5%E8%AE%B021.3.6/" data-id="ckmjcwyc9000fpw6saf2m1tje" data-title="日记21.3.6" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/06/%E6%97%A5%E8%AE%B0/%E6%97%A5%E8%AE%B021.3.6/" data-id="ckmjdsns10015js6s2z4f0gt0" data-title="日记21.3.6" class="article-share-link">分享</a>
       
       
       
@@ -191,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/03/%E6%97%A5%E8%AE%B0/%E6%97%A5%E8%AE%B021.3.3/" data-id="ckmjcwyc60009pw6s0uwf199u" data-title="日记21.3.3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/03/%E6%97%A5%E8%AE%B0/%E6%97%A5%E8%AE%B021.3.3/" data-id="ckmjdsnre000mjs6s8vqn4gsf" data-title="日记21.3.3" class="article-share-link">分享</a>
       
       
       
@@ -239,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" data-id="ckmjcwybv0000pw6s2hhq807l" data-title="网站收录" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" data-id="ckmjdsnr00000js6s3ietdimf" data-title="网站收录" class="article-share-link">分享</a>
       
       
       
@@ -304,8 +304,8 @@
 <summary>01.旋转正方形某一层</summary>
 <details>
 <summary>假如这个是第x层，那么就应该从(x,x)开始，右上角(x,n-x+1),右下角(n-x+1,n-x+1),左下角(n-x+1,x)
-<br>如果是右旋（顺时针），左上a[x][i], 右上a[i][n-x+1]，右下a[n-x+1][n-i+1]，左下a[n-i+1][x]，左上等于左下
-<br>如果是左旋, 左上等于右上，并且要注意初始时记录一层。ixxiixxi, n-x+1, x-i+1</summary>
+<br/>如果是右旋（顺时针），左上a[x][i], 右上a[i][n-x+1]，右下a[n-x+1][n-i+1]，左下a[n-i+1][x]，左上等于左下
+<br/>如果是左旋, 左上等于右上，并且要注意初始时记录一层。ixxiixxi, n-x+1, x-i+1</summary>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void clockwise(int x)&#x2F;&#x2F;假如这个是一个n*n正方形</span><br><span class="line">&#123;&#x2F;&#x2F;exch：当字符移开原地时进行的操作</span><br><span class="line">	if(x&#x3D;&#x3D;n-x+1)&#x2F;&#x2F;最里面的那一层</span><br><span class="line">	&#123;</span><br><span class="line">		a[x][x]&#x3D;exch(a[x][x]);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	char t[maxn];</span><br><span class="line">	for(int i&#x3D;x;i&lt;&#x3D;n-x+1;i++)t[i]&#x3D;a[i][x];&#x2F;&#x2F;左层保留 </span><br><span class="line">	for(int i&#x3D;x;i&lt;n-x+1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[n-i+1][x]&#x3D;exch(a[n-x+1][n-i+1]);&#x2F;&#x2F;左下，右下 </span><br><span class="line">		a[n-x+1][n-i+1]&#x3D;exch(a[i][n-x+1]);&#x2F;&#x2F;右下，右上 </span><br><span class="line">		a[i][n-x+1]&#x3D;exch(a[x][i]);&#x2F;&#x2F;右上，左上 </span><br><span class="line">		a[x][i]&#x3D;exch(t[n-i+1]);&#x2F;&#x2F;左上，左下 </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </details>
 </details>
@@ -371,8 +371,8 @@
 cababab
 aababab
 
-<p>0010101<br>0212121<br>0232321<br>0434321<br>0454321<br>0654321<br>0654321</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(a[i]&#x3D;&#x3D;b[j] &amp;&amp; c[i+1]&#x3D;&#x3D;q-j)</span><br><span class="line">&#123;</span><br><span class="line">	c[i]&#x3D;q-j+1;</span><br><span class="line">	t&#x3D;true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">0010101</span><br><span class="line">0212121</span><br><span class="line">0232321</span><br><span class="line">0434321</span><br><span class="line">0454321</span><br><span class="line">0654321</span><br><span class="line">0654321</span><br><span class="line">			if(a[i]&#x3D;&#x3D;b[j] &amp;&amp; c[i+1]&#x3D;&#x3D;q-j)</span><br><span class="line">			&#123;</span><br><span class="line">				c[i]&#x3D;q-j+1;</span><br><span class="line">				t&#x3D;true;</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
 </details>
 
 </details>
@@ -382,11 +382,24 @@ aababab
 <p>排序：</p>
 <hr>
 <p>贪心：</p>
+<hr>
+<details>
+<summary>stl：</summary>
 
+<details>
+<summary>1.交换</summary>
+void p_clear()
+{
+    priority_queue<qii,vector<qii>,greater<qii> >empty;
+    swap(p,empty);
+}
+</details>
+
+</details>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/" data-id="ckmjcwybz0001pw6s2o8y572c" data-title="题目简析" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/" data-id="ckmjdsnr60004js6s6fb2218u" data-title="题目简析" class="article-share-link">分享</a>
       
       
       
@@ -428,7 +441,7 @@ aababab
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_2/" data-id="ckmjcwycd000ppw6s1vmbf8us" data-title="主线+各片段设想" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_2/" data-id="ckmjdsns20018js6s2x021im2" data-title="主线+各片段设想" class="article-share-link">分享</a>
       
       
       
@@ -475,7 +488,7 @@ aababab
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_1/" data-id="ckmjcwycc000lpw6sf0tdhdm4" data-title="角色技能&amp;全语音" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_1/" data-id="ckmjdsns3001bjs6s560aemrv" data-title="角色技能&amp;全语音" class="article-share-link">分享</a>
       
       
       
@@ -517,7 +530,7 @@ aababab
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_-1/" data-id="ckmjcwycb000jpw6s7r73bthv" data-title="青篮目前已知bug" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_-1/" data-id="ckmjdsns4001djs6s9d8v0izz" data-title="青篮目前已知bug" class="article-share-link">分享</a>
       
       
       
@@ -562,7 +575,7 @@ aababab
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E5%81%B6%E5%83%8F/" data-id="ckmjcwyce000rpw6sa90w9jgn" data-title="偶像" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E5%81%B6%E5%83%8F/" data-id="ckmjdsnrb000gjs6s4psf5j60" data-title="偶像" class="article-share-link">分享</a>
       
       
       
@@ -610,7 +623,7 @@ aababab
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/" data-id="ckmjcwycf000upw6s47qobntj" data-title="个人信息" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/" data-id="ckmjdsnra000ejs6scrsf3n0j" data-title="个人信息" class="article-share-link">分享</a>
       
       
       
