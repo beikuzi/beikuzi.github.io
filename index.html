@@ -10,7 +10,7 @@
 <meta property="og:title" content="北枯紫的博客">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="北枯紫的博客">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="beikuzi">
 <meta name="twitter:card" content="summary">
   
@@ -57,12 +57,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -71,9 +71,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hexo/假如我是目录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-hexo/233" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2333/05/20/hexo/%E5%81%87%E5%A6%82%E6%88%91%E6%98%AF%E7%9B%AE%E5%BD%95/" class="article-date">
+    <a href="/2333/05/20/hexo/233/" class="article-date">
   <time class="dt-published" datetime="2333-05-19T17:10:31.000Z" itemprop="datePublished">2333-05-20</time>
 </a>
     
@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2333/05/20/hexo/%E5%81%87%E5%A6%82%E6%88%91%E6%98%AF%E7%9B%AE%E5%BD%95/">��������Ŀ¼</a>
+      <a class="p-name article-title" href="/2333/05/20/hexo/233/">md转化器</a>
     </h1>
   
 
@@ -94,51 +94,17 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <details>
-
-<details>
-<summary>(��ȣ�1)c++</summary>
-
-<details>
-<summary>(��ȣ�2)Ŀ¼�ļ�����</summary>
-void getfiles(string path)  
-{  
-    long jubing=0;  
-    struct _finddata_t fi;//fi fileinfo  
-    string p;  
-    if((jubing = _findfirst(p.assign(path).append("\\*").c_str(), &fi))!=-1)  
-     {//������Ӻ�ֱ��string������һ���ǲ���ֵ��   
-         do  
-         {  
-             if(fi.attrib & _A_SUBDIR)  
-             {//�Ǹ�Ŀ¼   
-                 if(strcmp(fi.name,".")!=0 and strcmp(fi.name,"..")!=0)  
-                 {//���ǵ�ǰĿ¼���߸�Ŀ¼   
-                     getfiles(p.assign(path).append("\\").append(fi.name));  
-                 }//������Ŀ¼��   
-             }   
-             else//�Ǹ���ͨ���ļ���   
-                 deal(fi.name);  
-         }while(_findnext(jubing,&fi)==0);//���ҵ���һ��   
-         _findclose(jubing);  
-     }  
-}  
-</details>
-
-<details>
-<summary>(��ȣ�2)��ȡĿ¼��ȫ�ļ���</summary>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;fstream&gt; </span><br><span class="line">#include&lt;string.h&gt; </span><br><span class="line">#include&lt;direct.h&gt; &#x2F;&#x2F;Ŀ¼·����ȡ </span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;io.h&gt;</span><br><span class="line">using namespace std;ifstream kin;ofstream kout;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;char mulu[]&#x3D;&quot;Ŀ¼.ini&quot;;</span><br><span class="line">	const int name_amount&#x3D;50,name_length&#x3D;100;</span><br><span class="line">	char sin[name_amount][name_length];char sout[name_amount][name_length];</span><br><span class="line">	void repoint_handset()&#123;	strcpy(sin[1],&quot;Ŀ¼.ini&quot;);	strcpy(sout[1],&quot;Ŀ¼.ini&quot;);&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;void kcut()&#123;string s;getline(kin,s);&#125;</span><br><span class="line">	&#x2F;&#x2F;void repoint_in(int x)&#123;	kin.close();if(x&gt;0)	&#123;char *p&#x3D;&amp;sin[x][0];kin.open(p);&#125;&#125;</span><br><span class="line">	void repoint_out(int x)&#123;kout.close();if(x&gt;0)&#123;char *p&#x3D;&amp;sout[x][0];kout.open(p);&#125;&#125;</span><br><span class="line">	&#x2F;&#x2F;void repoint_menuset()&#123;	char *p&#x3D;mulu;kin.open(p);int amo&#x3D;0;	kin&gt;&gt;amo;kcut();for(int i&#x3D;1;i&lt;&#x3D;amo;i++)kin.getline(sin[i],name_length);kin&gt;&gt;amo;kcut();</span><br><span class="line">	&#x2F;&#x2F;for(int i&#x3D;1;i&lt;&#x3D;amo;i++)	kin.getline(sout[i],name_length); kin.close();&#125;</span><br><span class="line"></span><br><span class="line">char a[2333];&#x2F;&#x2F;Ŀ¼λ�� </span><br><span class="line">bool b[6666];&#x2F;&#x2F;�Ƿ��ӡ </span><br><span class="line">struct suffix </span><br><span class="line">&#123;</span><br><span class="line">	string s;</span><br><span class="line">	int num;</span><br><span class="line">	vector&lt;string&gt; f;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;suffix&gt;ke;&#x2F;&#x2F;�ؼ��� </span><br><span class="line">vector&lt;string&gt;::iterator it;</span><br><span class="line">int k&#x3D;-1;&#x2F;&#x2F;�ؼ��ʸ��� </span><br><span class="line">void deal(string s)</span><br><span class="line">&#123;</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;k;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(s.find(ke[i].s)!&#x3D;-1)</span><br><span class="line">		&#123;</span><br><span class="line">			ke[i].num++;</span><br><span class="line">			ke[i].f.push_back(s);</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	k++;int p;</span><br><span class="line">	suffix temp;</span><br><span class="line">	temp.f.push_back(s) ;</span><br><span class="line">	temp.num&#x3D;1;</span><br><span class="line">	temp.s&#x3D;s.substr(p&#x3D;s.find(&#39;.&#39;),s.length()-p);</span><br><span class="line">	ke.push_back(temp);</span><br><span class="line">&#125;</span><br><span class="line">void getfiles(string path)</span><br><span class="line">&#123;</span><br><span class="line">	long jubing&#x3D;0;</span><br><span class="line">	struct _finddata_t fi;&#x2F;&#x2F;fi fileinfo</span><br><span class="line">	string p;</span><br><span class="line">	if((jubing &#x3D; _findfirst(p.assign(path).append(&quot;\\*&quot;).c_str(), &amp;fi))!&#x3D;-1)</span><br><span class="line">	 &#123;&#x2F;&#x2F;������Ӻ�ֱ��string������һ���ǲ���ֵ�� </span><br><span class="line">	 	do</span><br><span class="line">	 	&#123;</span><br><span class="line">	 		if(fi.attrib &amp; _A_SUBDIR)</span><br><span class="line">	 		&#123;&#x2F;&#x2F;�Ǹ�Ŀ¼ </span><br><span class="line">	 			if(strcmp(fi.name,&quot;.&quot;)!&#x3D;0 and strcmp(fi.name,&quot;..&quot;)!&#x3D;0)</span><br><span class="line">	 			&#123;&#x2F;&#x2F;���ǵ�ǰĿ¼���߸�Ŀ¼ </span><br><span class="line">	 				getfiles(p.assign(path).append(&quot;\\&quot;).append(fi.name));</span><br><span class="line">	 			&#125;&#x2F;&#x2F;������Ŀ¼�� </span><br><span class="line">	 		&#125; </span><br><span class="line">	 		else&#x2F;&#x2F;�Ǹ���ͨ���ļ��� </span><br><span class="line">	 			deal(fi.name);</span><br><span class="line">	 	&#125;while(_findnext(jubing,&amp;fi)&#x3D;&#x3D;0);&#x2F;&#x2F;���ҵ���һ�� </span><br><span class="line">	 	_findclose(jubing);</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void fpoint(bool b[])</span><br><span class="line">&#123;</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;k;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;&quot;	&quot;&lt;&lt;i&lt;&lt;ke[i].s&lt;&lt;&quot; ������&quot;&lt;&lt;ke[i].num&lt;&lt;</span><br><span class="line">		&quot;��ӡ�� &quot;;</span><br><span class="line">		if(b[i])cout&lt;&lt;&quot;N&quot;;else cout&lt;&lt;&quot;Y&quot;;</span><br><span class="line">		cout&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;&quot;����-1��ӡ��������ſ��ش�ӡ����ӡ���ֱ�ӹص�&quot;&lt;&lt;endl;</span><br><span class="line">	int p;cin&gt;&gt;p;</span><br><span class="line">	if(p!&#x3D;-1)</span><br><span class="line">	&#123;</span><br><span class="line">		b[p]&#x3D;!b[p];</span><br><span class="line">		fpoint(b);</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		repoint_handset();</span><br><span class="line">		repoint_out(1);</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;0;i&lt;&#x3D;k;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(!b[i])</span><br><span class="line">			&#123;</span><br><span class="line">				for(it &#x3D; ke[i].f.begin();it!&#x3D;ke[i].f.end();it++)</span><br><span class="line">					kout&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		repoint_out(0); </span><br><span class="line">		exit(233);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	_getcwd(a,sizeof(a));&#x2F;&#x2F;�õ�Ŀ¼ </span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl; </span><br><span class="line">	getfiles(a);&#x2F;&#x2F;��ȡ�ļ����Դ����� </span><br><span class="line">	</span><br><span class="line">	fpoint(b); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</details>
-</details>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;fstream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;direct.h&gt; &#x2F;&#x2F;目录路径获取 </span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">ifstream kin;</span><br><span class="line">ofstream kout;</span><br><span class="line">char mulu[2333];</span><br><span class="line">void redirect_in(string s)</span><br><span class="line">&#123;</span><br><span class="line">	kin.close();</span><br><span class="line">	if(s.empty())return;</span><br><span class="line">	kin.open(&amp;s[0]);</span><br><span class="line">&#125;</span><br><span class="line">void redirect_out(string s)</span><br><span class="line">&#123;</span><br><span class="line">	kout.close();</span><br><span class="line">	if(s.empty())return;</span><br><span class="line">	kout.open(&amp;s[0]);</span><br><span class="line">&#125;</span><br><span class="line">void head(string title,string tags&#x3D;&quot;未定义&quot;)</span><br><span class="line">&#123;</span><br><span class="line">	kout&lt;&lt;&quot;---&quot;&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;title: &quot;&lt;&lt;title&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;date: 2333-5-20 01:10:31&quot;&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;tags: &quot;&lt;&lt;tags&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;---&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void lock_head(string title,string tags&#x3D;&quot;未定义&quot;)</span><br><span class="line">&#123;</span><br><span class="line">	kout&lt;&lt;&quot;---&quot;&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;title: &quot;&lt;&lt;title&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;date: 2333-5-20 01:10:31&quot;&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;tags: &quot;&lt;&lt;tags&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;password: 1315349298&quot;&lt;&lt;endl;</span><br><span class="line">	kout&lt;&lt;&quot;---&quot;&lt;&lt;endl; </span><br><span class="line">&#125; </span><br><span class="line">inline string deal(string s)</span><br><span class="line">&#123;</span><br><span class="line">	if(s.find(&#39;.&#39;)&#x3D;&#x3D;-1)return s;</span><br><span class="line">	return s.substr(0,s.find(&#39;.&#39;));</span><br><span class="line">&#125;</span><br><span class="line">void put_txt()</span><br><span class="line">&#123;</span><br><span class="line">	string s;</span><br><span class="line">	while(getline(kin,s))kout&lt;&lt;s&lt;&lt;&quot;  \n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">void put_cpp()</span><br><span class="line">&#123;</span><br><span class="line">	string s;</span><br><span class="line">	kout&lt;&lt;&quot;&#96;&#96;&#96;\n&quot;;</span><br><span class="line">	while(getline(kin,s))kout&lt;&lt;s&lt;&lt;&#39;\n&#39;;</span><br><span class="line">	kout&lt;&lt;&quot;&#96;&#96;&#96;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">void put_judge(string s)</span><br><span class="line">&#123;</span><br><span class="line">	if(s.find(&quot;.cpp&quot;)!&#x3D;-1)put_cpp();</span><br><span class="line">	else if(s.find(&quot;.txt&quot;)!&#x3D;-1)put_txt();</span><br><span class="line">	else cout&lt;&lt;&quot;\n\nerror\n\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;我是谁，我在哪，我过去写了什么jb代码，怎么没有注释，我自己都看不懂写个p </span><br><span class="line">&#x2F;&#x2F;1.他可以深搜,支持txt，文件夹，cpp </span><br><span class="line">&#x2F;&#x2F;2.没有进入文件夹生成md，否则所有都是details</span><br><span class="line">&#x2F;&#x2F;3. 我要得到这个文件夹当前的深度 </span><br><span class="line"></span><br><span class="line">void getfiles(string path,int depth&#x3D;0)</span><br><span class="line">&#123;</span><br><span class="line">	long jubing&#x3D;0;</span><br><span class="line">	struct _finddata_t fi;&#x2F;&#x2F;fi fileinfo</span><br><span class="line">	string p;</span><br><span class="line">	if((jubing &#x3D; _findfirst(p.assign(path).append(&quot;\\*&quot;).c_str(), &amp;fi))!&#x3D;-1)</span><br><span class="line">	 &#123;&#x2F;&#x2F;这种相加和直接string加起来一样是不赋值的 </span><br><span class="line">	 	do</span><br><span class="line">	 	&#123;</span><br><span class="line">	 		if(fi.attrib &amp; _A_SUBDIR)</span><br><span class="line">	 		&#123;&#x2F;&#x2F;是个目录 文件夹 </span><br><span class="line">	 			if(strcmp(fi.name,&quot;.&quot;)!&#x3D;0 and strcmp(fi.name,&quot;..&quot;)!&#x3D;0)</span><br><span class="line">	 			&#123;&#x2F;&#x2F;不是自己或者父目录 </span><br><span class="line">	 				cout&lt;&lt;&quot;depth: &quot;&lt;&lt;depth&lt;&lt;&#39;\t&#39;&lt;&lt; path+&quot;\\&quot;+fi.name&lt;&lt;&#39;\n&#39;;</span><br><span class="line">	 				if(depth&#x3D;&#x3D;0)</span><br><span class="line">	 				&#123;</span><br><span class="line">	 					redirect_out(string(fi.name)+&quot;.md&quot;);</span><br><span class="line">	 					head(fi.name,fi.name);</span><br><span class="line">	 					kout&lt;&lt;&quot;  \n&lt;details&gt;\n&quot;;</span><br><span class="line">	 				&#125;</span><br><span class="line">	 				</span><br><span class="line">	 				else</span><br><span class="line">	 				&#123;</span><br><span class="line">	 					kout&lt;&lt;&quot;  \n&lt;details&gt;\n&quot;;</span><br><span class="line">	 					kout&lt;&lt;&quot;&lt;summary&gt;(深度：&quot;&lt;&lt;depth&lt;&lt;&quot;)&quot;&lt;&lt;fi.name&lt;&lt;&quot;&lt;&#x2F;summary&gt;\n&quot;;</span><br><span class="line">	 				&#125;</span><br><span class="line">					cout&lt;&lt;&quot;深度上升1\n&quot; ; </span><br><span class="line">	 				getfiles(p.assign(path).append(&quot;\\&quot;).append(fi.name),depth+1);</span><br><span class="line">	 				kout&lt;&lt;&quot;&lt;&#x2F;details&gt;\n&quot;;</span><br><span class="line">					cout&lt;&lt;&quot;深度下降1\n&quot; ; </span><br><span class="line">	 			&#125;</span><br><span class="line">	 		&#125; </span><br><span class="line">	 		else&#x2F;&#x2F;是个普通的文件呢 </span><br><span class="line">	 		&#123;</span><br><span class="line">	 			cout&lt;&lt;&quot;depth: &quot;&lt;&lt;depth&lt;&lt;&#39;\t&#39;&lt;&lt; path+&quot;\\&quot;+fi.name&lt;&lt;&#39;\n&#39;;</span><br><span class="line">	 			if(string(fi.name).find(&quot;.txt&quot;)&#x3D;&#x3D;-1 and string(fi.name).find(&quot;.cpp&quot;)&#x3D;&#x3D;-1)continue;</span><br><span class="line">				</span><br><span class="line">	 			if(depth&#x3D;&#x3D;0)</span><br><span class="line">	 			&#123;</span><br><span class="line">	 				redirect_out(deal(fi.name)+&quot;.md&quot;);</span><br><span class="line">	 				head(deal(fi.name),deal(fi.name));</span><br><span class="line">	 				kout&lt;&lt;&quot;  \n&lt;details&gt;\n&quot;;</span><br><span class="line">	 			&#125;</span><br><span class="line">	 			else</span><br><span class="line">	 			&#123;</span><br><span class="line">	 				kout&lt;&lt;&quot;  \n&lt;details&gt;\n&quot;;</span><br><span class="line">	 				kout&lt;&lt;&quot;&lt;summary&gt;(深度：&quot;&lt;&lt;depth&lt;&lt;&quot;)&quot;&lt;&lt;deal(fi.name)&lt;&lt;&quot;&lt;&#x2F;summary&gt;\n&quot;;</span><br><span class="line">	 			&#125;</span><br><span class="line">				cout&lt;&lt;&quot;深度上升1\n&quot; ; </span><br><span class="line">				redirect_in(path+&quot;\\&quot;+fi.name);</span><br><span class="line">				put_judge(fi.name);</span><br><span class="line">				kout&lt;&lt;&quot;&lt;&#x2F;details&gt;\n&quot;;</span><br><span class="line">				cout&lt;&lt;&quot;深度下降1\n&quot; ; </span><br><span class="line">	 			</span><br><span class="line">	 		&#125;</span><br><span class="line">	 	&#125;while(_findnext(jubing,&amp;fi)&#x3D;&#x3D;0);&#x2F;&#x2F;能找到下一个 </span><br><span class="line">	 	</span><br><span class="line">	 	_findclose(jubing);</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br><span class="line">void copy_md()&#x2F;&#x2F;将上次的md文件拷贝过来，调用cmd生成一个以时间为基准的文件夹保存 </span><br><span class="line">&#123;</span><br><span class="line">	;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	_getcwd(mulu,sizeof(mulu));&#x2F;&#x2F;得到目录 </span><br><span class="line">	cout&lt;&lt;&quot;请检查:&quot;&lt;&lt;string(mulu)&lt;&lt;endl; </span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">    getfiles(mulu);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </details>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2333/05/20/hexo/%E5%81%87%E5%A6%82%E6%88%91%E6%98%AF%E7%9B%AE%E5%BD%95/" data-id="ckmt8fanh0004e46s4vavh4w4" data-title="��������Ŀ¼" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2333/05/20/hexo/233/" data-id="ckmt94gkp00087g6s5zrl3f8e" data-title="md转化器" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDL%C2%BC/" rel="tag">��������Ŀ¼</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/md%E8%BD%AC%E5%8C%96%E5%99%A8/" rel="tag">md转化器</a></li></ul>
 
     </footer>
   </div>
@@ -179,11 +145,59 @@ void getfiles(string path)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2233/10/31/%E6%97%A5%E5%B8%B8/%E8%83%BD%E5%8A%9B%E8%A1%A8/" data-id="ckmt8fano000fe46s2enq0h6y" data-title="能力表" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2233/10/31/%E6%97%A5%E5%B8%B8/%E8%83%BD%E5%8A%9B%E8%A1%A8/" data-id="ckmt94gkt000f7g6s0cmr5aah" data-title="能力表" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-acm/网站收录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-03-02T11:31:33.000Z" itemprop="datePublished">2021-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/">网站收录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>暂时分为三个模块：网站，纯题目+简析，详细代码<br><a target="_blank" rel="noopener" href="https://oi-wiki.org/">oi-wiki</a><br>O(n)         10^8<br>O(nlogn)      10^6<br>O(n√n)         10^5<br>O(n²)          5000<br>O(n^3)         300<br>O(2^n)      25<br>O(n!)          11</p>
+<p><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/">代码展示</a><br><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/operator_precedence">运算符优先度</a><br><a target="_blank" rel="noopener" href="http://acm.scau.net.cn:8000/uoj/login.jsp">scau8000服务器</a><br><a target="_blank" rel="noopener" href="http://acm.scau.edu.cn:8000/uoj/login.jsp">scau8000服务器2</a></p>
+<p>大佬博客<br><a target="_blank" rel="noopener" href="https://along7587.github.io/">七爷-永康</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40732657">晁棠巨佬(唐朝)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ECJTUACM-873284962/articles/9198885.html">美观，int128</a><br><a target="_blank" rel="noopener" href="http://jiruyi910387714.is-programmer.com/">很多算法，python</a></p>
+<p>刷题列表（已完成<br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419164#problem/A">scau寒假</a></p>
+<p>刷题列表(限时)<br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/280030">scau-dp2</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419166">scau-dp</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419165">scau-图</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419167">scau-数据结构</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/421255">scau-后缀自动机</a></p>
+<p>刷题列表<br>//209074233fal<br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/">luogu</a><br>//<br>[acwing]<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/">https://www.acwing.com/problem/</a><br><a target="_blank" rel="noopener" href="https://codeforces.ml/">codeforce</a><br><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/">蓝桥杯</a><br><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/home">牛客</a></p>
+<p>刷题文件<br>数据结构<br>群，牛客赛标称<br>蓝桥杯真题</p>
+<p>打不开的（需要vpn<br>light-oj</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" data-id="ckmt94gkd00017g6sgbdo8jd1" data-title="网站收录" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acm/" rel="tag">acm</a></li></ul>
 
     </footer>
   </div>
@@ -339,55 +353,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/" data-id="ckmt8fana0000e46sgk929e97" data-title="题目简析" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acm/" rel="tag">acm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-acm/网站收录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2021-03-02T11:31:33.000Z" itemprop="datePublished">2021-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/">网站收录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>暂时分为三个模块：网站，纯题目+简析，详细代码<br><a target="_blank" rel="noopener" href="https://oi-wiki.org/">oi-wiki</a><br>O(n)         10^8<br>O(nlogn)      10^6<br>O(n√n)         10^5<br>O(n²)          5000<br>O(n^3)         300<br>O(2^n)      25<br>O(n!)          11</p>
-<p><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/">代码展示</a><br><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/operator_precedence">运算符优先度</a><br><a target="_blank" rel="noopener" href="http://acm.scau.net.cn:8000/uoj/login.jsp">scau8000服务器</a><br><a target="_blank" rel="noopener" href="http://acm.scau.edu.cn:8000/uoj/login.jsp">scau8000服务器2</a></p>
-<p>大佬博客<br><a target="_blank" rel="noopener" href="https://along7587.github.io/">七爷-永康</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40732657">晁棠巨佬(唐朝)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ECJTUACM-873284962/articles/9198885.html">美观，int128</a><br><a target="_blank" rel="noopener" href="http://jiruyi910387714.is-programmer.com/">很多算法，python</a></p>
-<p>刷题列表（已完成<br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419164#problem/A">scau寒假</a></p>
-<p>刷题列表(限时)<br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/280030">scau-dp2</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419166">scau-dp</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419165">scau-图</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/419167">scau-数据结构</a><br><a target="_blank" rel="noopener" href="https://vjudge.net/contest/421255">scau-后缀自动机</a></p>
-<p>刷题列表<br>//209074233fal<br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/">luogu</a><br>//<br>[acwing]<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/">https://www.acwing.com/problem/</a><br><a target="_blank" rel="noopener" href="https://codeforces.ml/">codeforce</a><br><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/">蓝桥杯</a><br><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/home">牛客</a></p>
-<p>刷题文件<br>数据结构<br>群，牛客赛标称<br>蓝桥杯真题</p>
-<p>打不开的（需要vpn<br>light-oj</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" data-id="ckmt8fane0001e46s5pp89yyt" data-title="网站收录" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/" data-id="ckmt94gkn00057g6sden8bvdu" data-title="题目简析" class="article-share-link">分享</a>
       
       
       
@@ -432,7 +398,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_2/" data-id="ckmt8faoh0018e46s53qb0g8j" data-title="主线+各片段设想" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/26/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_2/" data-id="ckmt94gla001c7g6seeayeaom" data-title="主线+各片段设想" class="article-share-link">分享</a>
       
       
       
@@ -477,7 +443,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_1/" data-id="ckmt8faog0017e46sc9mvbk5q" data-title="角色技能&amp;全语音" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/21/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_1/" data-id="ckmt94gla001a7g6s6bq7gehn" data-title="角色技能&amp;全语音" class="article-share-link">分享</a>
       
       
       
@@ -522,7 +488,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_-1/" data-id="ckmt8faoe0013e46s5ogq22xh" data-title="青篮目前已知bug" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/20/%E9%9D%92%E7%AF%AE/%E9%9D%92%E8%93%9D_-1/" data-id="ckmt94gl1000p7g6s5k0b5xnk" data-title="青篮目前已知bug" class="article-share-link">分享</a>
       
       
       
@@ -567,7 +533,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E5%81%B6%E5%83%8F/" data-id="ckmt8fano000he46sdg8l07zs" data-title="偶像" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E5%81%B6%E5%83%8F/" data-id="ckmt94gkq000b7g6s6dx87515" data-title="偶像" class="article-share-link">分享</a>
       
       
       
@@ -615,7 +581,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/" data-id="ckmt8fanm000de46sayvl7dla" data-title="个人信息" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/19/%E6%97%A5%E5%B8%B8/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/" data-id="ckmt94gkr000d7g6sf9vgbi4n" data-title="个人信息" class="article-share-link">分享</a>
       
       
       
@@ -660,7 +626,7 @@ void p_clear()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/vtuber&mmd/vtuber/vtuber%E5%BC%80%E5%9D%91/" data-id="ckmt8faoi0019e46s9yo638jx" data-title="留空" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/19/vtuber&mmd/vtuber/vtuber%E5%BC%80%E5%9D%91/" data-id="ckmt94glb001e7g6sd4tr1the" data-title="留空" class="article-share-link">分享</a>
       
       
       
@@ -678,7 +644,7 @@ void p_clear()
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -690,9 +656,9 @@ void p_clear()
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/acm/" rel="tag">acm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/" rel="tag">c++批量生成代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv4-0/" rel="tag">opencv4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vtuber/" rel="tag">vtuber</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%92%E8%93%9D/" rel="tag">青蓝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDL%C2%BC/" rel="tag">��������Ŀ¼</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/acm/" rel="tag">acm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/" rel="tag">c++批量生成代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/md%E8%BD%AC%E5%8C%96%E5%99%A8/" rel="tag">md转化器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv4-0/" rel="tag">opencv4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vtuber/" rel="tag">vtuber</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%92%E8%93%9D/" rel="tag">青蓝</a></li></ul>
     </div>
   </div>
 
@@ -700,18 +666,18 @@ void p_clear()
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/acm/" style="font-size: 13.33px;">acm</a> <a href="/tags/c-%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">c++批量生成代码</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/opencv4-0/" style="font-size: 13.33px;">opencv4.0</a> <a href="/tags/vtuber/" style="font-size: 10px;">vtuber</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/tags/%E9%9D%92%E8%93%9D/" style="font-size: 16.67px;">青蓝</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDL%C2%BC/" style="font-size: 10px;">��������Ŀ¼</a>
+      <a href="/tags/acm/" style="font-size: 13.33px;">acm</a> <a href="/tags/c-%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">c++批量生成代码</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/md%E8%BD%AC%E5%8C%96%E5%99%A8/" style="font-size: 10px;">md转化器</a> <a href="/tags/opencv4-0/" style="font-size: 13.33px;">opencv4.0</a> <a href="/tags/vtuber/" style="font-size: 10px;">vtuber</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/tags/%E9%9D%92%E8%93%9D/" style="font-size: 16.67px;">青蓝</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2333/05/">May 2333</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2233/10/">October 2233</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2333/05/">五月 2333</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2233/10/">十月 2233</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
     </div>
   </div>
 
@@ -719,12 +685,12 @@ void p_clear()
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2333/05/20/hexo/%E5%81%87%E5%A6%82%E6%88%91%E6%98%AF%E7%9B%AE%E5%BD%95/">��������Ŀ¼</a>
+            <a href="/2333/05/20/hexo/233/">md转化器</a>
           </li>
         
           <li>
@@ -732,11 +698,11 @@ void p_clear()
           </li>
         
           <li>
-            <a href="/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/">题目简析</a>
+            <a href="/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/">网站收录</a>
           </li>
         
           <li>
-            <a href="/2021/03/02/acm/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/">网站收录</a>
+            <a href="/2021/03/02/acm/%E9%A2%98%E7%9B%AE%E7%AE%80%E6%9E%90/">题目简析</a>
           </li>
         
           <li>
