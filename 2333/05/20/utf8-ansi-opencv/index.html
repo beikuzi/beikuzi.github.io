@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>opencv | 北枯紫的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="(深度：1)opencv_1 &#96;&#96;&#96;   #include   #include   #include   #include   #include   #include   #include   #include   #include   using namespace std;   using namespace cv;    &#x2F;&#x2F;0.一些对象类型void Vector_(){    &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv">
+<meta property="og:url" content="http://example.com/2333/05/20/utf8-ansi-opencv/index.html">
+<meta property="og:site_name" content="北枯紫的博客">
+<meta property="og:description" content="(深度：1)opencv_1 &#96;&#96;&#96;   #include   #include   #include   #include   #include   #include   #include   #include   #include   using namespace std;   using namespace cv;    &#x2F;&#x2F;0.一些对象类型void Vector_(){    &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2333-05-19T17:10:31.000Z">
+<meta property="article:modified_time" content="2021-03-29T01:53:28.869Z">
+<meta property="article:author" content="beikuzi">
+<meta property="article:tag" content="opencv">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="北枯紫的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">北枯紫的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-utf8-ansi-opencv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2333/05/20/utf8-ansi-opencv/" class="article-date">
+  <time class="dt-published" datetime="2333-05-19T17:10:31.000Z" itemprop="datePublished">2333-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      opencv
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <details>
+
+<details>
+<summary>(深度：1)opencv_1</summary>
+```  
+#include<cstdio>  
+#include<opencv2/opencv.hpp>  
+#include<iostream>  
+#include<core/core.hpp>  
+#include<vector>  
+#include<string>  
+#include<opencv2/highgui.hpp>  
+#include<opencv2/imgproc/imgproc.hpp>  
+#include<cmath>  
+using namespace std;  
+using namespace cv;  
+
+<p>//0.一些对象类型<br>void Vector_()<br>{<br>    //自定义<br>    Vec&lt;double, 19&gt; abcd123Vec;<br>    //原有<br>    //Vec&lt;ucar,2&gt;   Vec2b  2<del>4<br>    //Vec&lt;short,2&gt;   Vec2s  2</del>4<br>    //Vec&lt;int,2&gt;   Vec2i  2<del>4<br>    //同样的float，double，2</del>4和6<br>}<br>void Scalar_()<br>{//vec派生，四个元素<br>    //自定义初始化<br>    Scalar s1(0);<br>    Scalar s2(0.0,0.1,0.2,3.0);<br>    Scalar s3(s2);<br>}<br>void Point_()<br>{//point类可以进行四则运算<br>    /*<br>    typedef Point_<int> Point_2i;<br>    typedef Point_2i Point;<br>    同理<br>    Point2f<br>    Point2d<br>    <em>/<br>}<br>void Size_()<br>{//Size 的两个成员是width和height<br>    Size s(100, 100);<br>    s.width = 200;<br>    Mat pic = Mat::zeros(s, CV_8UC1);//初始化一个指定大小的图片<br>    cout &lt;&lt; s.area();//返回一个size的面积……100</em>100<br>}<br>void Rect_()<br>{//四个值，左上角坐标，矩形宽度高度<br>    Rect r(0, 0, 100, 100);<br>    Mat pic = imread(“loc.jpg”);<br>    Mat pic_1 = pic(r);<br>}<br>void RRect_()<br>{//这个可以让一个不规则物体用一个旋转的长方形框起来标记着  </p>
+<pre><code>Point2f center(100.0, 100.0);  
+Size2f size(100.0, 100.0);  
+float angle = acos(0.0) / 2;  
+//默认：RotatedRect()  
+//一个旋转的矩阵，需要提供Point2f的矩阵中心和Size2f的矩阵大小和float型的旋转角度  
+RotatedRect Rrect(center, size, angle);  
+Mat pic = imread(&quot;loc.jpg&quot;);  
+//Mat pic_1 = pic(Rrect);    报错，似乎不能初始化成倾斜的矩阵  </code></pre>
+<p>}//他有一个附带函数bounding()/书 网上的是Rect boundingRect() 或 Rect_<float> boundingRect2f()   </p>
+<pre><code>
+
+
+暂时没有理解的内容  
+
+
+</code></pre>
+<p> 1 class CV_EXPORTS RotatedRect<br> 2 {<br> 3 public:<br> 4     //构造函数<br> 5     RotatedRect();<br> 6     RotatedRect(const Point2f&amp; center, const Size2f&amp; size, float angle);<br> 7     RotatedRect(const CvBox2D&amp; box);<br> 8     void points(Point2f pts[]) const;//!返回矩形的4个顶点<br> 9     Rect boundingRect() const; //返回包含旋转矩形的最小矩形<br>10     operator CvBox2D() const;    //!转换到旧式的cvbox2d结构<br>11     Point2f center; //矩形的质心<br>12     Size2f size;   //矩形的边长<br>13     float angle;  //旋转角度，当角度为0、90、180、270等时，矩形就成了一个直立的矩形<br>14 };<br>复制代码<br>        这个类中包含了外接矩形的中心center、大小size以及角度angle。<br>        为了更好的理解这几个参数的意义，请看下图：在opencv中，坐标的原点在左上角，与x轴平行的方向为角度为0，逆时针旋转角度为负，顺时针旋转角度为正。角度是水平轴（x轴）顺时针旋转，与碰到的第一个边的夹角度数。而opencv默认把这个边的边长作为height。  </p>
+<p> 6 int main()<br> 7 {<br> 8     Mat img = imread(“C:\Users\hsy\Desktop\1.jpg”);<br> 9     Mat img_gray;<br>10     cvtColor(img, img_gray, COLOR_RGB2GRAY);<br>11     img_gray = img_gray &gt; 30;<br>12     vector&lt;vector<Point>&gt;contours;<br>13     vector<Vec4i> hierarchy;<br>14     vector<RotatedRect>rect;<br>15     //【5】查找轮廓<br>16     findContours(img_gray, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);<br>17     for (int i = 0; i &lt; contours.size(); i++)<br>18     {<br>19         rect.push_back(minAreaRect(contours[i]));<br>20         Point2f vertices[4];      //定义矩形的4个顶点<br>21         rect[i].points(vertices);   //计算矩形的4个顶点<br>22         for (int i = 0; i &lt; 4; i++)<br>23             line(img, vertices[i], vertices[(i + 1) % 4], Scalar(0, 255, 0),1);<br>24         cout &lt;&lt;”width的值：”&lt;&lt;rect[i].size.width &lt;&lt; endl;<br>25         cout &lt;&lt; “height的值：” &lt;&lt; rect[i].size.height &lt;&lt; endl;//其实只有一个外接矩形<br>26     }<br>27     imshow(“img”, img);<br>28     waitKey(0);<br> }  </p>
+<pre><code>[原文链接](https://www.cnblogs.com/hsy1941/p/7923323.html)  
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;(深度：1)opencv_2&lt;/summary&gt;
+</code></pre>
+<p>//1.读入图像<br>Mat pic_read(string s)<br>{<br>    Mat temp = imread(s);<br>    return temp;<br>}<br>//2.保存图像<br>void pic_write(string name, Mat pic)//“123.jpg”<br>{<br>    imwrite(name, pic);//绝对路径<br>    string s = “./“+name;<br>    imwrite(s, pic);//相对路径<br>}<br>//3.得到一个点的BGR属性<br>void pic_val(Mat pic,int x,int y)<br>{<br>    Vec3b val = pic.at<Vec3b>(x, y);<br>    cout &lt;&lt; (int)val[0] &lt;&lt; val[1] &lt;&lt; val[2];<br>}<br>//4.展示一张图片<br>void pic_show(string name,Mat pic)<br>{<br>    imshow(name, pic);<br>    waitKey(0);<br>}<br>//5.不同的窗口同时展示若干张图片<br>string turn(int x)<br>{<br>    string s;<br>    while (x)<br>    {<br>        char c = x % 10;<br>        x /= 10;<br>        s = c + s;<br>    }<br>    return s;<br>}<br>int k=0;<br>void pic_show2(Mat pic)//pic_show2(pic1),pic_show2(pic2),pic_show2(pic3),waitKey(0);<br>{<br>    imshow(turn(k++), pic);<br>}<br>//6.改变图片大小<br>void pic_size(Mat pic_in,Mat pic_out,Size x)<br>{<br>    resize(pic_in, pic_out, x, 0, 0, INTER_LINEAR);<br>    //x是size的标准形式 Size(x,y) //Size(1280,720)<br>    //两个0是缩放系数的值dx、dy，默认为0时就是现在宽度/原列数<br>    /*<br>    INTER_NEAREST - 最近邻插值<br>    INTER_LINEAR - 线性插值（默认）<br>    INTER_AREA - 区域插值<br>    INTER_CUBIC - 三次样条插<br>    INTER_LANCZOS4 - Lanczos插值<br>    */<br>}<br>//7.打开录像/视频并判定是否打开<br>bool vid_open(VideoCapture&amp; cap,string s)<br>{<br>    if(s.empty () )cap.open(0);<br>    else cap.open(s);<br>    if (!cap.isOpened())return false;<br>    return true;<br>}<br>//8.持续读取视频或者摄像头<br>void vid_read(string name,VideoCapture cap)<br>{<br>    Mat vid;<br>    while (1)<br>    {<br>        cap &gt;&gt; vid;<br>        if (vid.empty())break;<br>        if (waitKey(30) &gt;= 0)break;<br>        imshow(name, vid);<br>    }<br>}<br>//9.为摄像头和写出设置相同宽高参数,并打开<br>void cap_set(VideoCapture&amp; cap,VideoWriter&amp; wcap,int width,int height)<br>{<br>    cap.set(CAP_PROP_FRAME_WIDTH, width);<br>    cap.set(CAP_PROP_FRAME_HEIGHT, height);<br>    cap.open(0);<br>    wcap.open(“name.avi”, 0, 30, Size(width, height), 1);  </p>
+<pre><code>//4.0版没有CV前缀  
+/*  
+1 capture.set(CV_CAP_PROP_FRAME_WIDTH, 1080);//宽度   
+2 capture.set(CV_CAP_PROP_FRAME_HEIGHT, 960);//高度  
+3 capture.set(CV_CAP_PROP_FPS, 30);//帧率 帧/秒  
+4 capture.set(CV_CAP_PROP_BRIGHTNESS, 1);//亮度 1  
+5 capture.set(CV_CAP_PROP_CONTRAST, 40);//对比度 40  
+6 capture.set(CV_CAP_PROP_SATURATION, 50);//饱和度 50  
+7 capture.set(CV_CAP_PROP_HUE, 50);//色调 50  
+8 capture.set(CV_CAP_PROP_EXPOSURE, 50);//曝光 50  
+*/  
+
+/*  
+0是fourcc，百度转换公式  
+
+#define CV_FOURCC_MACRO(c1, c2, c3, c4) (((c1) &amp; 255) + (((c2) &amp; 255) &lt;&lt; 8) + (((c3) &amp; 255) &lt;&lt; 16) + (((c4) &amp; 255) &lt;&lt; 24))  
+CV_INLINE int CV_FOURCC(char c1, char c2, char c3, char c4)  
+&#123;  
+    return CV_FOURCC_MACRO(c1, c2, c3, c4);  
+&#125;  
+
+30是fps  
+1是iscolor（），布尔型  
+*/  </code></pre>
+<p>}<br>//10.录像一定时间的视频<br>void vid_settime_cap(string name,VideoCapture&amp; cap, VideoWriter&amp; wcap,int time,int fps)<br>{<br>    Mat vid;<br>    int k=0;<br>    while (1)<br>    {<br>        cap &gt;&gt; vid;<br>        wcap &lt;&lt; vid;<br>        if (waitKey(30) &gt;= 0)break;<br>        imshow(name, vid);<br>        k++; if (k &gt;= time * fps)break;<br>    }<br>}  </p>
+<pre><code>&lt;/details&gt;
+&lt;/details&gt;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2333/05/20/utf8-ansi-opencv/" data-id="ckmtydwsi000ls06s54lf0kdu" data-title="opencv" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/" rel="tag">opencv</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2333/05/20/utf8-ansi-md%E8%BD%AC%E5%8C%96%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          md转化器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2333/05/20/utf8-ansi-%E8%AE%BE%E8%AE%A1%E4%B9%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">设计书</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/vtuber/" rel="tag">_vtuber</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">_日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">_日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%92%E8%93%9D/" rel="tag">_青蓝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acm/" rel="tag">acm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c%E8%89%B9/" rel="tag">c艹</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/md%E8%BD%AC%E5%8C%96%E5%99%A8/" rel="tag">md转化器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/" rel="tag">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E4%B9%A6/" rel="tag">设计书</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/vtuber/" style="font-size: 10px;">_vtuber</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">_日常</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 10px;">_日记</a> <a href="/tags/%E9%9D%92%E8%93%9D/" style="font-size: 10px;">_青蓝</a> <a href="/tags/acm/" style="font-size: 10px;">acm</a> <a href="/tags/c%E8%89%B9/" style="font-size: 10px;">c艹</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/md%E8%BD%AC%E5%8C%96%E5%99%A8/" style="font-size: 10px;">md转化器</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E4%B9%A6/" style="font-size: 10px;">设计书</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2333/05/">五月 2333</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2333/05/20/utf8-ansi-_%E6%97%A5%E5%B8%B8/">_日常</a>
+          </li>
+        
+          <li>
+            <a href="/2333/05/20/utf8-ansi-_%E6%97%A5%E8%AE%B0/">_日记</a>
+          </li>
+        
+          <li>
+            <a href="/2333/05/20/utf8-ansi-_vtuber/">_vtuber</a>
+          </li>
+        
+          <li>
+            <a href="/2333/05/20/utf8-ansi-acm/">acm</a>
+          </li>
+        
+          <li>
+            <a href="/2333/05/20/utf8-ansi-c%E8%89%B9/">c艹</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 beikuzi<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":140,"height":260},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
