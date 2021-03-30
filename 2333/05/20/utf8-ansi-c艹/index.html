@@ -14,7 +14,7 @@
 <meta property="og:description" content="(深度：1)hello-world 新世界的大门打开了！    测试不同程度的加粗123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354这里是代码行  （旧）c++快速生成器    #include&lt;iostream&gt;  #include">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2333-05-19T17:10:31.000Z">
-<meta property="article:modified_time" content="2021-03-30T00:55:54.652Z">
+<meta property="article:modified_time" content="2021-03-30T01:02:04.054Z">
 <meta property="article:author" content="beikuzi">
 <meta property="article:tag" content="c艹">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
 <pre><code>                 else
                  &#123;
                      kout&lt;&lt;&quot;  \n&lt;details&gt;\n&quot;;
-                     kout&lt;&lt;&quot;&lt;summary&gt;(深度：&quot;&lt;&lt;depth&lt;&lt;&quot;)&quot;&lt;&lt;fi.name&lt;&lt;&quot;&lt;/summary&gt;\n&quot;;
+                     kout&lt;&lt;&quot;&lt;summary&gt;(深度：&quot;&lt;&lt;depth&lt;&lt;&quot;)&quot;&lt;&lt;fi.name&lt;&lt;&quot;&lt;/summary&gt;\n\n&quot;;
                  &#125;
                 cout&lt;&lt;&quot;深度上升1\n&quot; ; 
                  getfiles(p.assign(path).append(&quot;\\&quot;).append(fi.name),depth+1);
@@ -147,6 +147,18 @@
      _findclose(jubing);
  &#125;</code></pre>
 <p>}<br>void powershell()<br>{<br>    kout.close();<br>    redirect_in(“md文件目录.txt”);<br>    string s;kin&gt;&gt;s;<br>    s=s+”\utf8.cmd”;<br>    cout&lt;&lt;s;<br>    kout.open(&amp;s[0]);<br>    while(!q.empty())<br>    {<br>        string s=q.front();<br>        q.pop() ;<br>        kout&lt;&lt;”PowerShell -Command &quot;&amp; {get-content “;<br>        kout&lt;&lt;s&lt;&lt;” -encoding string | set-content “;<br>        kout&lt;&lt;”utf8-“&lt;&lt;s&lt;&lt;” -encoding utf8}&quot;\n”;<br>        p.push(“utf8-“+s);<br>    }<br>}<br>void copy_docu()<br>{<br>    kout.close();<br>    redirect_in(“md文件目录.txt”);<br>    string s;kin&gt;&gt;s;<br>    s=s+”\copy.cmd”;<br>    kout.open(&amp;s[0]);<br>    {<br>        kout&lt;&lt;”d:\n”;<br>    }<br>    while(!p.empty() )<br>    {<br>        string s=p.front() ;<br>        p.pop();<br>        kout&lt;&lt;”copy “//&lt;&lt;string(mulu)+”\=md文件\“<br>        &lt;&lt;s&lt;&lt;” “&lt;&lt;”D:\beikuzi_blog\source\_posts”&lt;&lt;’\n’;<br>    }kout&lt;&lt;”PAUSE\n”;<br>}<br>int main()<br>{<br>    _getcwd(mulu,sizeof(mulu));//得到目录<br>    redirect_in(“md文件目录.txt”);<br>    kin&gt;&gt;mulu_md;<br>    cout&lt;&lt;”请检查:”&lt;&lt;string(mulu)&lt;&lt;endl;<br>    system(“pause”);<br>    getfiles(mulu);<br>    powershell();<br>    copy_docu();<br>    cout&lt;&lt;mulu_md&lt;&lt;endl;<br>    system(“pause”);<br>    return 0;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line">  </span><br><span class="line">&lt;details&gt;</span><br><span class="line">&lt;summary&gt;(深度：2)博客cmd指令&lt;&#x2F;summary&gt;</span><br></pre></td></tr></table></figure>
+<p>#include<iostream><br>#include<fstream><br>#include<string><br>using namespace std;<br>ifstream kin;<br>ofstream kout;<br>string s;<br>void redirect_in(string s)<br>{<br>    kin.close();<br>    if(s.empty())return;<br>    kin.open(&amp;s[0]);<br>}<br>void redirect_out(string s)<br>{<br>    kout.close();<br>    if(s.empty())return;<br>    kout.open(&amp;s[0]);<br>}<br>void clean()<br>{<br>    redirect_out(“hexo_clean.cmd”);<br>    kout&lt;&lt;”d:\n”;<br>    kout&lt;&lt;”cd “&lt;&lt;s&lt;&lt;’\n’;<br>    kout&lt;&lt;”call hexo clean\n”;<br>    kout&lt;&lt;”PAUSE\n”;<br>}<br>void hexo_d()<br>{<br>    redirect_out(“hexo_d.cmd”);<br>    kout&lt;&lt;”d:\n”;<br>    kout&lt;&lt;”cd “&lt;&lt;s&lt;&lt;’\n’;<br>    kout&lt;&lt;”call hexo d\n”;<br>    kout&lt;&lt;”PAUSE\n”;<br>}<br>void hexo_g()<br>{<br>    redirect_out(“hexo_g.cmd”);<br>    kout&lt;&lt;”d:\n”;<br>    kout&lt;&lt;”cd “&lt;&lt;s&lt;&lt;’\n’;<br>    kout&lt;&lt;”call hexo g\n”;<br>    kout&lt;&lt;”PAUSE\n”;<br>}<br>void hexo_spawn_failed()<br>{<br>    redirect_out(“hexo_spawn_failed.cmd”);<br>    kout&lt;&lt;”d:\n”;<br>    kout&lt;&lt;”del “&lt;&lt;s&lt;&lt;”\.git\<em>.</em>“&lt;&lt;’\n’;<br>    kout&lt;&lt;”rd /s “&lt;&lt;s&lt;&lt;”\.git”&lt;&lt;’\n’;<br>    kout&lt;&lt;”PAUSE\n”;<br>}<br>/*<br>    到底是 什么原因导致spawnfailed<br>    1.先将source目录文件清空之后，再部署,不然之前的会重复<br>    2.执行exe<br>    3.再将这边的文件copy过去，再部署 </p>
+<p><em>/<br>void hexo_replay()<br>{<br>    redirect_out(“博客刷新1.cmd”);<br>    //D:\beikuzi_blog\source_posts<br>    kout&lt;&lt;”d:\n”;<br>    kout&lt;&lt;”del “&lt;&lt;s&lt;&lt;”\source\_posts\</em>.*”&lt;&lt;’\n’;<br>    kout&lt;&lt;”cd “&lt;&lt;”D:\beikuzi_blog\博客\=md文件”&lt;&lt;’\n’;<br>    kout&lt;&lt;”start utf8.cmd\n”;<br>    kout&lt;&lt;”PAUSE\n”;<br>    kout&lt;&lt;”start copy.cmd\n”;</p>
+<pre><code>redirect_out(&quot;博客刷新2.cmd&quot;);
+kout&lt;&lt;&quot;cd &quot;&lt;&lt;s&lt;&lt;&#39;\n&#39;;
+kout&lt;&lt;&quot;call hexo clean\n&quot;;
+kout&lt;&lt;&quot;call hexo g\n&quot;;
+kout&lt;&lt;&quot;PAUSE\n&quot;;
+kout&lt;&lt;&quot;call hexo d\n&quot;;
+kout&lt;&lt;&quot;PAUSE\n&quot;;
+kout&lt;&lt;&quot;explorer \&quot;https://beikuzi.github.io/\&quot;\n&quot;;</code></pre>
+<p>}<br>int main()<br>{<br>    redirect_in(“目录.txt”);kin&gt;&gt;s;<br>    clean();<br>    hexo_g();<br>    hexo_d();<br>    hexo_spawn_failed();<br>    hexo_replay();<br>    return 0;<br>}</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line">  </span><br><span class="line">&lt;details&gt;</span><br><span class="line">&lt;summary&gt;(深度：2)设计书&lt;&#x2F;summary&gt;</span><br><span class="line">1.保证是md的格式	ok  </span><br><span class="line"></span><br><span class="line">2.利用文件深度优先搜索将文件夹作为折叠	ok  </span><br><span class="line"></span><br><span class="line">3.将里面的cpp作为详细代码	ok  </span><br><span class="line"></span><br><span class="line">4.将文件夹标题作为简单提示	ok  </span><br><span class="line"></span><br><span class="line">5.将txt内容作为详细提示	ok  </span><br><span class="line"></span><br><span class="line">6.预留一个空的tag标签批量标记函数	ok  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">如果是cpp或者txt，一次折叠，文件名作为标题，对应内容  </span><br><span class="line"></span><br><span class="line">如果是txt，进行标记  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">cmd：如何将目录的一张图片进行上传并得到他的链接  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">在cmd中输入  </span><br><span class="line"></span><br><span class="line">PowerShell -Command &quot;&amp; &#123;get-content 1.txt -encoding utf8 | set-content 2.txt -encoding unicode&#125;&quot;  </span><br><span class="line"></span><br><span class="line">将1.txt的编码格式转换为unicode  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">1.运行exe，将文件转化成ansi的md，同时将所有md写入新的cmd批处理  </span><br><span class="line"></span><br><span class="line">2.用新的批处理运行powershell，转化成utf8  </span><br><span class="line"></span><br><span class="line">3.转化成utf8的文件再压入一个队列，生成cmd批量转移到那边  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">如果是_，那么加密文件，  </span><br><span class="line"></span><br><span class="line">如果是%，那么无视该文件  </span><br><span class="line"></span><br><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line">  </span><br><span class="line">&lt;details&gt;</span><br><span class="line">&lt;summary&gt;(深度：1)空白算法&lt;&#x2F;summary&gt;</span><br></pre></td></tr></table></figure>
 <p>#include<iostream><br>#include<cstdio><br>using namespace std;<br>const int maxn=9999999;<br>char s[maxn];<br>char c=’”‘;<br>void apart(string s)<br>{<br>    int x=s.length();<br>    int y=s.find(‘“‘);<br>    if(y==-1)y=x;<br>    string s1,s2;<br>    s1=s.substr(0,y);<br>    cout&lt;&lt;s1;<br>    if(x==y)cout&lt;&lt;c;<br>    else<br>    {<br>        cout&lt;&lt;c&lt;&lt;”&lt;&lt;c&lt;&lt;”&lt;&lt;c;<br>        s2=s.substr(y+1,x-y-1);<br>        apart(s2);<br>    }<br>    return;<br>}<br>void headname()<br>{<br>    cout&lt;&lt;”#include<iostream>“&lt;&lt;endl;<br>    cout&lt;&lt;”#include<cstdio>“&lt;&lt;endl;<br>    cout&lt;&lt;”#include<algorithm>“&lt;&lt;endl;<br>    cout&lt;&lt;”#include<cmath>“&lt;&lt;endl;<br>    cout&lt;&lt;”using namespace std;”&lt;&lt;endl;<br>    cout&lt;&lt;”char c=”&lt;&lt;”‘“&lt;&lt;c&lt;&lt;”‘“&lt;&lt;”;”;<br>    cout&lt;&lt;”int main()”&lt;&lt;endl&lt;&lt;”{“&lt;&lt;endl;<br>    cout&lt;&lt;”    freopen(“&lt;&lt;c&lt;&lt;”end.cpp”&lt;&lt;c&lt;&lt;”,”&lt;&lt;c&lt;&lt;”w”&lt;&lt;c&lt;&lt;”,stdout);”&lt;&lt;endl;<br>}<br>int main()<br>{<br>    freopen(“a.md”,”r”,stdin);<br>    freopen(“b.txt”,”w”,stdout);<br>    headname();<br>    while(cin.getline(s,maxn))<br>    {<br>        cout&lt;&lt;char(9)&lt;&lt;”cout&lt;&lt;”&lt;&lt;c;<br>        apart(s);<br>        cout<br>        &lt;&lt;”&lt;&lt;endl;”<br>        &lt;&lt;endl<br>        ;<br>    }<br>    cout&lt;&lt;’}’&lt;&lt;endl;<br>    return 0;<br>}</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line">  </span><br><span class="line">&lt;details&gt;</span><br><span class="line">&lt;summary&gt;(深度：1)获取目录下全文件名&lt;&#x2F;summary&gt;</span><br></pre></td></tr></table></figure>
@@ -184,7 +196,7 @@ void repoint_out(int x)&#123;kout.close();if(x&gt;0)&#123;char *p=&amp;sout[x][0
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2333/05/20/utf8-ansi-c%E8%89%B9/" data-id="ckmvb7lip00082k6s5mckgcpe" data-title="c艹" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2333/05/20/utf8-ansi-c%E8%89%B9/" data-id="ckmvbfh4300054k6s0soog3in" data-title="c艹" class="article-share-link">分享</a>
       
       
       
@@ -196,19 +208,19 @@ void repoint_out(int x)&#123;kout.close();if(x&gt;0)&#123;char *p=&amp;sout[x][0
     
 <nav id="article-nav">
   
-    <a href="/2333/05/20/utf8-ansi-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2333/05/20/utf8-ansi-_%E9%9D%92%E8%93%9D/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          hexo
+          _青蓝
         
       </div>
     </a>
   
   
-    <a href="/2333/05/20/utf8-ansi-md%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2333/05/20/utf8-ansi-hexo/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">md文件目录</div>
+      <div class="article-nav-title">hexo</div>
     </a>
   
 </nav>
@@ -264,11 +276,11 @@ void repoint_out(int x)&#123;kout.close();if(x&gt;0)&#123;char *p=&amp;sout[x][0
           </li>
         
           <li>
-            <a href="/2333/05/20/utf8-ansi-_%E6%97%A5%E8%AE%B0/">_日记</a>
+            <a href="/2333/05/20/utf8-ansi-_%E6%97%A5%E5%B8%B8/">_日常</a>
           </li>
         
           <li>
-            <a href="/2333/05/20/utf8-ansi-_%E6%97%A5%E5%B8%B8/">_日常</a>
+            <a href="/2333/05/20/utf8-ansi-_%E6%97%A5%E8%AE%B0/">_日记</a>
           </li>
         
           <li>
@@ -276,7 +288,7 @@ void repoint_out(int x)&#123;kout.close();if(x&gt;0)&#123;char *p=&amp;sout[x][0
           </li>
         
           <li>
-            <a href="/2333/05/20/utf8-ansi-hexo/">hexo</a>
+            <a href="/2333/05/20/utf8-ansi-c%E8%89%B9/">c艹</a>
           </li>
         
       </ul>
