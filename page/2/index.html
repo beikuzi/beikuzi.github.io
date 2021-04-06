@@ -4,19 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>acm | 北枯紫的博客</title>
+  <title>北枯紫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="(深度：1)心态变化历程 终于是为了爱好忘乎所有    一题真的非常消磨时间，bug改很久才能好，而且自己只有了解没有掌握   从早上学到晚上10点真的很快乐   要是有个妹纸来图书馆就双倍快乐了   不学了，我不学了.jpg   因为提前看了变态的题目又是心态崩溃的一天      (深度：1)网站收录 暂时分为三个模块：网站，纯题目+简析，详细代码    oi-wiki   O(n)">
-<meta property="og:type" content="article">
-<meta property="og:title" content="acm">
-<meta property="og:url" content="http://example.com/2333/05/20/utf8-ansi-acm/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="北枯紫的博客">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="北枯紫的博客">
-<meta property="og:description" content="(深度：1)心态变化历程 终于是为了爱好忘乎所有    一题真的非常消磨时间，bug改很久才能好，而且自己只有了解没有掌握   从早上学到晚上10点真的很快乐   要是有个妹纸来图书馆就双倍快乐了   不学了，我不学了.jpg   因为提前看了变态的题目又是心态崩溃的一天      (深度：1)网站收录 暂时分为三个模块：网站，纯题目+简析，详细代码    oi-wiki   O(n)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2333-05-19T17:10:31.000Z">
-<meta property="article:modified_time" content="2021-04-06T12:24:20.921Z">
 <meta property="article:author" content="beikuzi">
-<meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="北枯紫的博客" type="application/atom+xml">
@@ -74,7 +69,61 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-utf8-ansi-acm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main">
+  
+    <article id="post-utf8-ansi-opencv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2333/05/20/utf8-ansi-opencv/" class="article-date">
+  <time class="dt-published" datetime="2333-05-19T17:10:31.000Z" itemprop="datePublished">2333-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2333/05/20/utf8-ansi-opencv/">opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <details>
+
+<details>
+<summary>(深度：1)opencv_1</summary>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;opencv2&#x2F;opencv.hpp&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;core&#x2F;core.hpp&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;opencv2&#x2F;highgui.hpp&gt;</span><br><span class="line">#include&lt;opencv2&#x2F;imgproc&#x2F;imgproc.hpp&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">using namespace cv;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;0.一些对象类型</span><br><span class="line">void Vector_()</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;自定义</span><br><span class="line">	Vec&lt;double, 19&gt; abcd123Vec;</span><br><span class="line">	&#x2F;&#x2F;原有</span><br><span class="line">	&#x2F;&#x2F;Vec&lt;ucar,2&gt;   Vec2b  2~4</span><br><span class="line">	&#x2F;&#x2F;Vec&lt;short,2&gt;   Vec2s  2~4</span><br><span class="line">	&#x2F;&#x2F;Vec&lt;int,2&gt;   Vec2i  2~4</span><br><span class="line">	&#x2F;&#x2F;同样的float，double，2~4和6</span><br><span class="line">&#125;</span><br><span class="line">void Scalar_()</span><br><span class="line">&#123;&#x2F;&#x2F;vec派生，四个元素</span><br><span class="line">	&#x2F;&#x2F;自定义初始化</span><br><span class="line">	Scalar s1(0);</span><br><span class="line">	Scalar s2(0.0,0.1,0.2,3.0);</span><br><span class="line">	Scalar s3(s2);</span><br><span class="line">&#125;</span><br><span class="line">void Point_()</span><br><span class="line">&#123;&#x2F;&#x2F;point类可以进行四则运算</span><br><span class="line">	&#x2F;*</span><br><span class="line">	typedef Point_&lt;int&gt; Point_2i;</span><br><span class="line">	typedef Point_2i Point;</span><br><span class="line">	同理</span><br><span class="line">	Point2f</span><br><span class="line">	Point2d</span><br><span class="line">	*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">void Size_()</span><br><span class="line">&#123;&#x2F;&#x2F;Size 的两个成员是width和height</span><br><span class="line">	Size s(100, 100);</span><br><span class="line">	s.width &#x3D; 200;</span><br><span class="line">	Mat pic &#x3D; Mat::zeros(s, CV_8UC1);&#x2F;&#x2F;初始化一个指定大小的图片</span><br><span class="line">	cout &lt;&lt; s.area();&#x2F;&#x2F;返回一个size的面积……100*100</span><br><span class="line">&#125;</span><br><span class="line">void Rect_()</span><br><span class="line">&#123;&#x2F;&#x2F;四个值，左上角坐标，矩形宽度高度</span><br><span class="line">	Rect r(0, 0, 100, 100);</span><br><span class="line">	Mat pic &#x3D; imread(&quot;loc.jpg&quot;);</span><br><span class="line">	Mat pic_1 &#x3D; pic(r);</span><br><span class="line">&#125;</span><br><span class="line">void RRect_()</span><br><span class="line">&#123;&#x2F;&#x2F;这个可以让一个不规则物体用一个旋转的长方形框起来标记着</span><br><span class="line">	</span><br><span class="line">	Point2f center(100.0, 100.0);</span><br><span class="line">	Size2f size(100.0, 100.0);</span><br><span class="line">	float angle &#x3D; acos(0.0) &#x2F; 2;</span><br><span class="line">	&#x2F;&#x2F;默认：RotatedRect()</span><br><span class="line">	&#x2F;&#x2F;一个旋转的矩阵，需要提供Point2f的矩阵中心和Size2f的矩阵大小和float型的旋转角度</span><br><span class="line">	RotatedRect Rrect(center, size, angle);</span><br><span class="line">	Mat pic &#x3D; imread(&quot;loc.jpg&quot;);</span><br><span class="line">	&#x2F;&#x2F;Mat pic_1 &#x3D; pic(Rrect);	报错，似乎不能初始化成倾斜的矩阵</span><br><span class="line">&#125;&#x2F;&#x2F;他有一个附带函数bounding()&#x2F;书 网上的是Rect boundingRect() 或 Rect_&lt;float&gt; boundingRect2f() </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">暂时没有理解的内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 1 class CV_EXPORTS RotatedRect</span><br><span class="line"> 2 &#123;</span><br><span class="line"> 3 public:</span><br><span class="line"> 4     &#x2F;&#x2F;构造函数</span><br><span class="line"> 5     RotatedRect();</span><br><span class="line"> 6     RotatedRect(const Point2f&amp; center, const Size2f&amp; size, float angle);</span><br><span class="line"> 7     RotatedRect(const CvBox2D&amp; box);</span><br><span class="line"> 8     void points(Point2f pts[]) const;&#x2F;&#x2F;!返回矩形的4个顶点</span><br><span class="line"> 9     Rect boundingRect() const; &#x2F;&#x2F;返回包含旋转矩形的最小矩形</span><br><span class="line">10     operator CvBox2D() const;    &#x2F;&#x2F;!转换到旧式的cvbox2d结构</span><br><span class="line">11     Point2f center; &#x2F;&#x2F;矩形的质心</span><br><span class="line">12     Size2f size;   &#x2F;&#x2F;矩形的边长</span><br><span class="line">13     float angle;  &#x2F;&#x2F;旋转角度，当角度为0、90、180、270等时，矩形就成了一个直立的矩形</span><br><span class="line">14 &#125;;</span><br><span class="line">复制代码</span><br><span class="line">        这个类中包含了外接矩形的中心center、大小size以及角度angle。</span><br><span class="line">        为了更好的理解这几个参数的意义，请看下图：在opencv中，坐标的原点在左上角，与x轴平行的方向为角度为0，逆时针旋转角度为负，顺时针旋转角度为正。角度是水平轴（x轴）顺时针旋转，与碰到的第一个边的夹角度数。而opencv默认把这个边的边长作为height。</span><br><span class="line"></span><br><span class="line"> 6 int main()</span><br><span class="line"> 7 &#123;</span><br><span class="line"> 8     Mat img &#x3D; imread(&quot;C:\\Users\\hsy\\Desktop\\1.jpg&quot;);</span><br><span class="line"> 9     Mat img_gray;</span><br><span class="line">10     cvtColor(img, img_gray, COLOR_RGB2GRAY);</span><br><span class="line">11     img_gray &#x3D; img_gray &gt; 30;</span><br><span class="line">12     vector&lt;vector&lt;Point&gt;&gt;contours;</span><br><span class="line">13     vector&lt;Vec4i&gt; hierarchy;</span><br><span class="line">14     vector&lt;RotatedRect&gt;rect;</span><br><span class="line">15     &#x2F;&#x2F;【5】查找轮廓</span><br><span class="line">16     findContours(img_gray, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);</span><br><span class="line">17     for (int i &#x3D; 0; i &lt; contours.size(); i++)</span><br><span class="line">18     &#123;</span><br><span class="line">19         rect.push_back(minAreaRect(contours[i]));</span><br><span class="line">20         Point2f vertices[4];      &#x2F;&#x2F;定义矩形的4个顶点</span><br><span class="line">21         rect[i].points(vertices);   &#x2F;&#x2F;计算矩形的4个顶点</span><br><span class="line">22         for (int i &#x3D; 0; i &lt; 4; i++)</span><br><span class="line">23             line(img, vertices[i], vertices[(i + 1) % 4], Scalar(0, 255, 0),1);</span><br><span class="line">24         cout &lt;&lt;&quot;width的值：&quot;&lt;&lt;rect[i].size.width &lt;&lt; endl;</span><br><span class="line">25         cout &lt;&lt; &quot;height的值：&quot; &lt;&lt; rect[i].size.height &lt;&lt; endl;&#x2F;&#x2F;其实只有一个外接矩形</span><br><span class="line">26     &#125;</span><br><span class="line">27     imshow(&quot;img&quot;, img);</span><br><span class="line">28     waitKey(0);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">[原文链接](https:&#x2F;&#x2F;www.cnblogs.com&#x2F;hsy1941&#x2F;p&#x2F;7923323.html)</span><br></pre></td></tr></table></figure>
+</details>
+
+<details>
+<summary>(深度：1)opencv_2</summary>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.读入图像</span><br><span class="line">Mat pic_read(string s)</span><br><span class="line">&#123;</span><br><span class="line">	Mat temp &#x3D; imread(s);</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;2.保存图像</span><br><span class="line">void pic_write(string name, Mat pic)&#x2F;&#x2F;&quot;123.jpg&quot;</span><br><span class="line">&#123;</span><br><span class="line">	imwrite(name, pic);&#x2F;&#x2F;绝对路径</span><br><span class="line">	string s &#x3D; &quot;.&#x2F;&quot;+name;</span><br><span class="line">	imwrite(s, pic);&#x2F;&#x2F;相对路径</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;3.得到一个点的BGR属性</span><br><span class="line">void pic_val(Mat pic,int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	Vec3b val &#x3D; pic.at&lt;Vec3b&gt;(x, y);</span><br><span class="line">	cout &lt;&lt; (int)val[0] &lt;&lt; val[1] &lt;&lt; val[2];</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;4.展示一张图片</span><br><span class="line">void pic_show(string name,Mat pic)</span><br><span class="line">&#123;</span><br><span class="line">	imshow(name, pic);</span><br><span class="line">	waitKey(0);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;5.不同的窗口同时展示若干张图片</span><br><span class="line">string turn(int x)</span><br><span class="line">&#123;</span><br><span class="line">	string s;</span><br><span class="line">	while (x)</span><br><span class="line">	&#123;</span><br><span class="line">		char c &#x3D; x % 10;</span><br><span class="line">		x &#x2F;&#x3D; 10;</span><br><span class="line">		s &#x3D; c + s;</span><br><span class="line">	&#125;</span><br><span class="line">	return s;</span><br><span class="line">&#125;</span><br><span class="line">int k&#x3D;0;</span><br><span class="line">void pic_show2(Mat pic)&#x2F;&#x2F;pic_show2(pic1),pic_show2(pic2),pic_show2(pic3),waitKey(0);</span><br><span class="line">&#123;</span><br><span class="line">	imshow(turn(k++), pic);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;6.改变图片大小</span><br><span class="line">void pic_size(Mat pic_in,Mat pic_out,Size x)</span><br><span class="line">&#123;</span><br><span class="line">	resize(pic_in, pic_out, x, 0, 0, INTER_LINEAR);</span><br><span class="line">	&#x2F;&#x2F;x是size的标准形式 Size(x,y) &#x2F;&#x2F;Size(1280,720)</span><br><span class="line">	&#x2F;&#x2F;两个0是缩放系数的值dx、dy，默认为0时就是现在宽度&#x2F;原列数</span><br><span class="line">	&#x2F;*</span><br><span class="line">	INTER_NEAREST - 最近邻插值</span><br><span class="line">	INTER_LINEAR - 线性插值（默认）</span><br><span class="line">	INTER_AREA - 区域插值</span><br><span class="line">	INTER_CUBIC - 三次样条插</span><br><span class="line">	INTER_LANCZOS4 - Lanczos插值</span><br><span class="line">	*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;7.打开录像&#x2F;视频并判定是否打开</span><br><span class="line">bool vid_open(VideoCapture&amp; cap,string s)</span><br><span class="line">&#123;</span><br><span class="line">	if(s.empty () )cap.open(0);</span><br><span class="line">	else cap.open(s);</span><br><span class="line">	if (!cap.isOpened())return false;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;8.持续读取视频或者摄像头</span><br><span class="line">void vid_read(string name,VideoCapture cap)</span><br><span class="line">&#123;</span><br><span class="line">	Mat vid;</span><br><span class="line">	while (1)</span><br><span class="line">	&#123;</span><br><span class="line">		cap &gt;&gt; vid;</span><br><span class="line">		if (vid.empty())break;</span><br><span class="line">		if (waitKey(30) &gt;&#x3D; 0)break;</span><br><span class="line">		imshow(name, vid);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;9.为摄像头和写出设置相同宽高参数,并打开</span><br><span class="line">void cap_set(VideoCapture&amp; cap,VideoWriter&amp; wcap,int width,int height)</span><br><span class="line">&#123;</span><br><span class="line">	cap.set(CAP_PROP_FRAME_WIDTH, width);</span><br><span class="line">	cap.set(CAP_PROP_FRAME_HEIGHT, height);</span><br><span class="line">	cap.open(0);</span><br><span class="line">	wcap.open(&quot;name.avi&quot;, 0, 30, Size(width, height), 1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;4.0版没有CV前缀</span><br><span class="line">	&#x2F;*</span><br><span class="line">	1 capture.set(CV_CAP_PROP_FRAME_WIDTH, 1080);&#x2F;&#x2F;宽度 </span><br><span class="line">	2 capture.set(CV_CAP_PROP_FRAME_HEIGHT, 960);&#x2F;&#x2F;高度</span><br><span class="line">	3 capture.set(CV_CAP_PROP_FPS, 30);&#x2F;&#x2F;帧率 帧&#x2F;秒</span><br><span class="line">	4 capture.set(CV_CAP_PROP_BRIGHTNESS, 1);&#x2F;&#x2F;亮度 1</span><br><span class="line">	5 capture.set(CV_CAP_PROP_CONTRAST, 40);&#x2F;&#x2F;对比度 40</span><br><span class="line">	6 capture.set(CV_CAP_PROP_SATURATION, 50);&#x2F;&#x2F;饱和度 50</span><br><span class="line">	7 capture.set(CV_CAP_PROP_HUE, 50);&#x2F;&#x2F;色调 50</span><br><span class="line">	8 capture.set(CV_CAP_PROP_EXPOSURE, 50);&#x2F;&#x2F;曝光 50</span><br><span class="line">	*&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	0是fourcc，百度转换公式</span><br><span class="line"></span><br><span class="line">	#define CV_FOURCC_MACRO(c1, c2, c3, c4) (((c1) &amp; 255) + (((c2) &amp; 255) &lt;&lt; 8) + (((c3) &amp; 255) &lt;&lt; 16) + (((c4) &amp; 255) &lt;&lt; 24))</span><br><span class="line">	CV_INLINE int CV_FOURCC(char c1, char c2, char c3, char c4)</span><br><span class="line">	&#123;</span><br><span class="line">		return CV_FOURCC_MACRO(c1, c2, c3, c4);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	30是fps</span><br><span class="line">	1是iscolor（），布尔型</span><br><span class="line">	*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;10.录像一定时间的视频</span><br><span class="line">void vid_settime_cap(string name,VideoCapture&amp; cap, VideoWriter&amp; wcap,int time,int fps)</span><br><span class="line">&#123;</span><br><span class="line">	Mat vid;</span><br><span class="line">	int k&#x3D;0;</span><br><span class="line">	while (1)</span><br><span class="line">	&#123;</span><br><span class="line">		cap &gt;&gt; vid;</span><br><span class="line">		wcap &lt;&lt; vid;</span><br><span class="line">		if (waitKey(30) &gt;&#x3D; 0)break;</span><br><span class="line">		imshow(name, vid);</span><br><span class="line">		k++; if (k &gt;&#x3D; time * fps)break;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
+</details>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2333/05/20/utf8-ansi-opencv/" data-id="ckn5zw7pb000h9s6s07xn7gga" data-title="opencv" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/" rel="tag">opencv</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-utf8-ansi-acm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2333/05/20/utf8-ansi-acm/" class="article-date">
   <time class="dt-published" datetime="2333-05-19T17:10:31.000Z" itemprop="datePublished">2333-05-20</time>
@@ -87,8 +136,8 @@
       <header class="article-header">
         
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      acm
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2333/05/20/utf8-ansi-acm/">acm</a>
     </h1>
   
 
@@ -537,24 +586,17 @@ fin=fopen(&quot;123.txt&quot;,&quot;r&quot;);  </code></pre>
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2333/05/20/utf8-ansi-opencv/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          opencv
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
 
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
