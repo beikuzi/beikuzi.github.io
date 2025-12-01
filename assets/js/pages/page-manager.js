@@ -5,6 +5,7 @@
 
 import { qs, qsa } from '../utils/utils.js';
 import * as UI from '../ui.js';
+import * as HomePage from './home-page.js';
 import * as TrophyPage from './trophy-page.js';
 import * as FriendsPage from './friends-page.js';
 
@@ -13,9 +14,7 @@ const PAGE_CONFIG = {
   home: {
     gridSelector: '.grid',
     initFn: (grid, pager) => {
-      UI.setPaginationSource('.grid');
-      UI.adjustGridLayout();
-      if (pager) pager.classList.remove('content-loading');
+      HomePage.initHomePage(grid, pager);
     }
   },
   trophy_list: {
@@ -106,6 +105,7 @@ export async function navigateToPage(pageId) {
   // 注意：即使页面 ID 相同，也要确保显示/隐藏逻辑正确执行
   // 因为可能在初始化时 grid 和 blankView 的状态不正确
   const wasSamePage = currentPageId === pageId;
+  const prevPageId = currentPageId; // 保存之前的页面 ID
   currentPageId = pageId;
   
   // 更新标签页激活状态
@@ -126,9 +126,24 @@ export async function navigateToPage(pageId) {
   }
   if (blankView) {
     blankView.style.display = isBlankViewPage ? '' : 'none';
+    // 关键修复：切换页面时清空 blankView，避免内容叠加
+    if (isBlankViewPage) {
+      blankView.innerHTML = '';
+    }
   }
   if (pager) {
     pager.style.display = '';
+  }
+  
+  // 重置之前页面的状态（只在页面切换时）
+  if (prevPageId !== pageId) {
+    if (prevPageId === 'home') {
+      HomePage.resetHomePage();
+    } else if (prevPageId === 'trophy_list') {
+      TrophyPage.resetTrophyPage();
+    } else if (prevPageId === 'friends') {
+      FriendsPage.resetFriendsPage();
+    }
   }
   
   // 初始化页面（即使页面相同也要执行，确保状态正确）

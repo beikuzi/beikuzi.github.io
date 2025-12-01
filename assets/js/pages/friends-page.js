@@ -3,6 +3,7 @@
  */
 
 import { qs } from '../utils/utils.js';
+import * as UI from '../ui.js';
 
 let __friendsLoaded = false;
 let __friendsContainer = null;
@@ -74,30 +75,93 @@ function ensureFriendsContainer(blankView) {
 }
 
 /**
+ * 获取友链的域名（用于显示）
+ */
+function getDomain(url) {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
+
+/**
+ * 生成随机二次元风格图标
+ */
+function getRandomIcon() {
+  const icons = ['🌸', '✨', '💫', '⭐', '🎀', '🎈', '🎁', '🌺', '🌷', '🌻', '🌼', '🦋', '🐰', '🐱', '🦄',];
+  return icons[Math.floor(Math.random() * icons.length)];
+}
+
+/**
+ * 生成随机渐变样式类
+ */
+function getRandomGradientClass(index) {
+  const gradients = ['friend-gradient-1', 'friend-gradient-2', 'friend-gradient-3', 'friend-gradient-4', 'friend-gradient-5', 'friend-gradient-6'];
+  return gradients[index % gradients.length];
+}
+
+/**
  * 渲染友链列表
  */
 function renderFriendsList(friends, container) {
   container.innerHTML = '';
   
   if (friends.length === 0) {
-    container.innerHTML = '<div style="text-align: center; padding: 40px; color: #999;">暂无友链数据</div>';
+    container.innerHTML = `
+      <div class="friends-empty">
+        <div class="friends-empty-icon">💔</div>
+        <div class="friends-empty-text">暂无友链数据</div>
+        <div class="friends-empty-hint">快来添加第一个友链吧~</div>
+      </div>
+    `;
     return;
   }
   
-  friends.forEach(friend => {
-    const item = document.createElement('div');
-    item.className = 'friend-item';
+  // 添加标题
+  const header = document.createElement('div');
+  header.className = 'friends-header';
+  header.innerHTML = `
+    <div class="friends-header-icon">💫</div>
+    <div class="friends-header-content">
+      <h2 class="friends-header-title">友链小窝</h2>
+      <p class="friends-header-subtitle">和朋友们一起分享美好的时光~</p>
+    </div>
+  `;
+  container.appendChild(header);
+  
+  // 创建网格容器
+  const grid = document.createElement('div');
+  grid.className = 'friends-grid';
+  
+  friends.forEach((friend, index) => {
+    const card = document.createElement('article');
+    card.className = `friend-card ${getRandomGradientClass(index)}`;
     
-    const link = document.createElement('a');
-    link.href = friend.url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = friend.title;
-    link.className = 'friend-link';
+    // 添加延迟动画
+    card.style.animationDelay = `${index * 0.1}s`;
     
-    item.appendChild(link);
-    container.appendChild(item);
+    const icon = getRandomIcon();
+    const domain = getDomain(friend.url);
+    
+    card.innerHTML = `
+      <div class="friend-card-bg"></div>
+      <div class="friend-card-content">
+        <div class="friend-card-icon">${icon}</div>
+        <div class="friend-card-info">
+          <h3 class="friend-card-title">${friend.title}</h3>
+          <p class="friend-card-domain">${domain}</p>
+        </div>
+        <div class="friend-card-arrow">→</div>
+      </div>
+      <a href="${friend.url}" target="_blank" rel="noopener noreferrer" class="friend-card-link" aria-label="访问 ${friend.title}"></a>
+    `;
+    
+    grid.appendChild(card);
   });
+  
+  container.appendChild(grid);
 }
 
 /**
@@ -121,6 +185,7 @@ export async function initFriendsPage(blankView, pager) {
   __friendsContainer = container;
   
   // 清空容器，确保每次都能正确显示
+  // 注意：这里只清空容器本身，blankView 的清空由 page-manager 负责
   container.innerHTML = '';
   
   // 如果已经加载过且有内容，直接返回（但先清空，确保状态正确）
@@ -146,13 +211,28 @@ export async function initFriendsPage(blankView, pager) {
       renderFriendsList(friends, container);
       __friendsLoaded = true;
       console.log('[Friends] 友链列表渲染完成');
+      
+      // 设置翻页源为友链列表容器
+      UI.setPaginationSource('.friends-list');
     } else {
       console.warn('[Friends] 没有找到友链数据');
-      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #999;">暂无友链数据</div>';
+      container.innerHTML = `
+        <div class="friends-empty">
+          <div class="friends-empty-icon">💔</div>
+          <div class="friends-empty-text">暂无友链数据</div>
+          <div class="friends-empty-hint">快来添加第一个友链吧~</div>
+        </div>
+      `;
     }
   } catch (error) {
     console.error('[Friends] 初始化失败:', error);
-    container.innerHTML = '<div style="text-align: center; padding: 40px; color: #f00;">加载失败，请刷新重试</div>';
+    container.innerHTML = `
+      <div class="friends-empty">
+        <div class="friends-empty-icon">😢</div>
+        <div class="friends-empty-text">加载失败</div>
+        <div class="friends-empty-hint">请刷新重试~</div>
+      </div>
+    `;
   } finally {
     // 移除加载状态
     if (pager) {

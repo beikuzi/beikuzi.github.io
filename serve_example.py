@@ -62,7 +62,8 @@ class RangeRequestHandler(http.server.SimpleHTTPRequestHandler):
             super().copyfile(source, outputfile)
 
 def main():
-    base = os.path.join(os.path.dirname(__file__), 'example')
+    # 使用当前目录作为基础目录（根目录）
+    base = os.path.dirname(os.path.abspath(__file__))
     port = 5500
     no_open = False
     for a in sys.argv[1:]:
@@ -79,8 +80,8 @@ def main():
         try:
             with socketserver.TCPServer(('', p), Handler) as httpd:
                 chosen = p
-                url = f'http://localhost:{chosen}/anime-neon/index.html'
-                print(url)
+                url = f'http://localhost:{chosen}/index.html'
+                print(f'服务器启动在: {url}')
                 if not no_open:
                     try:
                         webbrowser.open(url)

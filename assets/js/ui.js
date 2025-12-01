@@ -464,7 +464,8 @@ let __paginationState = {
 const __getItems = () => {
   const el = __paginationState.containerEl;
   if (!el) return [];
-  return [...el.querySelectorAll('.card, .trophy-card')];
+  // 支持多种类型的项目：卡片、成就卡片、友链项
+  return [...el.querySelectorAll('.card, .trophy-card, .friend-item')];
 };
 
 const __renderSelect = () => {
