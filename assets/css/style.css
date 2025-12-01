@@ -273,25 +273,25 @@ html{height:100%;overflow:hidden}body{height:100%;overflow:hidden;margin:0;font-
 .trophy-grid{display:flex;flex-direction:column;gap:32px;padding:20px}
 .trophy-category-section{display:flex;flex-direction:column;gap:16px}
 .trophy-achievements-row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
-.trophy-card{display:flex;align-items:center;justify-content:center;min-height:auto;background:transparent;box-shadow:none;border:0;flex:0 0 auto;min-width:280px;max-width:100%}
-.trophy-card .badge{display:flex;align-items:center;width:100%;padding:8px;padding-right:20px;border-radius:999px;position:relative;gap:14px;transition:transform .2s ease,box-shadow .2s ease}
-.trophy-card .badge-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;background:rgba(255,255,255,.45);box-shadow:0 4px 12px rgba(0,0,0,.08);flex-shrink:0}
+.trophy-card{display:flex;align-items:center;justify-content:center;min-height:auto;background:transparent;box-shadow:none;border:0;width:340px;flex-shrink:0}
+.trophy-card .badge{display:flex;align-items:center;width:100%;padding:12px 16px;padding-right:20px;border-radius:16px;position:relative;gap:14px;transition:transform .2s ease,box-shadow .2s ease;min-height:80px}
+.trophy-card .badge-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(255,255,255,.5);box-shadow:0 4px 12px rgba(0,0,0,.1);flex-shrink:0;border:2px solid rgba(255,255,255,.6)}
 .trophy-card .badge-icon img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.trophy-card .badge-info{display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0;gap:2px}
-.trophy-card .badge-title{font-weight:700;font-size:16px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.trophy-card .badge-desc{font-size:12px;color:var(--muted);line-height:1.3;opacity:.85;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.trophy-card .badge-info{display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0;gap:4px;padding:2px 0}
+.trophy-card .badge-title{font-weight:700;font-size:15px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.trophy-card .badge-desc{font-size:12px;color:var(--muted);line-height:1.5;opacity:.9;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word;text-overflow:ellipsis;max-height:3em}
 .trophy-card .badge-meta{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--muted);background:rgba(255,255,255,.5);padding:2px 6px;border-radius:4px;opacity:0;transition:opacity .2s;pointer-events:none}
 .trophy-card:hover .badge-meta{opacity:1}
-.trophy-card:hover .badge{transform:translateY(-2px)}
-.trophy-card.badge-sakura .badge{background:linear-gradient(135deg,#ffeaf3,#fff6fa);box-shadow:0 6px 16px rgba(255,102,196,.12)}
-.trophy-card.badge-starry .badge{background:linear-gradient(135deg,#eaf3ff,#dfe9ff);box-shadow:0 6px 16px rgba(28,63,114,.12)}
-.trophy-card.badge-kawaii .badge{background:linear-gradient(135deg,#fff5d6,#f3fdff);box-shadow:0 6px 16px rgba(255,193,97,.12)}
-.trophy-card.badge-tech .badge{background:linear-gradient(135deg,#e9f7ff,#edf7fb);box-shadow:0 6px 16px rgba(36,59,85,.1);border:1px solid rgba(124,245,255,.2)}
-.trophy-card.badge-magic .badge{background:linear-gradient(135deg,#efe6ff,#fff0ff);box-shadow:0 6px 16px rgba(193,169,255,.12)}
-.trophy-card.badge-violet .badge{background:linear-gradient(135deg,#f3e9ff,#fff0f7);box-shadow:0 6px 16px rgba(161,140,209,.12)}
+.trophy-card:hover .badge{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.trophy-card.badge-sakura .badge{background:linear-gradient(135deg,#ffeaf3,#fff6fa);box-shadow:0 6px 20px rgba(255,102,196,.15);border:1px solid rgba(255,102,196,.1)}
+.trophy-card.badge-starry .badge{background:linear-gradient(135deg,#eaf3ff,#dfe9ff);box-shadow:0 6px 20px rgba(28,63,114,.15);border:1px solid rgba(124,245,255,.15)}
+.trophy-card.badge-kawaii .badge{background:linear-gradient(135deg,#fff5d6,#f3fdff);box-shadow:0 6px 20px rgba(255,193,97,.15);border:1px solid rgba(255,193,97,.1)}
+.trophy-card.badge-tech .badge{background:linear-gradient(135deg,#e9f7ff,#edf7fb);box-shadow:0 6px 20px rgba(36,59,85,.12);border:1px solid rgba(124,245,255,.2)}
+.trophy-card.badge-magic .badge{background:linear-gradient(135deg,#efe6ff,#fff0ff);box-shadow:0 6px 20px rgba(193,169,255,.15);border:1px solid rgba(193,169,255,.1)}
+.trophy-card.badge-violet .badge{background:linear-gradient(135deg,#f3e9ff,#fff0f7);box-shadow:0 6px 20px rgba(161,140,209,.15);border:1px solid rgba(161,140,209,.1)}
 
 /* 夜间模式下的成就卡片样式 - 提高对比度和可读性 */
-.dark .trophy-card .badge-icon{background:rgba(255,255,255,.15);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.dark .trophy-card .badge-icon{background:rgba(255,255,255,.2);box-shadow:0 4px 12px rgba(0,0,0,.3);border-color:rgba(255,255,255,.2)}
 .dark .trophy-card .badge-meta{background:rgba(255,255,255,.15);color:var(--text);border:1px solid rgba(255,255,255,.1)}
 .dark .trophy-card.badge-sakura .badge{background:linear-gradient(135deg,rgba(255,102,196,.25),rgba(255,182,218,.2));box-shadow:0 6px 16px rgba(255,102,196,.2);border:1px solid rgba(255,102,196,.15)}
 .dark .trophy-card.badge-starry .badge{background:linear-gradient(135deg,rgba(124,245,255,.25),rgba(136,224,255,.2));box-shadow:0 6px 16px rgba(124,245,255,.2);border:1px solid rgba(124,245,255,.15)}
@@ -303,35 +303,66 @@ html{height:100%;overflow:hidden}body{height:100%;overflow:hidden;margin:0;font-
 .dark .trophy-card .badge-desc{color:var(--muted);opacity:.9}
 
 /* 分类标牌样式 */
-.trophy-category-header{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:16px;background:var(--card-bg);backdrop-filter:saturate(1.2) blur(8px);box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);transition:transform .2s ease,box-shadow .2s ease}
-.trophy-category-header:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
-.category-icon{font-size:32px;line-height:1;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,.3);box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.category-content{flex:1;min-width:0}
-.category-title{margin:0 0 4px;font-size:20px;font-weight:700;line-height:1.2;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.category-desc{margin:0;font-size:13px;color:var(--muted);line-height:1.4;opacity:.8}
+.trophy-category-header{display:flex;align-items:center;gap:18px;padding:20px 24px;border-radius:20px;background:var(--card-bg);backdrop-filter:saturate(1.3) blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08);border:2px solid rgba(0,0,0,.08);transition:all .3s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
+.trophy-category-header::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:20px 0 0 20px;opacity:.8}
+.trophy-category-header:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.16),0 4px 12px rgba(0,0,0,.1)}
+.category-icon{font-size:36px;line-height:1;flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:rgba(255,255,255,.6);box-shadow:0 4px 12px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.8);border:2px solid rgba(255,255,255,.5);position:relative;z-index:1}
+.category-content{flex:1;min-width:0;position:relative;z-index:1}
+.category-title{margin:0 0 6px;font-size:22px;font-weight:800;line-height:1.2;color:#2d3748;letter-spacing:.3px;text-shadow:0 1px 2px rgba(255,255,255,.5)}
+.category-desc{margin:0;font-size:13px;color:#4a5568;line-height:1.5;opacity:.85;font-weight:500}
 
-/* 分类标牌渐变样式 */
-.trophy-category-header.category-sakura{background:linear-gradient(135deg,rgba(255,234,243,.8),rgba(255,246,250,.9));border-color:rgba(255,102,196,.2)}
-.trophy-category-header.category-starry{background:linear-gradient(135deg,rgba(234,243,255,.8),rgba(223,233,255,.9));border-color:rgba(28,63,114,.2)}
-.trophy-category-header.category-kawaii{background:linear-gradient(135deg,rgba(255,245,214,.8),rgba(243,253,255,.9));border-color:rgba(255,193,97,.2)}
-.trophy-category-header.category-tech{background:linear-gradient(135deg,rgba(233,247,255,.8),rgba(237,247,251,.9));border-color:rgba(124,245,255,.3)}
-.trophy-category-header.category-magic{background:linear-gradient(135deg,rgba(239,230,255,.8),rgba(255,240,255,.9));border-color:rgba(193,169,255,.2)}
-.trophy-category-header.category-violet{background:linear-gradient(135deg,rgba(243,233,255,.8),rgba(255,240,247,.9));border-color:rgba(161,140,209,.2)}
+/* 分类标牌渐变样式 - 使用更强烈的对比色 */
+.trophy-category-header.category-sakura{background:linear-gradient(135deg,#fff0f8,#ffeaf3);border-color:#ffb3d9;box-shadow:0 8px 32px rgba(255,102,196,.2),0 2px 8px rgba(255,102,196,.1)}
+.trophy-category-header.category-sakura::before{background:linear-gradient(180deg,#ff66c4,#ff99dd)}
+.trophy-category-header.category-sakura .category-title{color:#c2185b;text-shadow:0 1px 3px rgba(255,182,193,.4)}
+.trophy-category-header.category-sakura .category-icon{background:linear-gradient(135deg,#ffb3d9,#ffcce6);border-color:#ff99cc;box-shadow:0 4px 12px rgba(255,102,196,.25),inset 0 1px 0 rgba(255,255,255,.6)}
+.trophy-category-header.category-starry{background:linear-gradient(135deg,#e6f3ff,#d9ebff);border-color:#7cc8ff;box-shadow:0 8px 32px rgba(28,63,114,.2),0 2px 8px rgba(124,245,255,.15)}
+.trophy-category-header.category-starry::before{background:linear-gradient(180deg,#4da6ff,#7cc8ff)}
+.trophy-category-header.category-starry .category-title{color:#1e3a5f;text-shadow:0 1px 3px rgba(124,245,255,.3)}
+.trophy-category-header.category-starry .category-icon{background:linear-gradient(135deg,#7cc8ff,#99d6ff);border-color:#66bfff;box-shadow:0 4px 12px rgba(28,63,114,.25),inset 0 1px 0 rgba(255,255,255,.6)}
+.trophy-category-header.category-kawaii{background:linear-gradient(135deg,#fff8e1,#fff5d6);border-color:#ffd54f;box-shadow:0 8px 32px rgba(255,193,97,.2),0 2px 8px rgba(255,193,97,.1)}
+.trophy-category-header.category-kawaii::before{background:linear-gradient(180deg,#ffc107,#ffd54f)}
+.trophy-category-header.category-kawaii .category-title{color:#f57c00;text-shadow:0 1px 3px rgba(255,224,130,.4)}
+.trophy-category-header.category-kawaii .category-icon{background:linear-gradient(135deg,#ffd54f,#ffe082);border-color:#ffca28;box-shadow:0 4px 12px rgba(255,193,97,.25),inset 0 1px 0 rgba(255,255,255,.6)}
+.trophy-category-header.category-tech{background:linear-gradient(135deg,#e0f7fa,#d4f1f4);border-color:#4dd0e1;box-shadow:0 8px 32px rgba(36,59,85,.2),0 2px 8px rgba(124,245,255,.15)}
+.trophy-category-header.category-tech::before{background:linear-gradient(180deg,#00bcd4,#4dd0e1)}
+.trophy-category-header.category-tech .category-title{color:#006064;text-shadow:0 1px 3px rgba(77,208,225,.3)}
+.trophy-category-header.category-tech .category-icon{background:linear-gradient(135deg,#4dd0e1,#80deea);border-color:#26c6da;box-shadow:0 4px 12px rgba(36,59,85,.25),inset 0 1px 0 rgba(255,255,255,.6)}
+.trophy-category-header.category-magic{background:linear-gradient(135deg,#f3e5f5,#ede7f6);border-color:#ba68c8;box-shadow:0 8px 32px rgba(193,169,255,.2),0 2px 8px rgba(193,169,255,.1)}
+.trophy-category-header.category-magic::before{background:linear-gradient(180deg,#ab47bc,#ba68c8)}
+.trophy-category-header.category-magic .category-title{color:#6a1b9a;text-shadow:0 1px 3px rgba(186,104,200,.3)}
+.trophy-category-header.category-magic .category-icon{background:linear-gradient(135deg,#ba68c8,#ce93d8);border-color:#ab47bc;box-shadow:0 4px 12px rgba(193,169,255,.25),inset 0 1px 0 rgba(255,255,255,.6)}
+.trophy-category-header.category-violet{background:linear-gradient(135deg,#ede7f6,#e1bee7);border-color:#9575cd;box-shadow:0 8px 32px rgba(161,140,209,.2),0 2px 8px rgba(161,140,209,.1)}
+.trophy-category-header.category-violet::before{background:linear-gradient(180deg,#7e57c2,#9575cd)}
+.trophy-category-header.category-violet .category-title{color:#512da8;text-shadow:0 1px 3px rgba(149,117,205,.3)}
+.trophy-category-header.category-violet .category-icon{background:linear-gradient(135deg,#9575cd,#b39ddb);border-color:#7986cb;box-shadow:0 4px 12px rgba(161,140,209,.25),inset 0 1px 0 rgba(255,255,255,.6)}
 
 /* 夜间模式下的分类标牌 */
-.dark .trophy-category-header{background:var(--card-bg);border-color:rgba(255,255,255,.1)}
-.dark .trophy-category-header.category-sakura{background:linear-gradient(135deg,rgba(255,102,196,.15),rgba(255,182,218,.12));border-color:rgba(255,102,196,.2)}
-.dark .trophy-category-header.category-starry{background:linear-gradient(135deg,rgba(124,245,255,.15),rgba(136,224,255,.12));border-color:rgba(124,245,255,.2)}
-.dark .trophy-category-header.category-kawaii{background:linear-gradient(135deg,rgba(255,193,97,.15),rgba(255,230,179,.12));border-color:rgba(255,193,97,.2)}
-.dark .trophy-category-header.category-tech{background:linear-gradient(135deg,rgba(124,245,255,.15),rgba(136,224,255,.12));border-color:rgba(124,245,255,.25)}
-.dark .trophy-category-header.category-magic{background:linear-gradient(135deg,rgba(193,169,255,.15),rgba(239,230,255,.12));border-color:rgba(193,169,255,.2)}
-.dark .trophy-category-header.category-violet{background:linear-gradient(135deg,rgba(161,140,209,.15),rgba(243,233,255,.12));border-color:rgba(161,140,209,.2)}
-.dark .category-icon{background:rgba(255,255,255,.1);box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.dark .category-title{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.dark .category-desc{color:var(--muted);opacity:.85}
+.dark .trophy-category-header{background:var(--card-bg);border-color:rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.3),0 2px 8px rgba(0,0,0,.2)}
+.dark .trophy-category-header.category-sakura{background:linear-gradient(135deg,rgba(255,102,196,.25),rgba(255,182,218,.2));border-color:rgba(255,102,196,.4);box-shadow:0 8px 32px rgba(255,102,196,.3),0 2px 8px rgba(255,102,196,.2)}
+.dark .trophy-category-header.category-sakura .category-title{color:#ffb3d9;text-shadow:0 0 8px rgba(255,102,196,.5)}
+.dark .trophy-category-header.category-sakura .category-icon{background:linear-gradient(135deg,rgba(255,102,196,.4),rgba(255,182,218,.35));border-color:rgba(255,102,196,.5);box-shadow:0 4px 12px rgba(255,102,196,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.dark .trophy-category-header.category-starry{background:linear-gradient(135deg,rgba(124,245,255,.25),rgba(136,224,255,.2));border-color:rgba(124,245,255,.4);box-shadow:0 8px 32px rgba(124,245,255,.3),0 2px 8px rgba(124,245,255,.2)}
+.dark .trophy-category-header.category-starry .category-title{color:#7cf5ff;text-shadow:0 0 8px rgba(124,245,255,.5)}
+.dark .trophy-category-header.category-starry .category-icon{background:linear-gradient(135deg,rgba(124,245,255,.4),rgba(136,224,255,.35));border-color:rgba(124,245,255,.5);box-shadow:0 4px 12px rgba(124,245,255,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.dark .trophy-category-header.category-kawaii{background:linear-gradient(135deg,rgba(255,193,97,.25),rgba(255,230,179,.2));border-color:rgba(255,193,97,.4);box-shadow:0 8px 32px rgba(255,193,97,.3),0 2px 8px rgba(255,193,97,.2)}
+.dark .trophy-category-header.category-kawaii .category-title{color:#ffc161;text-shadow:0 0 8px rgba(255,193,97,.5)}
+.dark .trophy-category-header.category-kawaii .category-icon{background:linear-gradient(135deg,rgba(255,193,97,.4),rgba(255,230,179,.35));border-color:rgba(255,193,97,.5);box-shadow:0 4px 12px rgba(255,193,97,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.dark .trophy-category-header.category-tech{background:linear-gradient(135deg,rgba(124,245,255,.25),rgba(136,224,255,.2));border-color:rgba(124,245,255,.4);box-shadow:0 8px 32px rgba(124,245,255,.3),0 2px 8px rgba(124,245,255,.2)}
+.dark .trophy-category-header.category-tech .category-title{color:#7cf5ff;text-shadow:0 0 8px rgba(124,245,255,.5)}
+.dark .trophy-category-header.category-tech .category-icon{background:linear-gradient(135deg,rgba(124,245,255,.4),rgba(136,224,255,.35));border-color:rgba(124,245,255,.5);box-shadow:0 4px 12px rgba(124,245,255,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.dark .trophy-category-header.category-magic{background:linear-gradient(135deg,rgba(193,169,255,.25),rgba(239,230,255,.2));border-color:rgba(193,169,255,.4);box-shadow:0 8px 32px rgba(193,169,255,.3),0 2px 8px rgba(193,169,255,.2)}
+.dark .trophy-category-header.category-magic .category-title{color:#c1a9ff;text-shadow:0 0 8px rgba(193,169,255,.5)}
+.dark .trophy-category-header.category-magic .category-icon{background:linear-gradient(135deg,rgba(193,169,255,.4),rgba(239,230,255,.35));border-color:rgba(193,169,255,.5);box-shadow:0 4px 12px rgba(193,169,255,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.dark .trophy-category-header.category-violet{background:linear-gradient(135deg,rgba(161,140,209,.25),rgba(243,233,255,.2));border-color:rgba(161,140,209,.4);box-shadow:0 8px 32px rgba(161,140,209,.3),0 2px 8px rgba(161,140,209,.2)}
+.dark .trophy-category-header.category-violet .category-title{color:#a18cd1;text-shadow:0 0 8px rgba(161,140,209,.5)}
+.dark .trophy-category-header.category-violet .category-icon{background:linear-gradient(135deg,rgba(161,140,209,.4),rgba(243,233,255,.35));border-color:rgba(161,140,209,.5);box-shadow:0 4px 12px rgba(161,140,209,.3),inset 0 1px 0 rgba(255,255,255,.2)}
+.dark .category-desc{color:var(--muted);opacity:.9}
 
 /* 响应式：移动端成就卡片全宽 */
-@media(max-width:768px){.trophy-card{min-width:100%;max-width:100%}.trophy-achievements-row{flex-direction:column}.trophy-category-header{padding:14px 16px}.category-icon{width:40px;height:40px;font-size:28px}.category-title{font-size:18px}}
+@media(max-width:768px){.trophy-card{width:100%;max-width:100%}.trophy-achievements-row{flex-direction:column}.trophy-category-header{padding:14px 16px}.category-icon{width:40px;height:40px;font-size:28px}.category-title{font-size:18px}}
+@media(max-width:1200px){.trophy-card{width:calc(50% - 8px)}}
+@media(max-width:640px){.trophy-card{width:100%}}
 
 /* 友链页面容器 */
 .friends-list{padding:24px;width:100%;max-width:none;margin:0;background:transparent;backdrop-filter:none;border-radius:0;overflow:visible}
