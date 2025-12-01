@@ -1,0 +1,6 @@
+{
+    "base_dir": ".",
+    "src": "assets/music",
+    "out_audio": "assets/music_m4a",
+    "out_cover": "assets/music_covers"
+}

@@ -28,6 +28,32 @@ const coverPending = new Map();
 const fileCheckPending = new Map();
 let marqueeObserverAttached = false;
 
+// 封面目录配置（从 music_convert.json 加载）
+let coverDir = '/assets/music_covers'; // 默认值
+let coverConfigLoaded = false;
+
+// 加载封面目录配置
+const loadCoverConfig = async () => {
+  if (coverConfigLoaded) return;
+  try {
+    const response = await fetch('/.config/music_convert.json', { cache: 'no-store' });
+    if (response && response.ok) {
+      const config = await response.json();
+      if (config && config.out_cover) {
+        // 确保路径以 / 开头
+        coverDir = config.out_cover.startsWith('/') 
+          ? config.out_cover 
+          : `/${config.out_cover}`;
+        coverConfigLoaded = true;
+        console.log('[Music] 封面目录配置已加载:', coverDir);
+      }
+    }
+  } catch (e) {
+    console.warn('[Music] 无法加载封面配置，使用默认目录:', e);
+  }
+  coverConfigLoaded = true;
+};
+
 // ============================================
 // 封面提取功能
 // ============================================
@@ -84,10 +110,14 @@ export const getCoverFor = async (src, fallback = true) => {
 
 const tryCoverFromFolder = async (src) => {
   try {
+    // 确保配置已加载
+    await loadCoverConfig();
+    
     const name = decodeURIComponent(src).split('/').pop().replace(/\.[^.]+$/, '');
-    const exts = ['jpg','png','webp'];
+    // 优先使用 webp 格式
+    const exts = ['webp', 'jpg', 'png'];
     for (let i = 0; i < exts.length; i++) {
-      const u = new URL(`/assets/covers/${name}.${exts[i]}`, location.href).href;
+      const u = new URL(`${coverDir}/${name}.${exts[i]}`, location.href).href;
       if (coverFileCache.has(u)) {
         if (coverFileCache.get(u)) return u;
         continue;
