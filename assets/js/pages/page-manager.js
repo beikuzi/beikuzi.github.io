@@ -6,6 +6,7 @@
 import { qs, qsa } from '../utils/utils.js';
 import * as UI from '../ui.js';
 import * as TrophyPage from './trophy-page.js';
+import * as FriendsPage from './friends-page.js';
 
 // 页面配置
 const PAGE_CONFIG = {
@@ -21,6 +22,12 @@ const PAGE_CONFIG = {
     gridSelector: null, // 使用 blank-view
     initFn: async (blankView, pager) => {
       await TrophyPage.initTrophyPage(blankView, pager);
+    }
+  },
+  friends: {
+    gridSelector: null, // 使用 blank-view
+    initFn: async (blankView, pager) => {
+      await FriendsPage.initFriendsPage(blankView, pager);
     }
   },
   // 其他页面可以在这里添加
@@ -109,14 +116,14 @@ export async function navigateToPage(pageId) {
   
   // 获取页面配置
   const config = PAGE_CONFIG[pageId] || PAGE_CONFIG.default;
-  const isTrophyPage = pageId === 'trophy_list';
+  const isBlankViewPage = pageId === 'trophy_list' || pageId === 'friends';
   
   // 显示/隐藏相应的容器
   if (grid) {
-    grid.style.display = isTrophyPage ? 'none' : '';
+    grid.style.display = isBlankViewPage ? 'none' : '';
   }
   if (blankView) {
-    blankView.style.display = isTrophyPage ? '' : 'none';
+    blankView.style.display = isBlankViewPage ? '' : 'none';
   }
   if (pager) {
     pager.style.display = '';
@@ -124,7 +131,7 @@ export async function navigateToPage(pageId) {
   
   // 初始化页面
   try {
-    if (isTrophyPage) {
+    if (isBlankViewPage) {
       await config.initFn(blankView, pager);
     } else {
       config.initFn(grid, pager);
