@@ -59,12 +59,15 @@ export function init() {
   grid = qs('.grid');
   blankView = contentScroll.querySelector('.blank-view');
   if (!blankView && contentScroll) {
-    const footer = contentScroll.querySelector('.footer');
     blankView = document.createElement('section');
     blankView.className = 'blank-view';
     blankView.style.display = 'none';
+    // 插入到 grid 之后，footer 之前
+    const footer = contentScroll.querySelector('.footer');
     if (footer) {
       contentScroll.insertBefore(blankView, footer);
+    } else if (grid && grid.parentNode) {
+      grid.parentNode.insertBefore(blankView, grid.nextSibling);
     } else {
       contentScroll.appendChild(blankView);
     }
@@ -100,10 +103,9 @@ export function init() {
  * 导航到指定页面
  */
 export async function navigateToPage(pageId) {
-  if (currentPageId === pageId) {
-    return; // 已经在当前页面
-  }
-  
+  // 注意：即使页面 ID 相同，也要确保显示/隐藏逻辑正确执行
+  // 因为可能在初始化时 grid 和 blankView 的状态不正确
+  const wasSamePage = currentPageId === pageId;
   currentPageId = pageId;
   
   // 更新标签页激活状态
@@ -129,11 +131,20 @@ export async function navigateToPage(pageId) {
     pager.style.display = '';
   }
   
-  // 初始化页面
+  // 初始化页面（即使页面相同也要执行，确保状态正确）
+  console.log(`[PageManager] 初始化页面: ${pageId}`, { isBlankViewPage, grid: !!grid, blankView: !!blankView });
   try {
     if (isBlankViewPage) {
+      if (!blankView) {
+        console.error(`[PageManager] blankView 不存在，无法初始化页面 ${pageId}`);
+        return;
+      }
       await config.initFn(blankView, pager);
     } else {
+      if (!grid) {
+        console.error(`[PageManager] grid 不存在，无法初始化页面 ${pageId}`);
+        return;
+      }
       config.initFn(grid, pager);
     }
   } catch (error) {
