@@ -1,0 +1,50 @@
+{
+    "import2pip": {
+        "pkg_resources": "setuptools",
+        "cv2": "opencv-python",
+        "PIL": "Pillow",
+        "bs4": "beautifulsoup4",
+        "yaml": "PyYAML",
+        "sklearn": "scikit-learn",
+        "docx": "python-docx"
+    },
+    "import_ignore_folder": [
+        ".misc",
+        ".venv",
+        "venv",
+        "virtualenv",
+        "__pycache__",
+        ".git",
+        ".build_output_dir",
+        "dist",
+        "build"
+    ],
+    "import_ignore_file": [
+        "setup.py",
+        "__init__.py",
+        "0_venv.py",
+        "1_requirements.py",
+        "2_install_import.py",
+        "mypackage.py"
+    ],
+    "import_src": [],
+    "pip_source": 1,
+    "pip_source_list": {
+        "0": {
+            "name": "默认源",
+            "url": null
+        },
+        "1": {
+            "name": "清华源",
+            "url": "https://pypi.tuna.tsinghua.edu.cn/simple"
+        },
+        "2": {
+            "name": "阿里源",
+            "url": "https://mirrors.aliyun.com/pypi/simple/"
+        },
+        "3": {
+            "name": "中科大源",
+            "url": "https://pypi.mirrors.ustc.edu.cn/simple/"
+        }
+    }
+}
