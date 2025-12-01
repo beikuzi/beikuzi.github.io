@@ -389,33 +389,69 @@ export const loadMusicList = async () => {
   if (isLoaded) return;
   
   try {
-    let baseDir = '/assets/music_m4a/';
-    let response = null;
+    let links = [];
+    let baseDir = '/assets/music/';
+    
+    // 首先尝试从 music-list.json 加载
     try {
-      response = await fetch(baseDir, { cache: 'no-store' });
-    } catch (_) {}
-    if (!response || !response.ok) {
-      baseDir = '/assets/music/';
-      response = await fetch(baseDir, { cache: 'no-store' });
-      if (!response.ok) return [];
+      const listResponse = await fetch('/assets/music-list.json', { cache: 'no-store' });
+      if (listResponse && listResponse.ok) {
+        const fileList = await listResponse.json();
+        if (Array.isArray(fileList) && fileList.length > 0) {
+          links = fileList.map(filename => {
+            // 检查是否是 m4a 格式，如果是则使用 music_m4a 目录
+            if (filename.toLowerCase().endsWith('.m4a')) {
+              return `/assets/music_m4a/${filename}`;
+            }
+            return `/assets/music/${filename}`;
+          });
+        }
+      }
+    } catch (e) {
+      console.warn('[Music] 无法从 music-list.json 加载，尝试目录列表:', e);
     }
     
-    const html = await response.text();
-    const div = document.createElement('div');
-    div.innerHTML = html;
+    // 如果 JSON 加载失败，尝试从目录列表获取（作为后备方案）
+    if (links.length === 0) {
+      let response = null;
+      try {
+        response = await fetch('/assets/music_m4a/', { cache: 'no-store' });
+      } catch (_) {}
+      if (!response || !response.ok) {
+        response = await fetch('/assets/music/', { cache: 'no-store' });
+        if (!response || !response.ok) {
+          console.warn('[Music] 无法加载音乐列表');
+          return;
+        }
+        baseDir = '/assets/music/';
+      } else {
+        baseDir = '/assets/music_m4a/';
+      }
+      
+      const html = await response.text();
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      
+      // 提取音频文件链接
+      links = [...div.querySelectorAll('a')]
+        .map(a => a.getAttribute('href'))
+        .filter(href => href && /\.(m4a|mp3|ogg|wav)$/i.test(href))
+        .map(href => {
+          const raw = /^(https?:|\/)/.test(href) ? href : `${baseDir}${href}`;
+          try {
+            return new URL(raw, location.href).href;
+          } catch (e) {
+            return raw;
+          }
+        });
+    }
     
-    // 提取音频文件链接
-    let links = [...div.querySelectorAll('a')]
-      .map(a => a.getAttribute('href'))
-      .filter(href => href && /\.(m4a|mp3|ogg|wav)$/i.test(href));
-    
-    // 去重（使用绝对路径）
+    // 去重
     const seen = new Set();
     links = links.filter(href => {
-      const raw = /^(https?:|\/)/. test(href) ? href : `${baseDir}${href}`;
-      let abs = raw;
+      let abs = href;
       try {
-        abs = new URL(raw, location.href).href;
+        abs = new URL(href, location.href).href;
       } catch (e) {}
       
       if (seen.has(abs)) return false;
@@ -431,11 +467,16 @@ export const loadMusicList = async () => {
     links.forEach((href, i) => {
         const name = decodeURIComponent(href).split('/').pop()
           .replace(/\.[^.]+$/, '');
-        const raw = /^(https?:|\/)/. test(href) ? href : `${baseDir}${href}`;
-        let src = raw;
+        // href 已经是绝对路径了
+        let src = href;
         try {
-          src = new URL(raw, location.href).href;
-        } catch (e) {}
+          src = new URL(href, location.href).href;
+        } catch (e) {
+          // 如果不是完整 URL，尝试构建
+          if (!/^(https?:|\/)/.test(href)) {
+            src = `${baseDir}${href}`;
+          }
+        }
         
         const button = document.createElement('button');
         button.className = 'music-item';
