@@ -310,15 +310,36 @@ export const play = (index = 0) => {
   playlist[currentIndex].element.classList.add('active');
   
   // 异步展示封面（短暂显示后隐藏）
+  // 只有在音乐列表展开时才显示封面
   (async () => {
     const coverBox = qs('.music-cover');
     const coverImg = coverBox ? coverBox.querySelector('img') : null;
     if (!coverBox || !coverImg) return;
     
+    // 检查音乐列表是否展开的辅助函数
+    const isMusicListOpen = () => {
+      const musicPop = qs('#music-pop');
+      const musicWrap = qs('.music-wrap');
+      return (musicPop && musicPop.classList.contains('show')) || 
+             (musicWrap && musicWrap.classList.contains('open'));
+    };
+    
+    // 如果音乐列表是收起状态，不显示封面
+    if (!isMusicListOpen()) {
+      coverBox.classList.remove('show');
+      return;
+    }
+    
     const token = ++nowCoverToken;
     const url = await getCoverFor(audio.src, true);
     
     if (token !== nowCoverToken) return;
+    
+    // 再次检查音乐列表状态（可能在异步操作期间发生了变化）
+    if (!isMusicListOpen()) {
+      coverBox.classList.remove('show');
+      return;
+    }
     
     if (url) {
       if (coverImg.dataset.src !== url) {
@@ -330,6 +351,11 @@ export const play = (index = 0) => {
       if (nowCoverTimer) clearTimeout(nowCoverTimer);
       nowCoverTimer = setTimeout(() => {
         if (token !== nowCoverToken) return;
+        // 在隐藏前再次检查列表状态
+        if (!isMusicListOpen()) {
+          coverBox.classList.remove('show');
+          return;
+        }
         coverBox.classList.remove('show');
       }, 1000);
     } else {
