@@ -140,11 +140,11 @@ export async function navigateToPage(pageId) {
   }
   // 控制翻页控件的显示/隐藏
   if (pager) {
-    // 成就页面和次元放松区不显示翻页控件
+    // 成就页面和次元放松区不显示翻页控件，但保留占位空间以保持高度一致
     if (pageId === 'trophy_list' || pageId === 'acg_zone') {
-      pager.style.display = 'none';
+      pager.classList.add('pager-hidden');
     } else {
-      pager.style.display = '';
+      pager.classList.remove('pager-hidden');
     }
   }
   
