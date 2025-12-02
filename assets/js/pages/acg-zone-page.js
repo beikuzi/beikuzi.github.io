@@ -1,25 +1,25 @@
 /**
- * 成就页面模块
+ * 次元放松区页面模块
  */
 
 import { qs } from '../utils/utils.js';
 import * as UI from '../ui.js';
 
-let __trophiesLoaded = false;
-let __trophyGrid = null;
+let __acgLoaded = false;
+let __acgGrid = null;
 
 /**
- * 解析 Markdown 格式的成就列表
+ * 解析 Markdown 格式的 ACG 列表
  * 支持格式：
  * - 分类名 | 说明语
  * - 分类名: 说明语
  * - 分类名（仅分类名）
  */
-function parseTrophyMarkdown(text) {
+function parseAcgMarkdown(text) {
   const lines = text.split(/\r?\n/).filter(l => l.trim().length);
   const stack = [];
   const categories = {}; // 存储分类信息 {name, desc}
-  const achievements = []; // 存储成就列表
+  const items = []; // 存储项目列表
   
   const parseIndent = (s) => {
     const m = s.match(/^(\s*)-/);
@@ -30,7 +30,7 @@ function parseTrophyMarkdown(text) {
     return tabs + Math.floor(spaces / 2);
   };
   
-  const parseAch = (s) => {
+  const parseItem = (s) => {
     const m = s.match(/\[([^\]]+)\]\(([^)]+)\)\(([^)]+)\)/);
     if (!m) return null;
     return { name: m[1].trim(), icon: m[2].trim(), desc: m[3].trim() };
@@ -53,16 +53,16 @@ function parseTrophyMarkdown(text) {
     const line = raw.trimEnd();
     const ind = parseIndent(raw);
     const content = line.replace(/^[-\s]+/, '');
-    const ach = parseAch(content);
+    const item = parseItem(content);
     
     // 维护分类栈
     while (stack.length && stack[stack.length - 1].ind >= ind) stack.pop();
     
-    if (ach) {
-      // 成就项
+    if (item) {
+      // 项目项
       const catName = stack.length ? stack[stack.length - 1].name : '未分类';
-      achievements.push({
-        ...ach,
+      items.push({
+        ...item,
         cat: catName
       });
     } else {
@@ -78,7 +78,7 @@ function parseTrophyMarkdown(text) {
     }
   });
   
-  return { categories, achievements };
+  return { categories, items };
 }
 
 /**
@@ -92,11 +92,8 @@ function renderCategoryHeader(catName, catDesc, style, container) {
   icon.className = 'category-icon';
   // 根据分类名选择图标
   const catIcons = {
-    '娱乐': '🎮',
-    '学习': '📚',
-    '技术': '💻',
-    '生活': '🌸',
-    '创作': '✨',
+    '游戏': '🎮',
+    '番剧': '📺',
     '其他': '⭐'
   };
   icon.textContent = catIcons[catName] || '🏆';
@@ -124,9 +121,9 @@ function renderCategoryHeader(catName, catDesc, style, container) {
 }
 
 /**
- * 渲染单个成就卡片
+ * 渲染单个项目卡片
  */
-function renderTrophyCard(achievement, style, container) {
+function renderAcgCard(item, style, container) {
   const card = document.createElement('article');
   card.className = `trophy-card badge-${style}`;
   
@@ -136,15 +133,15 @@ function renderTrophyCard(achievement, style, container) {
   // 图标
   const iconBox = document.createElement('div');
   iconBox.className = 'badge-icon';
-  const isHttp = /^https?:\/\//i.test(achievement.icon);
-  const isImg = isHttp && /\.(png|jpg|jpeg|svg|webp)$/i.test(achievement.icon);
+  const isHttp = /^https?:\/\//i.test(item.icon);
+  const isImg = isHttp && /\.(png|jpg|jpeg|svg|webp)$/i.test(item.icon);
   if (isImg) {
     const img = document.createElement('img');
-    img.src = achievement.icon;
-    img.alt = achievement.name;
+    img.src = item.icon;
+    img.alt = item.name;
     iconBox.appendChild(img);
   } else {
-    iconBox.textContent = achievement.icon;
+    iconBox.textContent = item.icon;
   }
   
   // 信息
@@ -153,11 +150,11 @@ function renderTrophyCard(achievement, style, container) {
   
   const title = document.createElement('div');
   title.className = 'badge-title';
-  title.textContent = achievement.name;
+  title.textContent = item.name;
   
   const desc = document.createElement('div');
   desc.className = 'badge-desc';
-  desc.textContent = achievement.desc;
+  desc.textContent = item.desc;
   
   infoBox.appendChild(title);
   infoBox.appendChild(desc);
@@ -171,7 +168,7 @@ function renderTrophyCard(achievement, style, container) {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
       try {
-        window.open(achievement.icon, '_blank');
+        window.open(item.icon, '_blank');
       } catch (_) {}
     });
   }
@@ -180,38 +177,42 @@ function renderTrophyCard(achievement, style, container) {
 }
 
 /**
- * 渲染成就卡片（按分类分组）
+ * 渲染项目卡片（按分类分组）
  */
-function renderTrophyCards(data, container) {
-  const { categories, achievements } = data;
-  const styles = ['sakura', 'starry', 'kawaii', 'tech', 'magic', 'violet'];
+function renderAcgCards(data, container) {
+  const { categories, items } = data;
+  // 为游戏和番剧分配蓝色和黄色样式
+  const catStyleMap = {
+    '游戏': 'blue',
+    '番剧': 'yellow'
+  };
   const catStyle = {};
-  let styleIdx = 0;
   
   // 为每个分类分配样式
   Object.keys(categories).forEach(catName => {
-    if (!catStyle[catName]) {
-      catStyle[catName] = styles[styleIdx % styles.length];
-      styleIdx++;
+    if (catStyleMap[catName]) {
+      catStyle[catName] = catStyleMap[catName];
+    } else {
+      catStyle[catName] = 'blue'; // 默认蓝色
     }
   });
   
-  // 按分类分组成就
-  const achievementsByCat = {};
-  achievements.forEach(ach => {
-    const cat = ach.cat || '未分类';
-    if (!achievementsByCat[cat]) {
-      achievementsByCat[cat] = [];
+  // 按分类分组项目
+  const itemsByCat = {};
+  items.forEach(item => {
+    const cat = item.cat || '未分类';
+    if (!itemsByCat[cat]) {
+      itemsByCat[cat] = [];
     }
-    achievementsByCat[cat].push(ach);
+    itemsByCat[cat].push(item);
   });
   
   container.innerHTML = '';
   
   // 渲染每个分类
-  Object.keys(achievementsByCat).forEach(catName => {
-    const catAchievements = achievementsByCat[catName];
-    const style = catStyle[catName] || styles[0];
+  Object.keys(itemsByCat).forEach(catName => {
+    const catItems = itemsByCat[catName];
+    const style = catStyle[catName] || 'blue';
     const catDesc = categories[catName] || '';
     
     // 创建分类容器
@@ -221,43 +222,43 @@ function renderTrophyCards(data, container) {
     // 渲染分类标牌
     renderCategoryHeader(catName, catDesc, style, categorySection);
     
-    // 创建成就容器（按行排列）
-    const achievementsContainer = document.createElement('div');
-    achievementsContainer.className = 'trophy-achievements-row';
+    // 创建项目容器（按行排列）
+    const itemsContainer = document.createElement('div');
+    itemsContainer.className = 'trophy-achievements-row';
     
-    // 渲染该分类下的所有成就
-    catAchievements.forEach(ach => {
-      renderTrophyCard(ach, style, achievementsContainer);
+    // 渲染该分类下的所有项目
+    catItems.forEach(item => {
+      renderAcgCard(item, style, itemsContainer);
     });
     
-    categorySection.appendChild(achievementsContainer);
+    categorySection.appendChild(itemsContainer);
     container.appendChild(categorySection);
   });
 }
 
 /**
- * 加载成就数据
+ * 加载 ACG 数据
  */
-async function loadTrophies() {
-  const mdUrl = '/assets/docs/trophy_list.md';
+async function loadAcg() {
+  const mdUrl = '/assets/docs/acg_list.md';
   try {
     const res = await fetch(mdUrl, { cache: 'no-store' });
     if (!res || !res.ok) {
-      console.warn('[Trophy] 无法加载成就列表');
+      console.warn('[ACG] 无法加载 ACG 列表');
       return [];
     }
     const text = await res.text();
-    return parseTrophyMarkdown(text);
+    return parseAcgMarkdown(text);
   } catch (error) {
-    console.warn('[Trophy] 加载成就列表失败:', error);
+    console.warn('[ACG] 加载 ACG 列表失败:', error);
     return [];
   }
 }
 
 /**
- * 确保成就网格容器存在
+ * 确保 ACG 网格容器存在
  */
-function ensureTrophyGrid(blankView) {
+function ensureAcgGrid(blankView) {
   if (!blankView) return null;
   
   let grid = blankView.querySelector('.trophy-grid');
@@ -270,29 +271,28 @@ function ensureTrophyGrid(blankView) {
 }
 
 /**
- * 初始化成就页面
+ * 初始化次元放松区页面
  */
-export async function initTrophyPage(blankView, pager) {
+export async function initAcgZonePage(blankView, pager) {
   if (!blankView) {
-    console.warn('[Trophy] blankView 不存在');
+    console.warn('[ACG] blankView 不存在');
     return;
   }
   
   // 确保网格容器存在
-  const grid = ensureTrophyGrid(blankView);
+  const grid = ensureAcgGrid(blankView);
   if (!grid) {
-    console.warn('[Trophy] 无法创建成就网格');
+    console.warn('[ACG] 无法创建 ACG 网格');
     return;
   }
   
-  __trophyGrid = grid;
+  __acgGrid = grid;
   
   // 清空网格，确保每次都能正确显示
-  // 注意：这里只清空网格本身，blankView 的清空由 page-manager 负责
   grid.innerHTML = '';
   
   // 如果已经加载过且有内容，直接返回
-  if (__trophiesLoaded && grid.children.length > 0) {
+  if (__acgLoaded && grid.children.length > 0) {
     return;
   }
   
@@ -302,18 +302,18 @@ export async function initTrophyPage(blankView, pager) {
   }
   
   try {
-    // 加载成就数据
-    const data = await loadTrophies();
+    // 加载 ACG 数据
+    const data = await loadAcg();
     
-    if (data.achievements && data.achievements.length > 0) {
-      // 渲染成就卡片
-      renderTrophyCards(data, grid);
-      __trophiesLoaded = true;
+    if (data.items && data.items.length > 0) {
+      // 渲染项目卡片
+      renderAcgCards(data, grid);
+      __acgLoaded = true;
     } else {
-      grid.innerHTML = '<div style="text-align: center; padding: 40px; color: #999;">暂无成就数据</div>';
+      grid.innerHTML = '<div style="text-align: center; padding: 40px; color: #999;">暂无内容</div>';
     }
   } catch (error) {
-    console.error('[Trophy] 初始化失败:', error);
+    console.error('[ACG] 初始化失败:', error);
     grid.innerHTML = '<div style="text-align: center; padding: 40px; color: #f00;">加载失败，请刷新重试</div>';
   } finally {
     // 移除加载状态
@@ -324,10 +324,10 @@ export async function initTrophyPage(blankView, pager) {
 }
 
 /**
- * 重置成就页面状态（用于重新加载）
+ * 重置次元放松区页面状态（用于重新加载）
  */
-export function resetTrophyPage() {
-  __trophiesLoaded = false;
-  __trophyGrid = null;
+export function resetAcgZonePage() {
+  __acgLoaded = false;
+  __acgGrid = null;
 }
 

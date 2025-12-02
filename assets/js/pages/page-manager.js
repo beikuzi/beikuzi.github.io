@@ -8,6 +8,7 @@ import * as UI from '../ui.js';
 import * as HomePage from './home-page.js';
 import * as TrophyPage from './trophy-page.js';
 import * as FriendsPage from './friends-page.js';
+import * as AcgZonePage from './acg-zone-page.js';
 
 // 页面配置
 const PAGE_CONFIG = {
@@ -21,6 +22,12 @@ const PAGE_CONFIG = {
     gridSelector: null, // 使用 blank-view
     initFn: async (blankView, pager) => {
       await TrophyPage.initTrophyPage(blankView, pager);
+    }
+  },
+  acg_zone: {
+    gridSelector: null, // 使用 blank-view
+    initFn: async (blankView, pager) => {
+      await AcgZonePage.initAcgZonePage(blankView, pager);
     }
   },
   friends: {
@@ -118,7 +125,7 @@ export async function navigateToPage(pageId) {
   
   // 获取页面配置
   const config = PAGE_CONFIG[pageId] || PAGE_CONFIG.default;
-  const isBlankViewPage = pageId === 'trophy_list' || pageId === 'friends';
+  const isBlankViewPage = pageId === 'trophy_list' || pageId === 'acg_zone' || pageId === 'friends';
   
   // 显示/隐藏相应的容器
   if (grid) {
@@ -131,8 +138,14 @@ export async function navigateToPage(pageId) {
       blankView.innerHTML = '';
     }
   }
+  // 控制翻页控件的显示/隐藏
   if (pager) {
-    pager.style.display = '';
+    // 成就页面和次元放松区不显示翻页控件
+    if (pageId === 'trophy_list' || pageId === 'acg_zone') {
+      pager.style.display = 'none';
+    } else {
+      pager.style.display = '';
+    }
   }
   
   // 重置之前页面的状态（只在页面切换时）
@@ -141,6 +154,8 @@ export async function navigateToPage(pageId) {
       HomePage.resetHomePage();
     } else if (prevPageId === 'trophy_list') {
       TrophyPage.resetTrophyPage();
+    } else if (prevPageId === 'acg_zone') {
+      AcgZonePage.resetAcgZonePage();
     } else if (prevPageId === 'friends') {
       FriendsPage.resetFriendsPage();
     }
