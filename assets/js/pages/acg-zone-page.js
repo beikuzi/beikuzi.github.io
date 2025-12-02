@@ -7,6 +7,7 @@ import * as UI from '../ui.js';
 
 let __acgLoaded = false;
 let __acgGrid = null;
+let __categoryObserver = null;
 
 /**
  * 解析 Markdown 格式的 ACG 列表
@@ -87,6 +88,10 @@ function parseAcgMarkdown(text) {
 function renderCategoryHeader(catName, catDesc, style, container) {
   const header = document.createElement('div');
   header.className = `trophy-category-header category-${style}`;
+  // 添加 ID 锚点，用于导航定位
+  const anchorId = `cat-${catName.replace(/\s+/g, '-')}`;
+  header.id = anchorId;
+  header.setAttribute('data-category', catName);
   
   const icon = document.createElement('div');
   icon.className = 'category-icon';
@@ -174,6 +179,112 @@ function renderAcgCard(item, style, container) {
   }
   
   container.appendChild(card);
+}
+
+/**
+ * 创建页面内导航侧边栏
+ */
+function createPageNavSidebar(categories, blankView) {
+  // 检查是否已存在侧边栏
+  let sidebar = blankView.querySelector('.page-nav-sidebar');
+  if (sidebar) {
+    sidebar.remove();
+  }
+  
+  if (Object.keys(categories).length === 0) return null;
+  
+  sidebar = document.createElement('nav');
+  sidebar.className = 'page-nav-sidebar';
+  sidebar.setAttribute('aria-label', '页面导航');
+  
+  const sidebarList = document.createElement('ul');
+  sidebarList.className = 'page-nav-list';
+  
+  // 为每个分类创建导航项
+  Object.keys(categories).forEach(catName => {
+    const listItem = document.createElement('li');
+    listItem.className = 'page-nav-item';
+    
+    const link = document.createElement('a');
+    link.href = `#cat-${catName.replace(/\s+/g, '-')}`;
+    link.className = 'page-nav-link';
+    link.textContent = catName;
+    link.setAttribute('data-category', catName);
+    
+    // 点击事件：平滑滚动到对应区域
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        // 使用平滑滚动，并考虑顶部导航栏的高度
+        const headerOffset = 80; // 顶部导航栏高度
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // 更新 URL hash（不触发页面跳转）
+        history.pushState(null, '', `#acg_zone#${targetId}`);
+      }
+    });
+    
+    listItem.appendChild(link);
+    sidebarList.appendChild(listItem);
+  });
+  
+  sidebar.appendChild(sidebarList);
+  blankView.appendChild(sidebar);
+  return sidebar;
+}
+
+/**
+ * 初始化 Intersection Observer 来高亮当前可见的分类
+ */
+function initCategoryObserver(blankView) {
+  const categoryHeaders = blankView.querySelectorAll('.trophy-category-header');
+  const navLinks = blankView.querySelectorAll('.page-nav-link');
+  
+  if (categoryHeaders.length === 0 || navLinks.length === 0) return;
+  
+  // 创建 Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    // 找到最接近顶部的可见分类
+    let activeEntry = null;
+    let maxRatio = 0;
+    
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+        maxRatio = entry.intersectionRatio;
+        activeEntry = entry;
+      }
+    });
+    
+    // 如果找到了可见的分类，高亮对应的导航链接
+    if (activeEntry) {
+      const categoryName = activeEntry.target.getAttribute('data-category');
+      const navLink = blankView.querySelector(`.page-nav-link[data-category="${categoryName}"]`);
+      
+      navLinks.forEach(link => link.classList.remove('active'));
+      if (navLink) {
+        navLink.classList.add('active');
+      }
+    }
+  }, {
+    root: null,
+    rootMargin: '-100px 0px -60% 0px', // 考虑顶部导航栏高度，只关注上半部分可见的分类
+    threshold: [0, 0.1, 0.3, 0.5, 0.7, 1]
+  });
+  
+  // 观察所有分类标牌
+  categoryHeaders.forEach(header => {
+    observer.observe(header);
+  });
+  
+  return observer;
 }
 
 /**
@@ -309,6 +420,37 @@ export async function initAcgZonePage(blankView, pager) {
       // 渲染项目卡片
       renderAcgCards(data, grid);
       __acgLoaded = true;
+      
+      // 创建页面内导航侧边栏
+      const sidebar = createPageNavSidebar(data.categories, blankView);
+      
+      // 初始化 Intersection Observer
+      if (sidebar) {
+        setTimeout(() => {
+          // 清理旧的 observer
+          if (__categoryObserver) {
+            __categoryObserver.disconnect();
+          }
+          __categoryObserver = initCategoryObserver(blankView);
+        }, 200);
+      }
+      
+      // 如果 URL 中有锚点，滚动到对应位置
+      if (location.hash && location.hash.includes('cat-')) {
+        setTimeout(() => {
+          const targetId = location.hash.split('#').pop();
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 400);
+      }
     } else {
       grid.innerHTML = '<div style="text-align: center; padding: 40px; color: #999;">暂无内容</div>';
     }
@@ -329,5 +471,10 @@ export async function initAcgZonePage(blankView, pager) {
 export function resetAcgZonePage() {
   __acgLoaded = false;
   __acgGrid = null;
+  // 清理 observer
+  if (__categoryObserver) {
+    __categoryObserver.disconnect();
+    __categoryObserver = null;
+  }
 }
 

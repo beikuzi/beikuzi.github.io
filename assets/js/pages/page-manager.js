@@ -9,6 +9,8 @@ import * as HomePage from './home-page.js';
 import * as TrophyPage from './trophy-page.js';
 import * as FriendsPage from './friends-page.js';
 import * as AcgZonePage from './acg-zone-page.js';
+import * as SkillTreePage from './skill-tree-page.js';
+import * as ResumePage from './resume-page.js';
 
 // 页面配置
 const PAGE_CONFIG = {
@@ -34,6 +36,18 @@ const PAGE_CONFIG = {
     gridSelector: null, // 使用 blank-view
     initFn: async (blankView, pager) => {
       await FriendsPage.initFriendsPage(blankView, pager);
+    }
+  },
+  skill_tree: {
+    gridSelector: null, // 使用 blank-view
+    initFn: async (blankView, pager) => {
+      await SkillTreePage.initSkillTreePage(blankView, pager);
+    }
+  },
+  resume: {
+    gridSelector: null, // 使用 blank-view
+    initFn: async (blankView, pager) => {
+      await ResumePage.initResumePage(blankView, pager);
     }
   },
   // 其他页面可以在这里添加
@@ -125,7 +139,7 @@ export async function navigateToPage(pageId) {
   
   // 获取页面配置
   const config = PAGE_CONFIG[pageId] || PAGE_CONFIG.default;
-  const isBlankViewPage = pageId === 'trophy_list' || pageId === 'acg_zone' || pageId === 'friends';
+  const isBlankViewPage = pageId === 'trophy_list' || pageId === 'acg_zone' || pageId === 'friends' || pageId === 'skill_tree' || pageId === 'resume';
   
   // 显示/隐藏相应的容器
   if (grid) {
@@ -140,8 +154,8 @@ export async function navigateToPage(pageId) {
   }
   // 控制翻页控件的显示/隐藏
   if (pager) {
-    // 成就页面和次元放松区不显示翻页控件，但保留占位空间以保持高度一致
-    if (pageId === 'trophy_list' || pageId === 'acg_zone') {
+    // 成就页面、次元放松区、技能树和简历页面不显示翻页控件
+    if (pageId === 'trophy_list' || pageId === 'acg_zone' || pageId === 'skill_tree' || pageId === 'resume') {
       pager.classList.add('pager-hidden');
     } else {
       pager.classList.remove('pager-hidden');
@@ -158,6 +172,10 @@ export async function navigateToPage(pageId) {
       AcgZonePage.resetAcgZonePage();
     } else if (prevPageId === 'friends') {
       FriendsPage.resetFriendsPage();
+    } else if (prevPageId === 'skill_tree') {
+      SkillTreePage.resetSkillTreePage();
+    } else if (prevPageId === 'resume') {
+      ResumePage.resetResumePage();
     }
   }
   

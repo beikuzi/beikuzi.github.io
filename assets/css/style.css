@@ -389,6 +389,24 @@ html{height:100%;overflow:hidden}body{height:100%;overflow:hidden;margin:0;font-
 /* 友链页面容器 */
 .friends-list{padding:24px;width:100%;max-width:none;margin:0;background:transparent;backdrop-filter:none;border-radius:0;overflow:visible}
 
+/* 技能树和简历页面容器 */
+.skill-tree-container,.resume-container{padding:24px;width:100%;max-width:none;margin:0;background:transparent;backdrop-filter:none;border-radius:0;overflow:visible}
+
+/* 页面内导航侧边栏 */
+.page-nav-sidebar{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:20;background:var(--card-bg);backdrop-filter:saturate(1.2) blur(8px);border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);padding:12px 8px;min-width:120px;max-width:180px;transition:opacity .3s ease,transform .3s ease;max-height:80vh;overflow-y:auto}
+.page-nav-sidebar::-webkit-scrollbar{width:4px}
+.page-nav-sidebar::-webkit-scrollbar-track{background:transparent}
+.page-nav-sidebar::-webkit-scrollbar-thumb{background:rgba(0,0,0,.2);border-radius:2px}
+.page-nav-sidebar::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.3)}
+.page-nav-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.page-nav-item{margin:0;padding:0}
+.page-nav-link{display:block;padding:10px 16px;color:var(--text);text-decoration:none;border-radius:10px;font-size:14px;font-weight:500;transition:all .2s ease;position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.page-nav-link:hover{background:rgba(0,0,0,.05);color:var(--accent);transform:translateX(-2px)}
+.page-nav-link.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 2px 8px rgba(255,119,170,.3);font-weight:600}
+.page-nav-link.active::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:#fff;border-radius:0 2px 2px 0}
+@media(max-width:1024px){.page-nav-sidebar{display:none}}
+@media(max-width:768px){.page-nav-sidebar{display:none}}
+
 /* 友链页面标题 */
 .friends-header{display:flex;align-items:center;gap:16px;padding:24px 20px;margin-bottom:32px;background:var(--card-bg);backdrop-filter:saturate(1.2) blur(8px);border-radius:20px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06)}
 .friends-header-icon{font-size:48px;line-height:1;animation:float 3s ease-in-out infinite}
@@ -429,6 +447,20 @@ html{height:100%;overflow:hidden}body{height:100%;overflow:hidden;margin:0;font-
 .friends-empty-icon{font-size:64px;line-height:1;margin-bottom:16px;animation:float 3s ease-in-out infinite}
 .friends-empty-text{font-size:20px;font-weight:600;color:var(--text);margin-bottom:8px}
 .friends-empty-hint{font-size:14px;opacity:.7}
+
+/* 待完成页面样式 */
+.coming-soon-page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;padding:60px 20px;text-align:center}
+.coming-soon-icon{font-size:120px;line-height:1;margin-bottom:24px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))}
+.coming-soon-title{font-size:48px;font-weight:800;margin:0 0 32px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 2px 8px rgba(0,0,0,.1)}
+.coming-soon-content{max-width:600px;width:100%}
+.coming-soon-quote{font-size:20px;font-weight:700;color:var(--accent);margin:0 0 24px;font-style:italic;text-shadow:0 2px 4px rgba(0,0,0,.1);line-height:1.6}
+.coming-soon-text{font-size:18px;color:var(--text);margin:0 0 16px;line-height:1.6}
+.coming-soon-subtitle{font-size:16px;color:var(--muted);margin:0 0 40px;line-height:1.6;opacity:.85}
+.coming-soon-progress{margin-top:40px}
+.progress-bar{width:100%;height:12px;background:var(--glass);border-radius:999px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.1);margin-bottom:16px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .3s ease;box-shadow:0 0 12px rgba(255,119,170,.4)}
+.progress-text{font-size:14px;color:var(--muted);font-weight:600;margin:0}
+@media(max-width:768px){.coming-soon-icon{font-size:80px}.coming-soon-title{font-size:36px}.coming-soon-quote{font-size:18px}.coming-soon-text{font-size:16px}.coming-soon-subtitle{font-size:14px}}
 
 /* 动画 */
 @keyframes friendCardFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
