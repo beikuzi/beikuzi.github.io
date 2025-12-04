@@ -510,13 +510,24 @@ export const setPaginationSource = (selector) => {
   __paginationState.containerEl = qs(__paginationState.containerSel);
   __paginationState.current = 1;
   
-  // 如果翻页功能还未初始化，先初始化必要的元素
-  if (!__paginationState.prev || !__paginationState.next || !__paginationState.sizeSel || !__paginationState.pageSel || !__paginationState.totalText) {
+  // 检查元素是否还在DOM中，如果不在或不存在，重新查找
+  const prevExists = __paginationState.prev && document.contains(__paginationState.prev);
+  const nextExists = __paginationState.next && document.contains(__paginationState.next);
+  const sizeSelExists = __paginationState.sizeSel && document.contains(__paginationState.sizeSel);
+  const pageSelExists = __paginationState.pageSel && document.contains(__paginationState.pageSel);
+  const totalTextExists = __paginationState.totalText && document.contains(__paginationState.totalText);
+  
+  // 如果翻页功能还未初始化，或者元素不在DOM中，重新查找元素
+  if (!prevExists || !nextExists || !sizeSelExists || !pageSelExists || !totalTextExists) {
     __paginationState.prev = qs('.page-prev');
     __paginationState.next = qs('.page-next');
     __paginationState.sizeSel = qs('.page-size');
     __paginationState.pageSel = qs('.page-select');
     __paginationState.totalText = qs('.page-total');
+    // 如果元素被重新创建，需要重新绑定事件监听器
+    if (prevExists || nextExists || sizeSelExists || pageSelExists || totalTextExists) {
+      __paginationState.listenersInitialized = false;
+    }
   }
   
   // 如果找到了所有必要的元素且事件监听器还未初始化，初始化事件监听器

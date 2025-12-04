@@ -12,5 +12,8 @@
     "code_language": "",
     "force_convert": false,
     "recursive_search": false,
-    "remove_image_attrs": true
+    "remove_image_attrs": true,
+    "convert_to_webp": true,
+    "webp_quality": 85,
+    "delete_original_images": true
 }

@@ -4,6 +4,7 @@
 
 import { qs } from '../utils/utils.js';
 import * as UI from '../ui.js';
+import * as SidebarManager from '../utils/sidebar-manager.js';
 
 let __skillTreeContainer = null;
 
@@ -53,7 +54,7 @@ export async function initSkillTreePage(blankView, pager) {
 
   // 渲染待完成页面
   container.innerHTML = `
-    <div class="coming-soon-page">
+    <div class="coming-soon-page" id="skill-tree-content">
       <div class="coming-soon-icon">🌳</div>
       <h1 class="coming-soon-title">技能树</h1>
       <div class="coming-soon-content">
@@ -69,6 +70,13 @@ export async function initSkillTreePage(blankView, pager) {
       </div>
     </div>
   `;
+  
+  // 更新主侧边栏
+  SidebarManager.updateSidebar([{
+    id: 'skill-tree-content',
+    name: '技能树',
+    icon: '🌳'
+  }]);
 
   // 添加进度条动画
   setTimeout(() => {
@@ -96,5 +104,6 @@ export function resetSkillTreePage() {
   if (__skillTreeContainer) {
     __skillTreeContainer.innerHTML = '';
   }
+  SidebarManager.cleanupSidebar();
 }
 

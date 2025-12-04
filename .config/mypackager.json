@@ -1,0 +1,33 @@
+{
+    "build_output_dir": "dist",
+    "build_temp_dir": ".misc/.build/build",
+    "build_spec_dir": ".misc/.build/spec",
+    "default_onefile": true,
+    "default_console": true,
+    "default_clean": true,
+    "extra_data": "",
+    "extra_binary": "",
+    "extra_args": "",
+    "auto_analyze_deps": false,
+    "venv_search_dirs": [
+        ".misc/.venv",
+        ".misc/venv",
+        ".venv",
+        "venv",
+        "env",
+        ".env",
+        "virtualenv",
+        ".virtualenv",
+        "pyenv",
+        ".pyenv"
+    ],
+    "python_search_paths": [
+        "C:\\Python*\\python.exe",
+        "C:\\Program Files\\Python*\\python.exe",
+        "C:\\Program Files (x86)\\Python*\\python.exe",
+        "C:\\Users\\*\\Anaconda*\\python.exe",
+        "C:\\ProgramData\\Anaconda*\\python.exe",
+        "C:\\Users\\*\\AppData\\Local\\Programs\\Python\\Python*\\python.exe"
+    ],
+    "parent_dir_search_depth": 0
+}

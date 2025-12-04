@@ -4,6 +4,7 @@
 
 import { qs } from '../utils/utils.js';
 import * as UI from '../ui.js';
+import * as SidebarManager from '../utils/sidebar-manager.js';
 
 let __trophiesLoaded = false;
 let __trophyGrid = null;
@@ -84,9 +85,10 @@ function parseTrophyMarkdown(text) {
 /**
  * 渲染分类标牌
  */
-function renderCategoryHeader(catName, catDesc, style, container) {
+function renderCategoryHeader(catName, catDesc, style, container, categoryId) {
   const header = document.createElement('div');
   header.className = `trophy-category-header category-${style}`;
+  header.id = categoryId; // 添加 ID 用于定位
   
   const icon = document.createElement('div');
   icon.className = 'category-icon';
@@ -126,9 +128,10 @@ function renderCategoryHeader(catName, catDesc, style, container) {
 /**
  * 渲染单个成就卡片
  */
-function renderTrophyCard(achievement, style, container) {
+function renderTrophyCard(achievement, style, container, itemId) {
   const card = document.createElement('article');
   card.className = `trophy-card badge-${style}`;
+  card.id = itemId; // 添加 ID 用于定位
   
   const wrap = document.createElement('div');
   wrap.className = 'badge';
@@ -209,30 +212,65 @@ function renderTrophyCards(data, container) {
   container.innerHTML = '';
   
   // 渲染每个分类
-  Object.keys(achievementsByCat).forEach(catName => {
+  Object.keys(achievementsByCat).forEach((catName, catIndex) => {
     const catAchievements = achievementsByCat[catName];
     const style = catStyle[catName] || styles[0];
     const catDesc = categories[catName] || '';
+    
+    // 生成分类 ID
+    const categoryId = `trophy-category-${catIndex}-${catName.replace(/\s+/g, '-')}`;
     
     // 创建分类容器
     const categorySection = document.createElement('section');
     categorySection.className = 'trophy-category-section';
     
     // 渲染分类标牌
-    renderCategoryHeader(catName, catDesc, style, categorySection);
+    renderCategoryHeader(catName, catDesc, style, categorySection, categoryId);
     
     // 创建成就容器（按行排列）
     const achievementsContainer = document.createElement('div');
     achievementsContainer.className = 'trophy-achievements-row';
     
     // 渲染该分类下的所有成就
-    catAchievements.forEach(ach => {
-      renderTrophyCard(ach, style, achievementsContainer);
+    catAchievements.forEach((ach, achIndex) => {
+      const itemId = `trophy-item-${catIndex}-${achIndex}-${ach.name.replace(/\s+/g, '-')}`;
+      renderTrophyCard(ach, style, achievementsContainer, itemId);
     });
     
     categorySection.appendChild(achievementsContainer);
     container.appendChild(categorySection);
   });
+  
+  // 生成侧边栏数据并更新主侧边栏
+  const sidebarItems = Object.keys(achievementsByCat).map((catName, catIndex) => {
+    const catAchievements = achievementsByCat[catName];
+    const categoryId = `trophy-category-${catIndex}-${catName.replace(/\s+/g, '-')}`;
+    
+    // 根据分类名选择图标
+    const catIcons = {
+      '娱乐': '🎮',
+      '学习': '📚',
+      '技术': '💻',
+      '生活': '🌸',
+      '创作': '✨',
+      '其他': '⭐'
+    };
+    
+    return {
+      id: categoryId,
+      name: catName,
+      icon: catIcons[catName] || '🏆',
+      children: catAchievements.map((ach, achIndex) => ({
+        id: `trophy-item-${catIndex}-${achIndex}-${ach.name.replace(/\s+/g, '-')}`,
+        name: ach.name
+      }))
+    };
+  });
+  
+  // 更新主侧边栏
+  if (sidebarItems.length > 0) {
+    SidebarManager.updateSidebar(sidebarItems);
+  }
 }
 
 /**
@@ -329,5 +367,6 @@ export async function initTrophyPage(blankView, pager) {
 export function resetTrophyPage() {
   __trophiesLoaded = false;
   __trophyGrid = null;
+  SidebarManager.cleanupSidebar();
 }
 

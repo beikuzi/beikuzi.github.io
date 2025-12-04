@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>北枯紫的札记</title>
 <link rel="icon" type="image/png" href="assets/textures/avatar.png">
-<script>try{var xhr=new XMLHttpRequest();xhr.open('GET','/config.json',false);xhr.send(null);if(xhr.status>=200&&xhr.status<300){var cfg=JSON.parse(xhr.responseText);var w=cfg&&cfg.sidebarWidth;if(typeof w==='number')w=w+"px";if(w){document.documentElement.style.setProperty('--sidebar-width',w);try{localStorage.setItem('sidebarWidth',w)}catch(e){}}else{var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}}else{var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}}catch(e){var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<script>try{var xhr=new XMLHttpRequest();xhr.open('GET','/config.json',false);xhr.send(null);if(xhr.status>=200&&xhr.status<300){var cfg=JSON.parse(xhr.responseText);var w=cfg&&cfg.sidebarWidth;if(typeof w==='number')w=w+"px";if(w){document.documentElement.style.setProperty('--sidebar-width',w);try{localStorage.setItem('sidebarWidth',w)}catch(e){}}else{var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}if(cfg&&cfg.sidebar){var s=cfg.sidebar;if(s.itemIndent)document.documentElement.style.setProperty('--sidebar-item-indent',s.itemIndent);if(s.catMargin)document.documentElement.style.setProperty('--sidebar-cat-margin',s.catMargin);if(s.itemMargin)document.documentElement.style.setProperty('--sidebar-item-margin',s.itemMargin);if(s.categoriesPadding)document.documentElement.style.setProperty('--sidebar-categories-padding',s.categoriesPadding);if(s.catTogglePadding)document.documentElement.style.setProperty('--sidebar-cat-toggle-padding',s.catTogglePadding);if(s.activeIndicatorLeft!==undefined){var ail=s.activeIndicatorLeft;if(typeof ail==='number')ail=ail+"px";document.documentElement.style.setProperty('--sidebar-active-indicator-left',ail)}}}else{var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}}catch(e){var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}</script>
 <script>try{var h=location.hash;if(h&&h!=='#home'){document.write('<style>.grid{display:none}</style>')}}catch(e){}</script>
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
@@ -26,20 +27,7 @@
     </div>
     
     <div class="categories">
-      <div class="cat open">
-        <button class="cat-toggle"><span class="icon">A</span>ACG<span class="arrow">›</span></button>
-        <div class="cat-items">
-          <div class="cat-item"><a href="#post-1">角色设计</a></div>
-          <div class="cat-item"><a href="#post-2">同人创作</a></div>
-        </div>
-      </div>
-      <div class="cat open">
-        <button class="cat-toggle"><span class="icon">T</span>技术<span class="arrow">›</span></button>
-        <div class="cat-items">
-          <div class="cat-item"><a href="#post-3">动效实验</a></div>
-          <div class="cat-item"><a href="#post-4">性能优化</a></div>
-        </div>
-      </div>
+      <!-- 侧边栏内容由 JS 动态加载 -->
     </div>
     <div class="sidebar-resizer"></div>
   </aside>
@@ -88,7 +76,7 @@
       <a href="#skill_tree">技能树</a>
       <a href="#resume">简历</a>
       <a href="#friends">友链</a>
-      <div class="pager pagination-loading" aria-label="翻页">
+      <div class="pager pagination-loading" aria-label="翻页" id="main-pager">
         <button class="page-btn page-prev" aria-label="上一页">‹</button>
         <div class="page-info" aria-live="polite">
           <span class="page-label">第</span>
@@ -107,10 +95,7 @@
     </nav>
     <div class="content-scroll">
     <section class="grid">
-      <article class="card" id="post-1"><div class="card-banner n1"></div><div class="card-body"><div class="card-title">角色配色与光晕</div><div class="card-meta">ACG · 5 min</div><div class="card-tags"><span class="tag">配色</span><span class="tag">UI</span></div></div></article>
-      <article class="card" id="post-2"><div class="card-banner n2"></div><div class="card-body"><div class="card-title">同人插画的光影</div><div class="card-meta">ACG · 6 min</div><div class="card-tags"><span class="tag">插画</span><span class="tag">光影</span></div></div></article>
-      <article class="card" id="post-3"><div class="card-banner n3"></div><div class="card-body"><div class="card-title">CSS 滤镜与玻璃拟态</div><div class="card-meta">技术 · 7 min</div><div class="card-tags"><span class="tag">滤镜</span><span class="tag">UI</span></div></div></article>
-      <article class="card" id="post-4"><div class="card-banner n1"></div><div class="card-body"><div class="card-title">动画性能与节流</div><div class="card-meta">技术 · 8 min</div><div class="card-tags"><span class="tag">性能</span><span class="tag">优化</span></div></div></article>
+      <!-- 文章卡片由 JS 动态加载 -->
     </section>
     </div>
   </main>

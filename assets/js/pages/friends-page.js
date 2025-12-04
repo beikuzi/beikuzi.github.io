@@ -4,6 +4,7 @@
 
 import { qs } from '../utils/utils.js';
 import * as UI from '../ui.js';
+import * as SidebarManager from '../utils/sidebar-manager.js';
 
 let __friendsLoaded = false;
 let __friendsContainer = null;
@@ -103,6 +104,15 @@ function getRandomGradientClass(index) {
 }
 
 /**
+ * 生成友链 ID（用于侧边栏跳转）
+ */
+function generateFriendId(title, index) {
+  // 简化标题作为 ID
+  const safeTitle = title.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g, '-').substring(0, 20);
+  return `friend-${index}-${safeTitle}`;
+}
+
+/**
  * 渲染友链列表
  */
 function renderFriendsList(friends, container) {
@@ -116,7 +126,7 @@ function renderFriendsList(friends, container) {
         <div class="friends-empty-hint">快来添加第一个友链吧~</div>
       </div>
     `;
-    return;
+    return [];
   }
   
   // 添加标题
@@ -135,8 +145,13 @@ function renderFriendsList(friends, container) {
   const grid = document.createElement('div');
   grid.className = 'friends-grid';
   
+  // 用于侧边栏的子项数据
+  const sidebarChildren = [];
+  
   friends.forEach((friend, index) => {
     const card = document.createElement('article');
+    const friendId = generateFriendId(friend.title, index);
+    card.id = friendId;
     card.className = `friend-card ${getRandomGradientClass(index)}`;
     
     // 添加延迟动画
@@ -159,9 +174,17 @@ function renderFriendsList(friends, container) {
     `;
     
     grid.appendChild(card);
+    
+    // 添加到侧边栏子项
+    sidebarChildren.push({
+      id: friendId,
+      name: friend.title
+    });
   });
   
   container.appendChild(grid);
+  
+  return sidebarChildren;
 }
 
 /**
@@ -207,13 +230,27 @@ export async function initFriendsPage(blankView, pager) {
     console.log('[Friends] 加载到的友链数量:', friends.length, friends);
     
     if (friends.length > 0) {
-      // 渲染友链列表
-      renderFriendsList(friends, container);
+      // 渲染友链列表，并获取侧边栏子项数据
+      const sidebarChildren = renderFriendsList(friends, container);
       __friendsLoaded = true;
       console.log('[Friends] 友链列表渲染完成');
       
       // 设置翻页源为友链列表容器
       UI.setPaginationSource('.friends-list');
+      
+      // 为标题添加 ID
+      const header = container.querySelector('.friends-header');
+      if (header) {
+        header.id = 'friends-header';
+      }
+      
+      // 更新主侧边栏（友链页面有一个分类，包含所有友链作为子项）
+      SidebarManager.updateSidebar([{
+        id: 'friends-header',
+        name: '友链小窝',
+        icon: '💫',
+        children: sidebarChildren
+      }]);
     } else {
       console.warn('[Friends] 没有找到友链数据');
       container.innerHTML = `
@@ -249,5 +286,6 @@ export function resetFriendsPage() {
   if (__friendsContainer) {
     __friendsContainer.innerHTML = '';
   }
+  SidebarManager.cleanupSidebar();
 }
 

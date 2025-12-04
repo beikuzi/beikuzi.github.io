@@ -4,6 +4,7 @@
 
 import { qs } from '../utils/utils.js';
 import * as UI from '../ui.js';
+import * as SidebarManager from '../utils/sidebar-manager.js';
 
 let __resumeContainer = null;
 
@@ -53,7 +54,7 @@ export async function initResumePage(blankView, pager) {
 
   // 渲染待完成页面
   container.innerHTML = `
-    <div class="coming-soon-page">
+    <div class="coming-soon-page" id="resume-content">
       <div class="coming-soon-icon">📜</div>
       <h1 class="coming-soon-title">个人简历</h1>
       <div class="coming-soon-content">
@@ -69,6 +70,13 @@ export async function initResumePage(blankView, pager) {
       </div>
     </div>
   `;
+  
+  // 更新主侧边栏
+  SidebarManager.updateSidebar([{
+    id: 'resume-content',
+    name: '个人简历',
+    icon: '📜'
+  }]);
 
   // 添加进度条动画
   setTimeout(() => {
@@ -96,5 +104,6 @@ export function resetResumePage() {
   if (__resumeContainer) {
     __resumeContainer.innerHTML = '';
   }
+  SidebarManager.cleanupSidebar();
 }
 

@@ -628,7 +628,7 @@ const init = async () => {
   UI.initGridLayout();
   UI.setCardHoverEffect('lift');
   UI.initAvatarPopover();
-  UI.addDemoCards(48);
+  // 不再添加示例卡片，由 home-page.js 动态加载文章
   
   // 先初始化翻页功能（必须在页面管理器之前）
   UI.initPagination();

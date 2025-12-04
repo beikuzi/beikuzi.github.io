@@ -1,0 +1,10 @@
+{
+    "input_md": "article/md",
+    "input_mod": "article/md_mod",
+    "output": "assets/articles",
+    "docs_src": "docs",
+    "docs_dest": "assets/docs",
+    "clean_before_deploy": false,
+    "sync_docs": true
+}
+

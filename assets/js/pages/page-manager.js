@@ -11,6 +11,37 @@ import * as FriendsPage from './friends-page.js';
 import * as AcgZonePage from './acg-zone-page.js';
 import * as SkillTreePage from './skill-tree-page.js';
 import * as ResumePage from './resume-page.js';
+import * as ArticlePage from './article-page.js';
+import * as SidebarManager from '../utils/sidebar-manager.js';
+
+/**
+ * 应用页面特定的底部留白
+ */
+function applyPageBottomPadding(pageId) {
+  const config = window.__pageBottomPaddingConfig;
+  if (!config) return;
+  
+  // 解析文章页面路由：article_文章标题
+  let actualPageId = pageId;
+  if (pageId.startsWith('article_')) {
+    actualPageId = 'article';
+  }
+  
+  // 获取该页面的留白配置，如果没有则使用默认值
+  const paddingValue = config[actualPageId] !== undefined ? config[actualPageId] : config.default;
+  if (paddingValue === undefined) return;
+  
+  const padding = typeof paddingValue === 'number' ? `${paddingValue}px` : paddingValue;
+  document.documentElement.style.setProperty('--page-bottom-padding', padding);
+  
+  // 如果是文章页面，同时设置文章页面的底部padding
+  if (actualPageId === 'article') {
+    document.documentElement.style.setProperty('--article-page-bottom-padding', padding);
+  } else {
+    // 非文章页面时，使用默认值
+    document.documentElement.style.setProperty('--article-page-bottom-padding', '60px');
+  }
+}
 
 // 页面配置
 const PAGE_CONFIG = {
@@ -50,7 +81,13 @@ const PAGE_CONFIG = {
       await ResumePage.initResumePage(blankView, pager);
     }
   },
-  // 其他页面可以在这里添加
+  // 文章详情页面（动态路由，格式：article_文章标题）
+  article: {
+    gridSelector: null,
+    initFn: async (blankView, pager, articleTitle) => {
+      await ArticlePage.initArticlePage(blankView, pager, articleTitle);
+    }
+  },
   default: {
     gridSelector: '.grid',
     initFn: (grid, pager) => {
@@ -123,6 +160,15 @@ export function init() {
  * 导航到指定页面
  */
 export async function navigateToPage(pageId) {
+  // 解析文章页面路由：article_文章标题
+  let articleTitle = null;
+  let actualPageId = pageId;
+  
+  if (pageId.startsWith('article_')) {
+    articleTitle = decodeURIComponent(pageId.substring(8));
+    actualPageId = 'article';
+  }
+  
   // 注意：即使页面 ID 相同，也要确保显示/隐藏逻辑正确执行
   // 因为可能在初始化时 grid 和 blankView 的状态不正确
   const wasSamePage = currentPageId === pageId;
@@ -131,15 +177,19 @@ export async function navigateToPage(pageId) {
   
   // 更新标签页激活状态
   const tabs = qsa('nav.tabs a');
-  const targetHash = `#${pageId}`;
+  const targetHash = `#${actualPageId === 'article' ? 'home' : pageId}`;
   tabs.forEach(tab => {
     const href = tab.getAttribute('href') || '';
+    // 文章页面时，首页标签保持激活
     tab.classList.toggle('active', href === targetHash);
   });
   
   // 获取页面配置
-  const config = PAGE_CONFIG[pageId] || PAGE_CONFIG.default;
-  const isBlankViewPage = pageId === 'trophy_list' || pageId === 'acg_zone' || pageId === 'friends' || pageId === 'skill_tree' || pageId === 'resume';
+  const config = PAGE_CONFIG[actualPageId] || PAGE_CONFIG.default;
+  const isBlankViewPage = actualPageId === 'trophy_list' || actualPageId === 'acg_zone' || actualPageId === 'friends' || actualPageId === 'skill_tree' || actualPageId === 'resume' || actualPageId === 'article';
+  
+  // 应用页面特定的底部留白
+  applyPageBottomPadding(pageId);
   
   // 显示/隐藏相应的容器
   if (grid) {
@@ -152,18 +202,49 @@ export async function navigateToPage(pageId) {
       blankView.innerHTML = '';
     }
   }
-  // 控制翻页控件的显示/隐藏
+  // 控制翻页控件的显示/隐藏和恢复
   if (pager) {
-    // 成就页面、次元放松区、技能树和简历页面不显示翻页控件
-    if (pageId === 'trophy_list' || pageId === 'acg_zone' || pageId === 'skill_tree' || pageId === 'resume') {
+    // 成就页面、次元放松区、技能树、简历页面不显示翻页控件
+    // 文章页面会显示文章导航（在 article-page.js 中处理）
+    if (actualPageId === 'trophy_list' || actualPageId === 'acg_zone' || actualPageId === 'skill_tree' || actualPageId === 'resume') {
+      pager.classList.add('pager-hidden');
+    } else if (actualPageId === 'article') {
+      // 文章页面：先隐藏，等文章加载完成后会替换为导航
       pager.classList.add('pager-hidden');
     } else {
+      // 首页等其他页面：显示正常的翻页控件
       pager.classList.remove('pager-hidden');
+      // 恢复翻页控件的原始内容（如果被替换了）
+      if (pager.classList.contains('article-nav-pager') || !pager.querySelector('.page-prev')) {
+        // 如果被替换为文章导航，或者缺少翻页控件元素，需要恢复
+        pager.innerHTML = `
+          <button class="page-btn page-prev" aria-label="上一页">‹</button>
+          <div class="page-info" aria-live="polite">
+            <span class="page-label">第</span>
+            <select class="page-select" aria-label="选择页码"></select>
+            <span class="page-label">页</span>
+            <span class="page-total"></span>
+          </div>
+          <button class="page-btn page-next" aria-label="下一页">›</button>
+          <select class="page-size" aria-label="每页数量">
+            <option value="12" selected>12</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="120">120</option>
+          </select>
+        `;
+        // 移除所有可能隐藏翻页控件的类
+        pager.className = 'pager';
+        pager.classList.remove('pagination-loading', 'content-loading', 'pager-hidden', 'article-nav-pager');
+      }
     }
   }
   
   // 重置之前页面的状态（只在页面切换时）
   if (prevPageId !== pageId) {
+    // 清理之前页面的侧边栏
+    SidebarManager.cleanupSidebar();
+    
     if (prevPageId === 'home') {
       HomePage.resetHomePage();
     } else if (prevPageId === 'trophy_list') {
@@ -176,18 +257,25 @@ export async function navigateToPage(pageId) {
       SkillTreePage.resetSkillTreePage();
     } else if (prevPageId === 'resume') {
       ResumePage.resetResumePage();
+    } else if (prevPageId.startsWith('article_')) {
+      ArticlePage.resetArticlePage();
     }
   }
   
   // 初始化页面（即使页面相同也要执行，确保状态正确）
-  console.log(`[PageManager] 初始化页面: ${pageId}`, { isBlankViewPage, grid: !!grid, blankView: !!blankView });
+  console.log(`[PageManager] 初始化页面: ${pageId}`, { isBlankViewPage, grid: !!grid, blankView: !!blankView, articleTitle });
   try {
     if (isBlankViewPage) {
       if (!blankView) {
         console.error(`[PageManager] blankView 不存在，无法初始化页面 ${pageId}`);
         return;
       }
-      await config.initFn(blankView, pager);
+      // 文章页面需要传递文章标题
+      if (actualPageId === 'article' && articleTitle) {
+        await config.initFn(blankView, pager, articleTitle);
+      } else {
+        await config.initFn(blankView, pager);
+      }
     } else {
       if (!grid) {
         console.error(`[PageManager] grid 不存在，无法初始化页面 ${pageId}`);

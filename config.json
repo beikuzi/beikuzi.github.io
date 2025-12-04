@@ -1,5 +1,15 @@
 {
-  "sidebarWidth": "200px",
+  "sidebarWidth": "215px",
+  "pageBottomPadding": {
+    "default": 300,
+    "home": 100,
+    "acg_zone": 300,
+    "trophy_list": 300,
+    "skill_tree": 200,
+    "resume": 200,
+    "friends": 200,
+    "article": 100
+  },
   "defaultEffect": "gradient",
   "darkModeDefault": false,
   "live2dDefault": false,
@@ -59,6 +69,30 @@
     "rowHeight": 42
   },
   "paginationStyle": "dreamy",
-  "paginationStyleSelector": false
+  "paginationStyleSelector": false,
+  "sidebar": {
+    "catMargin": "10px",
+    "itemMargin": "6px",
+    "catItemsGap": "10px",
+    "scrollOffset": 150,
+    "bottomPadding": 200,
+    "contentBottomPadding": 100,
+    "categoriesPadding": "8px",
+    "catTogglePadding": "6px 12px",
+    "itemPadding": "4px 12px 4px 42px",
+    "itemIndent": "28px",
+    "activeIndicatorLeft": "14px"
+  },
+  "fonts": {
+    "article": {
+      "family": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei UI\", \"Microsoft Yahei\", \"WenQuanYi Micro Hei\", \"Hiragino Sans GB\", \"STHeiti\", \"SimSun\", sans-serif",
+      "size": "16px",
+      "lineHeight": "2"
+    },
+    "body": {
+      "family": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei UI\", \"Microsoft Yahei\", \"WenQuanYi Micro Hei\", \"Hiragino Sans GB\", \"STHeiti\", \"SimSun\", \"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+      "size": "14px"
+    }
+  }
 }
 

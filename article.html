@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文章 - 北枯紫的札记</title>
+<link rel="icon" type="image/png" href="assets/textures/avatar.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg-start: #ffeaf3;
+  --bg-end: #e6f7ff;
+  --accent: #ff77aa;
+  --accent2: #88e0ff;
+  --text: #202124;
+  --muted: #5f6368;
+  --card-bg: rgba(255, 255, 255, .92);
+  --glass: rgba(255, 255, 255, .7);
+  --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--article-font-family, "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft Yahei", "WenQuanYi Micro Hei", "Hiragino Sans GB", "STHeiti", "SimSun", sans-serif);
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  background-attachment: fixed;
+}
+
+/* 装饰性星星 */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.star:nth-child(2n) { background: var(--accent2); animation-delay: 1s; }
+.star:nth-child(3n) { animation-delay: 2s; width: 6px; height: 6px; }
+.star:nth-child(5n) { animation-delay: 0.5s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* 主容器 */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 32px 80px;
+}
+
+
+/* 文章头部 */
+.article-header {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.article-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+  background-size: 200% 100%;
+  animation: gradient-flow 3s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.article-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 装饰角标 */
+.corner-decoration {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.15;
+}
+
+/* 文章内容 */
+.article-content {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: var(--shadow);
+  line-height: var(--article-line-height, 2);
+  font-size: var(--article-font-size, 16px);
+  font-family: var(--article-font-family, "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft Yahei", "WenQuanYi Micro Hei", "Hiragino Sans GB", "STHeiti", "SimSun", sans-serif);
+}
+
+.article-content h1, .article-content h2, .article-content h3,
+.article-content h4, .article-content h5, .article-content h6 {
+  margin: 2em 0 1em;
+  font-weight: 600;
+  color: var(--text);
+  position: relative;
+}
+
+.article-content h1 { font-size: 1.8rem; }
+.article-content h2 {
+  font-size: 1.5rem;
+  padding-left: 16px;
+  border-left: 4px solid var(--accent);
+}
+.article-content h3 { font-size: 1.25rem; color: var(--accent); }
+
+.article-content p {
+  margin: 1.2em 0;
+  text-align: justify;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin: 24px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.article-content img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(255, 119, 170, 0.2);
+}
+
+.article-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 2px dashed var(--accent);
+  transition: all 0.2s ease;
+}
+
+.article-content a:hover {
+  border-bottom-style: solid;
+  background: linear-gradient(transparent 60%, rgba(255, 119, 170, 0.2) 60%);
+}
+
+.article-content code {
+  background: linear-gradient(135deg, rgba(255, 119, 170, 0.1), rgba(136, 224, 255, 0.1));
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: "Fira Code", "Consolas", monospace;
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
+.article-content pre {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
+  padding: 20px 24px;
+  border-radius: 16px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.article-content pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--text);
+}
+
+.article-content blockquote {
+  border-left: 4px solid var(--accent);
+  margin: 1.5em 0;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, rgba(255, 119, 170, 0.05), rgba(136, 224, 255, 0.05));
+  border-radius: 0 16px 16px 0;
+  font-style: italic;
+}
+
+.article-content blockquote p {
+  margin: 0.5em 0;
+}
+
+.article-content ul, .article-content ol {
+  margin: 1.2em 0;
+  padding-left: 1.5em;
+}
+
+.article-content li {
+  margin: 0.6em 0;
+  position: relative;
+}
+
+.article-content ul li::marker {
+  color: var(--accent);
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.article-content th, .article-content td {
+  padding: 14px 18px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.article-content th {
+  background: linear-gradient(135deg, rgba(255, 119, 170, 0.1), rgba(136, 224, 255, 0.1));
+  font-weight: 600;
+}
+
+.article-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+  margin: 3em 0;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 119, 170, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* 错误状态 */
+.error {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.error h2 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.error p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* 图片预览 */
+.image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.image-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.image-overlay.show img {
+  transform: scale(1);
+}
+
+.image-overlay .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.image-overlay .close-btn:hover {
+  background: var(--accent);
+  transform: rotate(90deg);
+}
+
+/* 底部装饰 */
+.footer-decoration {
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.footer-decoration .heart {
+  color: var(--accent);
+  animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .container { padding: 16px; }
+  .article-header { padding: 24px; }
+  .article-content { padding: 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- 装饰星星 -->
+<div class="stars" id="stars"></div>
+
+<!-- 图片预览层 -->
+<div class="image-overlay" id="imageOverlay">
+  <button class="close-btn" onclick="closeImagePreview()">×</button>
+  <img id="previewImage" src="" alt="预览">
+</div>
+
+<div class="container">
+  <div id="article-container">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>正在加载文章...</p>
+    </div>
+  </div>
+  
+  <div class="footer-decoration">
+    <p>Made with <span class="heart">♥</span> by 北枯紫</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+// 生成装饰星星
+function createStars() {
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 30; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    container.appendChild(star);
+  }
+}
+
+// 获取文章标题
+function getArticleTitle() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('title') || '';
+}
+
+// 修正图片路径
+function fixImagePaths(html) {
+  return html.replace(/src="\.\/images\//g, 'src="/assets/articles/images/');
+}
+
+// 图片预览
+function openImagePreview(src) {
+  const overlay = document.getElementById('imageOverlay');
+  const img = document.getElementById('previewImage');
+  img.src = src;
+  overlay.classList.add('show');
+}
+
+function closeImagePreview() {
+  const overlay = document.getElementById('imageOverlay');
+  overlay.classList.remove('show');
+}
+
+// 点击遮罩关闭
+document.getElementById('imageOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeImagePreview();
+});
+
+// ESC 关闭
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeImagePreview();
+});
+
+// 加载文章
+async function loadArticle() {
+  const title = getArticleTitle();
+  const container = document.getElementById('article-container');
+  
+  if (!title) {
+    container.innerHTML = `
+      <div class="error">
+        <h2>🤔</h2>
+        <p>未指定文章</p>
+      </div>
+    `;
+    return;
+  }
+  
+  // 更新页面标题
+  document.title = `${title} - 北枯紫的札记`;
+  
+  try {
+    const res = await fetch(`/assets/articles/${encodeURIComponent(title)}.md`, { cache: 'no-store' });
+    if (!res.ok) throw new Error('文章不存在');
+    
+    const content = await res.text();
+    
+    // 配置 marked
+    marked.setOptions({
+      breaks: true,
+      gfm: true
+    });
+    
+    // 渲染 Markdown
+    let html = marked.parse(content);
+    html = fixImagePaths(html);
+    
+    container.innerHTML = `
+      <header class="article-header">
+        <svg class="corner-decoration" viewBox="0 0 100 100">
+          <circle cx="80" cy="20" r="15" fill="currentColor" style="color: var(--accent)"/>
+          <circle cx="95" cy="40" r="8" fill="currentColor" style="color: var(--accent2)"/>
+          <circle cx="70" cy="45" r="5" fill="currentColor" style="color: var(--accent)"/>
+        </svg>
+        <h1 class="article-title">${escapeHtml(title)}</h1>
+        <div class="article-meta">
+          <span>📅 ${new Date().toLocaleDateString('zh-CN')}</span>
+          <span>📖 约 ${Math.ceil(content.length / 500)} 分钟阅读</span>
+        </div>
+      </header>
+      <article class="article-content">
+        ${html}
+      </article>
+    `;
+    
+    // 绑定图片点击事件
+    container.querySelectorAll('.article-content img').forEach(img => {
+      img.addEventListener('click', () => openImagePreview(img.src));
+    });
+    
+  } catch (error) {
+    container.innerHTML = `
+      <div class="error">
+        <h2>😢</h2>
+        <p>文章加载失败: ${escapeHtml(error.message)}</p>
+      </div>
+    `;
+  }
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// 加载并应用字体配置
+async function loadFontConfig() {
+  try {
+    const res = await fetch('/config.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    
+    const config = await res.json();
+    if (config.fonts && config.fonts.article) {
+      const articleFont = config.fonts.article;
+      if (articleFont.family) {
+        document.documentElement.style.setProperty('--article-font-family', articleFont.family);
+      }
+      if (articleFont.size) {
+        document.documentElement.style.setProperty('--article-font-size', articleFont.size);
+      }
+      if (articleFont.lineHeight) {
+        document.documentElement.style.setProperty('--article-line-height', articleFont.lineHeight);
+      }
+    }
+  } catch (error) {
+    console.warn('字体配置加载失败:', error);
+  }
+}
+
+// 初始化
+createStars();
+loadFontConfig();
+loadArticle();
+</script>
+</body>
+</html>
+
