@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>北枯紫的札记</title>
+<link rel="icon" type="image/png" href="assets/textures/avatar.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<script>try{var xhr=new XMLHttpRequest();xhr.open('GET','/.config/blog_config.json',false);xhr.send(null);if(xhr.status>=200&&xhr.status<300){var cfg=JSON.parse(xhr.responseText);var w=cfg&&cfg.sidebarWidth;if(typeof w==='number')w=w+"px";if(w){document.documentElement.style.setProperty('--sidebar-width',w);try{localStorage.setItem('sidebarWidth',w)}catch(e){}}else{var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}if(cfg&&cfg.sidebar){var s=cfg.sidebar;if(s.itemIndent)document.documentElement.style.setProperty('--sidebar-item-indent',s.itemIndent);if(s.catMargin)document.documentElement.style.setProperty('--sidebar-cat-margin',s.catMargin);if(s.itemMargin)document.documentElement.style.setProperty('--sidebar-item-margin',s.itemMargin);if(s.categoriesPadding)document.documentElement.style.setProperty('--sidebar-categories-padding',s.categoriesPadding);if(s.catTogglePadding)document.documentElement.style.setProperty('--sidebar-cat-toggle-padding',s.catTogglePadding);if(s.activeIndicatorLeft!==undefined){var ail=s.activeIndicatorLeft;if(typeof ail==='number')ail=ail+"px";document.documentElement.style.setProperty('--sidebar-active-indicator-left',ail)}}}else{var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}}catch(e){var lw=localStorage.getItem('sidebarWidth');if(lw)document.documentElement.style.setProperty('--sidebar-width',lw)}</script>
+<script>try{var h=location.hash;if(h&&h!=='#home'){document.write('<style>.grid{display:none}</style>')}}catch(e){}</script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+:root{--bg-start:#f8ffdf;--bg-end:#eaf9ff;--accent:#ff66c4;--accent2:#7cf5ff}
+.card{box-shadow:0 12px 34px rgba(255,102,196,.2)}
+.card-banner.n1{background-image:linear-gradient(135deg,#ffbef3,#a2f3ff)}
+.card-banner.n2{background-image:linear-gradient(135deg,#fff1c1,#ffc1e3)}
+.card-banner.n3{background-image:linear-gradient(135deg,#c1fff5,#e1d7ff)}
+.brand{color:#ff66c4}
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar open">
+    <div class="sidebar-header">
+      <div class="brand">导航喵</div>
+      <button class="collapse-all">折叠/展开</button>
+    </div>
+    
+    <div class="categories">
+      <!-- 侧边栏内容由 JS 动态加载 -->
+    </div>
+    <div class="sidebar-resizer"></div>
+  </aside>
+  <button class="sidebar-edge" aria-label="收起/展开">‹</button>
+  <main class="content">
+    <div class="topbar">
+      <div class="title"><span class="avatar-wrap"><img class="avatar" src="assets/textures/avatar.png" alt="avatar"><div id="avatar-pop" class="avatar-pop"><img class="avatar-large" src="assets/textures/avatar.png" alt="avatar"><div class="avatar-actions"><button class="avatar-btn">查看资料</button><button class="avatar-btn">更换头像</button><button class="avatar-btn">复制链接</button></div></div></span>不忘初心，方得始终</div>
+      <div class="controls">
+        <div class="top-search" aria-label="搜索">
+          <span class="icon">🔍</span>
+          <input type="text" placeholder="搜索" aria-label="搜索">
+        </div>
+        <div class="music-wrap">
+          <button class="music-btn" aria-label="音乐"><span class="music-icon">🎵</span></button>
+          <div id="music-pop" class="music-pop" aria-label="选择音乐"></div>
+          <div class="music-cover" aria-label="音乐封面"><img alt="封面"></div>
+          <div class="music-ctrl" aria-label="音乐控制">
+            <button class="mc-volume" aria-label="音量">🔊</button>
+            <button class="mc-mode" aria-label="播放模式" title="播放模式">🔁</button>
+            <button class="mc-prev" aria-label="上一首">⏮</button>
+            <button class="mc-play" aria-label="播放/暂停">▶</button>
+            <button class="mc-next" aria-label="下一首">⏭</button>
+            <button class="mc-mute active" aria-pressed="true" title="失焦静音">🛌</button>
+            <input class="mc-progress" type="range" min="0" max="100" value="0" aria-label="进度">
+          </div>
+          <div class="mc-volume-pop" aria-label="音量调节">
+            <input class="mc-vol-vert" type="range" min="0" max="100" value="60">
+            <div class="mc-vol-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 下拉箭头元素固定居中于视口，为避免受侧栏影响，放在 topbar 外层。请勿移动回到 .topbar 内 -->
+    <button class="guide-toggle" aria-label="展开封面"><svg class="guide-icon" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline class="line1" points="12,8 60,36 108,8"></polyline><polyline class="line2" points="12,8 60,36 108,8"></polyline></svg></button>
+    <div id="hero-cover" class="hero-cover" aria-label="个人封面">
+      <video id="hero-video" src="assets/videos/lty.mp4" muted loop playsinline preload="metadata">
+        <source src="assets/videos/lty.mp4" type="video/mp4">
+      </video>
+
+      <button id="cover-exit" class="cover-exit" aria-label="上拉返回"><svg class="guide-icon" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline class="line1" points="12,8 60,36 108,8"></polyline><polyline class="line2" points="12,8 60,36 108,8"></polyline></svg></button>
+    </div>
+    <nav class="tabs">
+      <a class="active" href="#home">首页</a>
+      <a href="#acg_zone">次元放松区</a>
+      <a href="#trophy_list">成就</a>
+      <a href="#skill_tree">技能树</a>
+      <a href="#resume">简历</a>
+      <a href="#friends">友链</a>
+      <div class="pager pagination-loading" aria-label="翻页" id="main-pager">
+        <button class="page-btn page-prev" aria-label="上一页">‹</button>
+        <div class="page-info" aria-live="polite">
+          <span class="page-label">第</span>
+          <select class="page-select" aria-label="选择页码"></select>
+          <span class="page-label">页</span>
+          <span class="page-total"></span>
+        </div>
+        <button class="page-btn page-next" aria-label="下一页">›</button>
+        <select class="page-size" aria-label="每页数量">
+          <option value="12" selected>12</option>
+          <option value="30">30</option>
+          <option value="60">60</option>
+          <option value="120">120</option>
+        </select>
+      </div>
+    </nav>
+    <div class="content-scroll">
+    <section class="grid">
+      <!-- 文章卡片由 JS 动态加载 -->
+    </section>
+    </div>
+  </main>
+  <div class="bottom-tools">
+    <button class="toggle-sidebar" aria-label="侧栏">📜</button>
+    <button class="toggle-dark" aria-label="夜间模式"><span class="bulb">💡</span></button>
+    <button class="toggle-effects" aria-label="特效开关">✨</button>
+  </div>
+  <div class="right-tools">
+    <select id="effect-select" class="effect-select">
+      <option value="none">无背景动效</option>
+      <option value="ripple">点击涟漪</option>
+      <option value="starTrail">星星拖尾</option>
+    </select>
+    <select id="pagination-style-select" class="effect-select" title="翻页样式">
+      <option value="default">默认翻页</option>
+      <option value="sakura">樱花风格</option>
+      <option value="candy">糖果风格</option>
+      <option value="starry">星空风格</option>
+      <option value="dreamy">梦幻风格</option>
+      <option value="tech">科技风格</option>
+      <option value="kawaii">可爱风格</option>
+      <option value="magic">魔法风格</option>
+      <option value="minimal">简约风格</option>
+    </select>
+    <label class="switch"><input type="checkbox" id="toggle-live2d">Live2D</label>
+  </div>
+  <div class="mask"></div>
+</div>
+<script type="module" src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const defaultTitle='北枯紫的札记';
+  const hiddenTitle='看不见我喵(⁎˃ᆺ˂)';
+  const setHidden=()=>{document.title=hiddenTitle};
+  const setVisible=()=>{document.title=defaultTitle};
+  window.addEventListener('blur',setHidden);
+  window.addEventListener('focus',setVisible);
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){setHidden()}else{setVisible()}
+  });
+});
+</script>
+</body>
+</html>
+

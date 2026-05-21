@@ -1,0 +1,20 @@
+{
+    "input_dir": "C:\\github\\beikuzi.github.io\\article\\word",
+    "output_dir": "C:\\github\\beikuzi.github.io\\article\\md",
+    "images_dir": "C:\\github\\beikuzi.github.io\\article\\images",
+    "output_format": "markdown",
+    "file_patterns": [
+        "*.docx"
+    ],
+    "extract_images": true,
+    "include_metadata": true,
+    "preserve_line_breaks": true,
+    "use_code_block": true,
+    "code_language": "",
+    "force_convert": false,
+    "recursive_search": false,
+    "remove_image_attrs": true,
+    "convert_to_webp": true,
+    "webp_quality": 85,
+    "delete_original_images": true
+}

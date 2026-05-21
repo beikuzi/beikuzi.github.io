@@ -1,0 +1,169 @@
+/* 糖果风格 - 多彩活泼，充满活力 */
+.pager {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, 
+    rgba(255, 154, 162, 0.95) 0%,
+    rgba(255, 183, 178, 0.95) 25%,
+    rgba(255, 218, 193, 0.95) 50%,
+    rgba(226, 240, 203, 0.95) 75%,
+    rgba(181, 234, 215, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(255, 154, 162, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.pager::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #ff9aa2, #ffb3ba, #ffc8c8, #ffdfd3, 
+    #e2f0cb, #b5ead7, #c7ceea, #ff9aa2);
+  background-size: 400% 400%;
+  border-radius: 18px;
+  z-index: -1;
+  animation: candy-shimmer 3s ease infinite;
+  opacity: 0.6;
+}
+
+@keyframes candy-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #5a5a5a;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.page-label {
+  color: #5a5a5a;
+  white-space: nowrap;
+}
+
+.page-btn {
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff6b9d;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 3px 10px rgba(255, 107, 157, 0.3);
+  position: relative;
+  font-weight: bold;
+}
+
+.page-btn::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b9d, #ffa8cc, #ff6b9d);
+  background-size: 200% 200%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: rotate-border 2s linear infinite;
+}
+
+@keyframes rotate-border {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.page-btn:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+  background: #fff;
+}
+
+.page-btn:hover::before {
+  opacity: 1;
+}
+
+.page-btn:active {
+  transform: scale(0.9) rotate(-5deg);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-btn:disabled::before {
+  display: none;
+}
+
+.page-select,
+.page-size {
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #5a5a5a;
+  padding: 0 30px 0 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: 0 2px 8px rgba(255, 154, 162, 0.3);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6b9d' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  position: relative;
+  z-index: 1;
+}
+
+.page-select:hover,
+.page-size:hover {
+  background: #fff;
+  border-color: #ff6b9d;
+  box-shadow: 0 4px 16px rgba(255, 107, 157, 0.4);
+  transform: translateY(-2px);
+}
+
+.page-select:focus,
+.page-size:focus {
+  outline: none;
+  border-color: #ff6b9d;
+  box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2), 0 4px 16px rgba(255, 107, 157, 0.4);
+}
+
+.page-total {
+  color: #5a5a5a;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 2px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+

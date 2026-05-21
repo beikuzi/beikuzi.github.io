@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 临时文件
+*.tmp
+~$*
+
+# Notion 密钥配置 - 重要：不要上传密钥！
+# 如果你需要在其他地方部署，请手动配置
+# .config/notion.json
+
+# 构建产物
+dist/
+build/
+.misc/
+
+.config/notion.json
+pandoc.exe
+ffmpeg.exe

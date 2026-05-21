@@ -1,0 +1,97 @@
+{
+  "sidebarWidth": "215px",
+  "pageBottomPadding": {
+    "default": 300,
+    "home": 100,
+    "acg_zone": 300,
+    "trophy_list": 300,
+    "skill_tree": 200,
+    "resume": 200,
+    "friends": 200,
+    "article": 100
+  },
+  "defaultEffect": "gradient",
+  "darkModeDefault": false,
+  "live2dDefault": false,
+  "starTrail": {
+    "spawnIntervalMs": 40,
+    "spawnCount": 2,
+    "initialAlpha": 0.95,
+    "alphaDecay": 0.96,
+    "radiusMin": 4,
+    "radiusMax": 7,
+    "radiusDecay": 0.995,
+    "minAlphaThreshold": 0.04,
+    "minRadiusThreshold": 1.2,
+    "velocityRange": 3,
+    "zIndex": 10000
+  },
+  "clickRipple": {
+    "maxRadius": 80,
+    "growSpeed": 3,
+    "lineWidth": 1,
+    "alphaStart": 1,
+    "alphaDecay": 0.965,
+    "lineWidthDecay": 0.995,
+    "zIndex": 9
+  },
+  "musicPop": {
+    "width": 320,
+    "visibleRows": 5.5,
+    "itemHeight": 36
+  },
+  "guide": {
+    "arrowWidth": 100,
+    "arrowHeight": 20,
+    "arrowThickness": 3,
+    "arrowGap": 20
+  },
+  "coverVideo": "assets/videos/lty.mp4",
+  "musicUI": {
+    "ctrlHeight": 52,
+    "ctrlGap": 8,
+    "progressHeight": 4,
+    "volumeTrackWidth": 6,
+    "volumeControlWidth": 24
+  },
+  "grid": {
+    "gapPx": 36,
+    "minGapRatio": 0.10,
+    "maxGapRatio": 0.16,
+    "minCols": 1,
+    "maxCols": 8
+  },
+  "musicCtrl": {
+    "height": 78,
+    "width": 320,
+    "gap": 5,
+    "buttonSize": 34,
+    "rowHeight": 42
+  },
+  "paginationStyle": "dreamy",
+  "paginationStyleSelector": false,
+  "sidebar": {
+    "catMargin": "10px",
+    "itemMargin": "6px",
+    "catItemsGap": "10px",
+    "scrollOffset": 150,
+    "bottomPadding": 200,
+    "contentBottomPadding": 100,
+    "categoriesPadding": "8px",
+    "catTogglePadding": "6px 12px",
+    "itemPadding": "4px 12px 4px 42px",
+    "itemIndent": "28px",
+    "activeIndicatorLeft": "14px"
+  },
+  "fonts": {
+    "article": {
+      "family": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei UI\", \"Microsoft Yahei\", \"WenQuanYi Micro Hei\", \"Hiragino Sans GB\", \"STHeiti\", \"SimSun\", sans-serif",
+      "size": "16px",
+      "lineHeight": "2"
+    },
+    "body": {
+      "family": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei UI\", \"Microsoft Yahei\", \"WenQuanYi Micro Hei\", \"Hiragino Sans GB\", \"STHeiti\", \"SimSun\", \"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+      "size": "14px"
+    }
+  }
+}

@@ -1,0 +1,187 @@
+/* 魔法风格 - 金色和紫色，神秘感，适合奇幻/魔法主题 */
+.pager {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, 
+    rgba(138, 43, 226, 0.9) 0%,
+    rgba(255, 215, 0, 0.3) 50%,
+    rgba(138, 43, 226, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.5),
+              0 0 30px rgba(255, 215, 0, 0.3),
+              inset 0 0 20px rgba(138, 43, 226, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pager::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 215, 0, 0.1) 90deg,
+    transparent 180deg,
+    rgba(138, 43, 226, 0.1) 270deg,
+    transparent 360deg
+  );
+  animation: magic-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes magic-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #ffd700;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+               0 0 20px rgba(138, 43, 226, 0.6);
+  position: relative;
+  z-index: 1;
+}
+
+.page-label {
+  color: #ffd700;
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.page-btn {
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  border-radius: 12px;
+  background: rgba(138, 43, 226, 0.3);
+  color: #ffd700;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4),
+              inset 0 0 10px rgba(138, 43, 226, 0.3);
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+}
+
+.page-btn::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.5), 
+    rgba(138, 43, 226, 0.5), 
+    rgba(255, 215, 0, 0.5));
+  background-size: 200% 200%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: magic-glow 2s linear infinite;
+}
+
+@keyframes magic-glow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.page-btn:hover {
+  background: rgba(138, 43, 226, 0.5);
+  border-color: #ffd700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.7),
+              0 0 40px rgba(138, 43, 226, 0.5),
+              inset 0 0 15px rgba(255, 215, 0, 0.3);
+  transform: scale(1.15);
+}
+
+.page-btn:hover::after {
+  opacity: 0.8;
+}
+
+.page-btn:active {
+  transform: scale(0.95);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.page-btn:disabled::after {
+  display: none;
+}
+
+.page-select,
+.page-size {
+  height: 30px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  border-radius: 12px;
+  background: rgba(138, 43, 226, 0.4);
+  color: #ffd700;
+  padding: 0 30px 0 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3),
+              inset 0 0 10px rgba(138, 43, 226, 0.2);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffd700' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.page-select:hover,
+.page-size:hover {
+  background: rgba(138, 43, 226, 0.6);
+  border-color: #ffd700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5),
+              inset 0 0 15px rgba(255, 215, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.page-select:focus,
+.page-size:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3),
+              0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+.page-total {
+  color: #ffd700;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 2px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
